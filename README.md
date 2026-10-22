@@ -1,6 +1,6 @@
-# RAMSYDEX GLOBAL LOGISTICS — Website
+# RAMSYDEX GLOBAL LOGISTICS
 
-Marketing website for RAMSYDEX GLOBAL LOGISTICS, a logistics and supply chain
+Lead Generation page for RAMSYDEX GLOBAL LOGISTICS, a logistics and supply chain
 company based in Central Malaysia. The site's goal is to generate quote requests
 and build credibility with importers, exporters and manufacturers.
 

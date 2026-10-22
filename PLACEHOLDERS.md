@@ -20,7 +20,8 @@ Every placeholder in the project is listed here. When real assets/data arrive, I
 - [ ] 32 years clarification (company vs. team)
 
 ## Services
-- [ ] 18 card bullets (3 per service) — `src/data/services.ts` (drafts written, pending client approval)
+- [ ] 18 card bullets — `src/data/services.ts` — DRAFTS written, pending client confirmation
+- [ ] 6 service card images — `public/images/placeholder-service-*.jpg` (currently missing, showing gray placeholders)
 - [ ] Cargo types / vehicle types / operating areas — pending
 - [ ] Direct vs. partner for air/ocean — pending
 - [ ] Insurance / repacking / labeling offered? — pending
