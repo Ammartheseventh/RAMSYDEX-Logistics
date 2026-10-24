@@ -1,0 +1,47 @@
+import type { SolutionDetail } from "@/data/solutions";
+
+export default function ServiceDetail({ service }: { service: SolutionDetail }) {
+  return (
+    <section id={service.slug} className="scroll-mt-24 border-t border-gray-200 py-12">
+      <div className="mx-auto grid max-w-7xl items-start gap-8 px-4 md:grid-cols-2 md:py-8">
+        {/* Image */}
+        <div
+          className="aspect-4/3 w-full rounded-lg bg-gray-200 bg-cover bg-center"
+          style={{ backgroundImage: `url('${service.image}')` }}
+          aria-hidden="true"
+        />
+
+        {/* Details */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {service.title}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{service.intro}</p>
+
+          <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Cargo types
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">{service.cargoTypes}</dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Vehicle types
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">{service.vehicleTypes}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Operating areas
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">
+                {service.operatingAreas}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}

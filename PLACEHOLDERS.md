@@ -22,11 +22,12 @@ Every placeholder in the project is listed here. When real assets/data arrive, I
 ## Services
 - [ ] 18 card bullets — `src/data/services.ts` — DRAFTS written, pending client confirmation
 - [ ] 6 service card images — `public/images/placeholder-service-*.jpg` (currently missing, showing gray placeholders)
-- [ ] Cargo types / vehicle types / operating areas — pending
+- [ ] Cargo types / vehicle types / operating areas — `src/data/solutions.ts` — all six services currently show [PLACEHOLDER] in these three fields
 - [ ] Direct vs. partner for air/ocean — pending
 - [ ] Insurance / repacking / labeling offered? — pending
 
 ## Global Network
+- [ ] Network teaser map image — `src/components/sections/NetworkTeaser.tsx` — currently a gray placeholder box; replace with a real static map/SVG once country list is confirmed
 - [ ] Country list for map — `src/components/sections/WorldMap.tsx` (using 5 placeholders)
 - [ ] Trade corridor details — pending
 
