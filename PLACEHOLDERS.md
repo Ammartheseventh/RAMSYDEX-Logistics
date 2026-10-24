@@ -31,6 +31,12 @@ Every placeholder in the project is listed here. When real assets/data arrive, I
 - [ ] Country list for map — `src/components/sections/WorldMap.tsx` (using 5 placeholders)
 - [ ] Trade corridor details — pending
 
+## About
+- [ ] "32 years" clarification — `src/data/about.ts` — company vs. team experience (client to confirm)
+- [ ] Credentials & memberships — `src/data/about.ts` — 4 placeholder entries (customs licence, FIATA/MAFFA, ISO, insurance) + logo files
+- [ ] Case studies — hidden per brief; add only when real client examples are available
+- [ ] Mission / vision copy — `src/data/about.ts` — draft written, client to approve
+
 ## Photos
 - [ ] Hero image — `public/images/hero-placeholder.jpg`
 - [ ] 6 service card images — `public/images/service-*.jpg`
