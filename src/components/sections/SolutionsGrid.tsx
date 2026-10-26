@@ -1,7 +1,19 @@
 import Link from "next/link";
-import { services } from "@/data/services";
+import { sanityClient } from "@/sanity/client";
+import { SERVICES_QUERY } from "@/sanity/queries";
 
-export default function SolutionsGrid() {
+type SanityService = {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  bullets: string[] | null;
+  image: string | null;
+};
+
+export default async function SolutionsGrid() {
+  const services: SanityService[] = await sanityClient.fetch(SERVICES_QUERY);
+
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
@@ -19,15 +31,18 @@ export default function SolutionsGrid() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div
-              key={service.slug}
+              key={service._id}
               className="flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
             >
-              {/* Image placeholder — replace with real photo per service */}
-              <div
-                className="h-40 w-full bg-gray-200 bg-cover bg-center"
-                style={{ backgroundImage: `url('${service.image}')` }}
-                aria-hidden="true"
-              />
+              {service.image ? (
+                <div
+                  className="h-40 w-full bg-gray-200 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${service.image}')` }}
+                  aria-hidden="true"
+                />
+              ) : (
+                <div className="h-40 w-full bg-gray-200" aria-hidden="true" />
+              )}
 
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-lg font-semibold text-gray-900">
@@ -37,12 +52,12 @@ export default function SolutionsGrid() {
                   {service.description}
                 </p>
                 <ul className="mt-4 space-y-1.5">
-                  {service.bullets.map((bullet) => (
+                  {service.bullets?.map((bullet) => (
                     <li
                       key={bullet}
                       className="flex items-start gap-2 text-sm text-gray-700"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-900" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
                       {bullet}
                     </li>
                   ))}

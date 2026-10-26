@@ -2,13 +2,8 @@ import Link from "next/link";
 import { navLinks } from "@/data/nav";
 import { contact } from "@/data/contact";
 
-async function getCurrentYear() {
-  "use cache";
-  return new Date().getFullYear();
-}
-
-export default async function Footer() {
-  const year = await getCurrentYear();
+export default function Footer() {
+  const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-gray-200 bg-gray-50">
