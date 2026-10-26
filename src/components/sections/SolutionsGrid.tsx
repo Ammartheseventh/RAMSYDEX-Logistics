@@ -12,7 +12,11 @@ type SanityService = {
 };
 
 export default async function SolutionsGrid() {
-  const services: SanityService[] = await sanityClient.fetch(SERVICES_QUERY);
+  const services: SanityService[] = await sanityClient.fetch<SanityService[]>(
+  SERVICES_QUERY,
+  {},
+  { next: { tags: ["service"] } }
+);
 
   return (
     <section className="bg-white">
