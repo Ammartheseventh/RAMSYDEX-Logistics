@@ -1,35 +1,21 @@
 import Link from "next/link";
-import { sanityClient } from "@/sanity/client";
-import { SERVICES_QUERY } from "@/sanity/queries";
+import type { SanityService } from "@/sanity/types";
 
-type SanityService = {
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  bullets: string[] | null;
-  image: string | null;
+type Props = {
+  heading: string;
+  intro: string;
+  services: SanityService[];
 };
 
-export default async function SolutionsGrid() {
-  const services: SanityService[] = await sanityClient.fetch<SanityService[]>(
-  SERVICES_QUERY,
-  {},
-  { next: { tags: ["service"] } }
-);
-
+export default function SolutionsGrid({ heading, intro, services }: Props) {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-            Our Core Solutions
+            {heading}
           </h2>
-          <p className="mt-3 text-base text-gray-600">
-            End-to-end logistics services from Central Malaysia — freight,
-            customs, QC inspection, supply chain, last-mile delivery, and
-            courier.
-          </p>
+          <p className="mt-3 text-base text-gray-600">{intro}</p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

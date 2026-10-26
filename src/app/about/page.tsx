@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  experience,
-  missionVision,
-  valuePillars,
-  hubAdvantages,
-  credentials,
-} from "@/data/about";
+import { getAboutPage } from "@/sanity/getAboutPage";
 
 export const metadata: Metadata = {
   title: "About Us — RAMSYDEX GLOBAL LOGISTICS",
@@ -14,7 +8,9 @@ export const metadata: Metadata = {
     "32 years of logistics experience, a Central Malaysia operational hub, and end-to-end supply chain services for importers, exporters, and manufacturers.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const page = await getAboutPage();
+
   return (
     <>
       {/* Intro */}
@@ -23,14 +19,11 @@ export default function AboutPage() {
           <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
             About RAMSYDEX GLOBAL LOGISTICS
           </h1>
-          <p className="mt-3 max-w-3xl text-base text-gray-600">
-            A Central Malaysia-based logistics partner serving importers,
-            exporters, and manufacturers across the region.
-          </p>
+          <p className="mt-3 max-w-3xl text-base text-gray-600">{page.intro}</p>
         </div>
       </section>
 
-      {/* 32 years */}
+      {/* Experience */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
           <div className="grid items-center gap-10 md:grid-cols-2">
@@ -39,22 +32,21 @@ export default function AboutPage() {
                 Experience
               </p>
               <h2 className="mt-2 text-3xl font-bold text-gray-900 md:text-4xl">
-                {experience.headline}
+                {page.experienceHeadline}
               </h2>
               <p className="mt-4 text-base text-gray-600">
-                {experience.statement}
+                {page.experienceStatement}
               </p>
-              <p className="mt-3 text-xs text-gray-500">
-                [Clarification pending — does &quot;32 years&quot; refer to the company or
-                the management team&apos;s experience?]
-              </p>
+              {page.experienceNote && (
+                <p className="mt-3 text-xs text-gray-500">
+                  {page.experienceNote}
+                </p>
+              )}
             </div>
 
             <div className="flex items-center justify-center rounded-lg bg-gray-900 p-12 text-white">
               <div className="text-center">
-                <p className="text-6xl font-bold md:text-7xl">
-                  {experience.years}+
-                </p>
+                <p className="text-6xl font-bold md:text-7xl">32+</p>
                 <p className="mt-2 text-sm uppercase tracking-wide text-gray-300">
                   Years of Logistics Excellence
                 </p>
@@ -72,17 +64,13 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
                 Our Mission
               </h2>
-              <p className="mt-3 text-base text-gray-600">
-                {missionVision.mission}
-              </p>
+              <p className="mt-3 text-base text-gray-600">{page.mission}</p>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
                 Our Vision
               </h2>
-              <p className="mt-3 text-base text-gray-600">
-                {missionVision.vision}
-              </p>
+              <p className="mt-3 text-base text-gray-600">{page.vision}</p>
             </div>
           </div>
         </div>
@@ -101,7 +89,7 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {valuePillars.map((pillar) => (
+            {page.valuePillars.map((pillar) => (
               <div
                 key={pillar.title}
                 className="rounded-lg border border-gray-200 bg-white p-6"
@@ -118,7 +106,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Central Malaysia hub advantage */}
+      {/* Hub advantage */}
       <section className="border-t border-gray-200 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
           <div className="max-w-2xl">
@@ -134,7 +122,7 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {hubAdvantages.map((item) => (
+            {page.hubAdvantages.map((item) => (
               <div
                 key={item.label}
                 className="rounded-lg bg-white p-6 ring-1 ring-gray-200"
@@ -168,7 +156,7 @@ export default function AboutPage() {
           </div>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {credentials.map((credential) => (
+            {page.credentials.map((credential) => (
               <li
                 key={credential}
                 className="flex items-center gap-3 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4"
@@ -182,8 +170,6 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
-
-      {/* Note on case studies — hidden per brief until real examples exist */}
 
       {/* CTA */}
       <section className="bg-gray-900 text-white">

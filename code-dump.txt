@@ -1,0 +1,2104 @@
+===== src\app\about\page.tsx =====
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAboutPage } from "@/sanity/getAboutPage";
+
+export const metadata: Metadata = {
+  title: "About Us — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "32 years of logistics experience, a Central Malaysia operational hub, and end-to-end supply chain services for importers, exporters, and manufacturers.",
+};
+
+export default async function AboutPage() {
+  const page = await getAboutPage();
+
+  return (
+    <>
+      {/* Intro */}
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            About RAMSYDEX GLOBAL LOGISTICS
+          </h1>
+          <p className="mt-3 max-w-3xl text-base text-gray-600">{page.intro}</p>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                Experience
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900 md:text-4xl">
+                {page.experienceHeadline}
+              </h2>
+              <p className="mt-4 text-base text-gray-600">
+                {page.experienceStatement}
+              </p>
+              {page.experienceNote && (
+                <p className="mt-3 text-xs text-gray-500">
+                  {page.experienceNote}
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-center justify-center rounded-lg bg-gray-900 p-12 text-white">
+              <div className="text-center">
+                <p className="text-6xl font-bold md:text-7xl">32+</p>
+                <p className="mt-2 text-sm uppercase tracking-wide text-gray-300">
+                  Years of Logistics Excellence
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & vision */}
+      <section className="border-t border-gray-200 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+                Our Mission
+              </h2>
+              <p className="mt-3 text-base text-gray-600">{page.mission}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+                Our Vision
+              </h2>
+              <p className="mt-3 text-base text-gray-600">{page.vision}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Value pillars */}
+      <section className="border-t border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              What We Stand For
+            </h2>
+            <p className="mt-3 text-base text-gray-600">
+              Three principles that shape how we handle every shipment.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {page.valuePillars.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="rounded-lg border border-gray-200 bg-white p-6"
+              >
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {pillar.title}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hub advantage */}
+      <section className="border-t border-gray-200 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              The Central Malaysia Hub Advantage
+            </h2>
+            <p className="mt-3 text-base text-gray-600">
+              Our location gives fast, direct access to regional seaports,
+              airports, and major highways — reducing transit times and enabling
+              tighter coordination across freight, customs, and last-mile
+              delivery.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {page.hubAdvantages.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-lg bg-white p-6 ring-1 ring-gray-200"
+              >
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {item.label}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Credentials */}
+      <section className="border-t border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              Credentials &amp; Memberships
+            </h2>
+            <p className="mt-3 text-base text-gray-600">
+              Licences, certifications and industry memberships.
+            </p>
+            <p className="mt-2 text-xs text-gray-500">
+              [All credentials below are placeholders — client to confirm and
+              supply logos]
+            </p>
+          </div>
+
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {page.credentials.map((credential) => (
+              <li
+                key={credential}
+                className="flex items-center gap-3 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-200 text-xs font-semibold text-gray-500">
+                  LOGO
+                </span>
+                <span className="text-sm text-gray-700">{credential}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gray-900 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
+          <h2 className="text-2xl font-bold md:text-3xl">
+            Work with a logistics partner you can trust.
+          </h2>
+          <p className="mt-3 text-base text-gray-300">
+            Request a quote and our Central Malaysia desk will respond within 24
+            hours during business hours.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+          >
+            Request a Quote
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+===== src\app\api\revalidate\route.ts =====
+import { revalidatePath } from "next/cache";
+import { type NextRequest, NextResponse } from "next/server";
+import { parseBody } from "next-sanity/webhook";
+
+export async function POST(req: NextRequest) {
+  try {
+    if (!process.env.SANITY_REVALIDATE_SECRET) {
+      return new Response("Missing SANITY_REVALIDATE_SECRET", { status: 500 });
+    }
+
+    const { isValidSignature } = await parseBody(
+      req,
+      process.env.SANITY_REVALIDATE_SECRET,
+      true // wait for Content Lake propagation
+    );
+
+    if (!isValidSignature) {
+      return NextResponse.json(
+        { message: "Invalid signature" },
+        { status: 401 }
+      );
+    }
+
+    revalidatePath("/", "layout");
+
+    return NextResponse.json({ revalidated: true, scope: "entire site" });
+  } catch (err) {
+    console.error(err);
+    return new Response(
+      err instanceof Error ? err.message : "Unknown error",
+      { status: 500 }
+    );
+  }
+}
+
+===== src\app\contact\page.tsx =====
+import type { Metadata } from "next";
+import { getContactPage } from "@/sanity/getContactPage";
+import { getSiteSettings } from "@/sanity/getSiteSettings";
+import QuoteForm from "@/components/sections/QuoteForm";
+
+export const metadata: Metadata = {
+  title: "Contact & Quote — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "Request a quote from our Central Malaysia desk. Freight, customs clearance, QC inspection, supply chain, and last-mile delivery.",
+};
+
+export default async function ContactPage() {
+  const [page, settings] = await Promise.all([
+    getContactPage(),
+    getSiteSettings(),
+  ]);
+
+  return (
+    <>
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            {page.heading}
+          </h1>
+          <p className="mt-3 max-w-2xl text-base text-gray-600">{page.intro}</p>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 md:py-16">
+          <div className="md:col-span-2">
+            <QuoteForm
+              inquiryTopics={page.inquiryTopics}
+              responsePromise={settings.responsePromise}
+              whatsapp={settings.whatsapp}
+            />
+          </div>
+
+          <aside className="space-y-6">
+            <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+              <h2 className="text-lg font-semibold text-gray-900">
+                {page.hubHeading}
+              </h2>
+              <dl className="mt-4 space-y-3 text-sm">
+                <div>
+                  <dt className="font-medium text-gray-900">Address</dt>
+                  <dd className="text-gray-600">{settings.address}</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-gray-900">Phone</dt>
+                  <dd>
+                    <a
+                      href={`tel:${settings.phone.replace(/\s/g, "")}`}
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      {settings.phone}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-gray-900">Email</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${settings.email}`}
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      {settings.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-gray-900">Hours</dt>
+                  <dd className="text-gray-600">{settings.hours}</dd>
+                </div>
+              </dl>
+
+              <a
+                href={`https://wa.me/${settings.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 block rounded-md bg-green-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-green-700"
+              >
+                Message on WhatsApp
+              </a>
+            </div>
+
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+              <p className="text-sm text-blue-900">{settings.responsePromise}</p>
+            </div>
+
+            <div className="aspect-square w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
+              <div className="flex h-full w-full items-center justify-center px-4 text-center text-sm text-gray-500">
+                {page.mapNote}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+===== src\app\gallery\page.tsx =====
+import type { Metadata } from "next";
+import { getGalleryPage } from "@/sanity/getGalleryPage";
+import GalleryGrid from "@/components/sections/GalleryGrid";
+
+export const metadata: Metadata = {
+  title: "Gallery — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "Photos from our Central Malaysia hub, cargo operations, and last-mile delivery.",
+};
+
+export default async function GalleryPage() {
+  const page = await getGalleryPage();
+
+  return (
+    <>
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            {page.heading}
+          </h1>
+          <p className="mt-3 max-w-2xl text-base text-gray-600">
+            {page.intro}
+          </p>
+          {page.note && (
+            <p className="mt-2 text-xs text-gray-500">{page.note}</p>
+          )}
+        </div>
+      </section>
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-10 md:py-14">
+          <GalleryGrid images={page.images} />
+        </div>
+      </section>
+    </>
+  );
+}
+
+===== src\app\network\page.tsx =====
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getNetworkPage } from "@/sanity/getNetworkPage";
+import WorldMap from "@/components/sections/WorldMap";
+import { mapPins } from "@/data/networkData";
+
+export const metadata: Metadata = {
+  title: "Global Network — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "Trade lanes, customs coverage, and corridor connectivity from our Central Malaysia hub.",
+};
+
+export default async function NetworkPage() {
+  const page = await getNetworkPage();
+
+  return (
+    <>
+      {/* Intro */}
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            Global Network &amp; Focus Countries
+          </h1>
+          <p className="mt-3 max-w-3xl text-base text-gray-600">{page.intro}</p>
+        </div>
+      </section>
+
+      {/* World map */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-10 md:py-14">
+          <WorldMap pins={mapPins} />
+          <p className="mt-3 text-xs text-gray-500">{page.mapNote}</p>
+        </div>
+      </section>
+
+      {/* Trade corridors */}
+      <section className="border-t border-gray-200 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              Key Trade Corridors
+            </h2>
+            <p className="mt-3 text-base text-gray-600">
+              The lanes we operate most frequently out of Central Malaysia.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {page.tradeCorridors.map((corridor) => (
+              <div
+                key={corridor.title}
+                className="rounded-lg bg-white p-6 ring-1 ring-gray-200"
+              >
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {corridor.title}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600">
+                  {corridor.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Customs coverage */}
+      <section className="border-t border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              {page.customsHeading}
+            </h2>
+            <p className="mt-3 text-base text-gray-600">{page.customsBody}</p>
+
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {page.customsRegions.map((region) => (
+                <li
+                  key={region}
+                  className="rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-sm font-medium text-gray-700"
+                >
+                  {region}
+                </li>
+              ))}
+            </ul>
+
+            {page.customsNote && (
+              <p className="mt-4 text-xs text-gray-500">{page.customsNote}</p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gray-900 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
+          <h2 className="text-2xl font-bold md:text-3xl">{page.ctaHeading}</h2>
+          <p className="mt-3 text-base text-gray-300">{page.ctaBody}</p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+          >
+            Request a Quote
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+===== src\app\privacy\page.tsx =====
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { PortableText } from "next-sanity";
+import { getLegalPage } from "@/sanity/getLegalPage";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "How RAMSYDEX GLOBAL LOGISTICS collects, uses, and protects personal data under Malaysia's PDPA.",
+};
+
+export default async function PrivacyPage() {
+  const page = await getLegalPage("privacy");
+  if (!page) notFound();
+
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+        <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+          {page.title}
+        </h1>
+        {page.note && (
+          <p className="mt-2 text-xs text-gray-500">{page.note}</p>
+        )}
+        <div className="prose prose-sm mt-8 max-w-none text-gray-700">
+          <PortableText value={page.body as never} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\app\solutions\page.tsx =====
+import type { Metadata } from "next";
+import { getSolutionsPage } from "@/sanity/getSolutionsPage";
+import { getServices } from "@/sanity/getServices";
+import ServiceDetail from "@/components/sections/ServiceDetail";
+import QCBlock from "@/components/sections/QCBlock";
+import CustomsBlock from "@/components/sections/CustomsBlock";
+import ValueAddedTable from "@/components/sections/ValueAddedTable";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Solutions — RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "Freight, customs clearance, QC inspection, supply chain, last-mile delivery, and courier services from Central Malaysia.",
+};
+
+export default async function SolutionsPage() {
+  const [page, services] = await Promise.all([
+    getSolutionsPage(),
+    getServices(),
+  ]);
+
+  return (
+    <>
+      {/* Intro */}
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            {page.introHeading}
+          </h1>
+          <p className="mt-4 max-w-3xl text-base text-gray-600">
+            {page.introBody}
+          </p>
+        </div>
+      </section>
+
+      {/* Six service detail sections */}
+      {services.map((service) => (
+        <ServiceDetail key={service._id} service={service} />
+      ))}
+
+      {/* QC inspection block */}
+      <QCBlock
+        heading={page.qcHeading}
+        body={page.qcBody}
+        checks={page.qcChecks}
+      />
+
+      {/* Multi-region customs block */}
+      <CustomsBlock
+        heading={page.customsHeading}
+        body={page.customsBody}
+        note={page.customsNote}
+      />
+
+      {/* Standard vs. value-added table */}
+      <ValueAddedTable
+        heading={page.tableHeading}
+        intro={page.tableIntro}
+        standardServices={page.standardServices}
+        valueAddedServices={page.valueAddedServices}
+      />
+
+      {/* CTA banner */}
+      <section className="bg-gray-900 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
+          <h2 className="text-2xl font-bold md:text-3xl">{page.ctaHeading}</h2>
+          <p className="mt-3 text-base text-gray-300">{page.ctaBody}</p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+          >
+            Request a Quote
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+===== src\app\terms\page.tsx =====
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { PortableText } from "next-sanity";
+import { getLegalPage } from "@/sanity/getLegalPage";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions — RAMSYDEX GLOBAL LOGISTICS",
+  description: "Website terms of use for RAMSYDEX GLOBAL LOGISTICS.",
+};
+
+export default async function TermsPage() {
+  const page = await getLegalPage("terms");
+  if (!page) notFound();
+
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+        <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+          {page.title}
+        </h1>
+        {page.note && (
+          <p className="mt-2 text-xs text-gray-500">{page.note}</p>
+        )}
+        <div className="prose prose-sm mt-8 max-w-none text-gray-700">
+          <PortableText value={page.body as never} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\app\globals.css =====
+@import "tailwindcss";
+
+===== src\app\layout.tsx =====
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { getSiteSettings } from "@/sanity/getSiteSettings";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "RAMSYDEX GLOBAL LOGISTICS",
+  description:
+    "Freight, customs clearance, QC inspection, and last-mile delivery from Central Malaysia.",
+};
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const settings = await getSiteSettings();
+
+  return (
+    <html lang="en" className={inter.className}>
+      <body className="flex min-h-screen flex-col">
+        <Header
+          companyShortName={settings.companyShortName}
+          tagline={settings.tagline}
+          phone={settings.phone}
+          experienceYears={settings.experienceYears}
+          experienceLabel={settings.experienceLabel}
+        />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
+
+===== src\app\not-found.tsx =====
+import Link from "next/link";
+
+export default function NotFound() {
+  return (
+    <section className="flex min-h-[60vh] flex-col items-center justify-center bg-white px-4 text-center">
+      <h1 className="text-6xl font-bold text-gray-900">404</h1>
+      <p className="mt-4 text-lg text-gray-600">
+        This page could not be found.
+      </p>
+      <p className="mt-2 text-sm text-gray-500">
+        It may have been moved, or the link may be incorrect.
+      </p>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/"
+          className="rounded-md bg-gray-900 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800"
+        >
+          Back to Home
+        </Link>
+        <Link
+          href="/contact"
+          className="rounded-md border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+        >
+          Contact Us
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+===== src\app\page.tsx =====
+import { getHomePage } from "@/sanity/getHomePage";
+import { getServices } from "@/sanity/getServices";
+import Hero from "@/components/sections/Hero";
+import TrustBar from "@/components/sections/TrustBar";
+import SolutionsGrid from "@/components/sections/SolutionsGrid";
+import WorkflowBar from "@/components/sections/WorkflowBar";
+import NetworkTeaser from "@/components/sections/NetworkTeaser";
+
+export default async function Home() {
+  const [page, services] = await Promise.all([
+    getHomePage(),
+    getServices(),
+  ]);
+
+  return (
+    <>
+      <Hero page={page} />
+      <TrustBar stats={page.trustStats} />
+      <SolutionsGrid
+        heading={page.solutionsHeading}
+        intro={page.solutionsIntro}
+        services={services}
+      />
+      <WorkflowBar
+        heading={page.workflowHeading}
+        intro={page.workflowIntro}
+        steps={page.workflowSteps}
+      />
+      <NetworkTeaser
+        heading={page.networkTeaserHeading}
+        body={page.networkTeaserBody}
+        imageUrl={page.networkTeaserImageUrl}
+      />
+    </>
+  );
+}
+
+===== src\components\layout\Footer.tsx =====
+import Link from "next/link";
+import { navLinks } from "@/data/nav";
+import { getSiteSettings } from "@/sanity/getSiteSettings";
+
+export default async function Footer() {
+  const settings = await getSiteSettings();
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="border-t border-gray-200 bg-gray-50">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-4">
+        <div className="md:col-span-1">
+          <p className="text-lg font-bold text-gray-900">
+            {settings.companyShortName}
+          </p>
+          <p className="text-xs uppercase tracking-wide text-gray-500">
+            {settings.tagline}
+          </p>
+          <p className="mt-4 text-sm text-gray-600">{settings.footerSummary}</p>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold text-gray-900">Navigate</h3>
+          <ul className="mt-3 space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold text-gray-900">Contact</h3>
+          <ul className="mt-3 space-y-2 text-sm text-gray-600">
+            <li>{settings.address}</li>
+            <li>
+              <a href={`mailto:${settings.email}`} className="hover:text-gray-900">
+                {settings.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:${settings.phone.replace(/\s/g, "")}`}
+                className="hover:text-gray-900"
+              >
+                {settings.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`https://wa.me/${settings.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-900"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>{settings.hours}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold text-gray-900">Legal</h3>
+          <ul className="mt-3 space-y-2 text-sm text-gray-600">
+            <li>
+              <Link href="/privacy" className="hover:text-gray-900">
+                {settings.privacyLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:text-gray-900">
+                {settings.termsLabel}
+              </Link>
+            </li>
+            <li className="pt-2 text-xs text-gray-500">
+              SSM Registration: {settings.ssmNumber}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 py-4 text-xs text-gray-500">
+          © {year} {settings.companyName}. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+===== src\components\layout\Header.tsx =====
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { navLinks } from "@/data/nav";
+
+type HeaderProps = {
+  companyShortName: string;
+  tagline: string;
+  phone: string;
+  experienceYears: number;
+  experienceLabel: string;
+};
+
+export default function Header({
+  companyShortName,
+  tagline,
+  phone,
+  experienceYears,
+  experienceLabel,
+}: HeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
+      <div className="bg-gray-900 text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-sm">
+          <span>
+            {experienceYears}+ {experienceLabel}
+          </span>
+          <a
+            href={`tel:${phone.replace(/\s/g, "")}`}
+            className="hover:underline"
+          >
+            Dispatch: {phone}
+          </a>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        <Link href="/" className="text-xl font-bold tracking-tight text-gray-900">
+          {companyShortName}
+          <span className="ml-2 text-xs font-normal text-gray-500">{tagline}</span>
+        </Link>
+
+        <nav className="hidden items-center gap-6 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <Link
+          href="/contact"
+          className="hidden rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 md:inline-block"
+        >
+          Request a Quote
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          className="md:hidden rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700"
+          aria-expanded={menuOpen}
+          aria-label="Toggle navigation menu"
+        >
+          Menu
+        </button>
+      </div>
+
+      {menuOpen && (
+        <div className="border-t border-gray-200 bg-white md:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 rounded-md bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white"
+            >
+              Request a Quote
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
+
+===== src\components\sections\CustomsBlock.tsx =====
+type Props = {
+  heading: string;
+  body: string;
+  note: string;
+};
+
+export default function CustomsBlock({ heading, body, note }: Props) {
+  return (
+    <section className="border-t border-gray-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {heading}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{body}</p>
+          <p className="mt-3 text-sm text-gray-500">
+            <span className="font-medium text-gray-700">{note}</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\GalleryGrid.tsx =====
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import type { GalleryImage } from "@/sanity/types";
+
+export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
+  const [index, setIndex] = useState(-1);
+
+  return (
+    <>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {images.map((image, i) => (
+          <button
+            key={`${image.src}-${i}`}
+            type="button"
+            onClick={() => setIndex(i)}
+            className="group relative aspect-square overflow-hidden rounded-lg bg-gray-200"
+            aria-label={`Open image: ${image.caption}`}
+          >
+            {image.src ? (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover transition group-hover:scale-105"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-xs text-gray-400">
+                No image
+              </div>
+            )}
+            <span className="absolute inset-x-0 bottom-0 bg-black/50 px-2 py-1 text-left text-xs text-white opacity-0 transition group-hover:opacity-100">
+              {image.caption}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <Lightbox
+        open={index >= 0}
+        close={() => setIndex(-1)}
+        index={index}
+        slides={images.map((img) => ({
+          src: img.src,
+          alt: img.alt,
+          title: img.caption,
+        }))}
+      />
+    </>
+  );
+}
+
+===== src\components\sections\Hero.tsx =====
+import Link from "next/link";
+import type { HomePage } from "@/sanity/types";
+
+export default function Hero({ page }: { page: HomePage }) {
+  return (
+    <section className="relative bg-gray-900 text-white">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={
+          page.heroImageUrl
+            ? { backgroundImage: `url('${page.heroImageUrl}')` }
+            : undefined
+        }
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto flex max-w-7xl flex-col items-start px-4 py-24 md:py-32">
+        <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
+          {page.heroHeadline}
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-base text-gray-200 md:text-lg">
+          {page.heroSubheading}
+        </p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/contact"
+            className="rounded-md bg-white px-6 py-3 text-center text-sm font-semibold text-gray-900 hover:bg-gray-100"
+          >
+            {page.heroCtaPrimary}
+          </Link>
+          <Link
+            href="/solutions"
+            className="rounded-md border border-white px-6 py-3 text-center text-sm font-semibold text-white hover:bg-white hover:text-gray-900"
+          >
+            {page.heroCtaSecondary}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\NetworkTeaser.tsx =====
+import Link from "next/link";
+
+type Props = {
+  heading: string;
+  body: string;
+  imageUrl: string | null;
+};
+
+export default function NetworkTeaser({ heading, body, imageUrl }: Props) {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              {heading}
+            </h2>
+            <p className="mt-4 text-base text-gray-600">{body}</p>
+            <Link
+              href="/network"
+              className="mt-6 inline-block rounded-md bg-gray-900 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800"
+            >
+              View Global Network &amp; Focus Countries
+            </Link>
+          </div>
+
+          <div
+            className="relative aspect-4/3 w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 bg-cover bg-center"
+            style={
+              imageUrl ? { backgroundImage: `url('${imageUrl}')` } : undefined
+            }
+          >
+            {!imageUrl && (
+              <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
+                World map preview — placeholder
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\QCBlock.tsx =====
+type Props = {
+  heading: string;
+  body: string;
+  checks: string[];
+};
+
+export default function QCBlock({ heading, body, checks }: Props) {
+  return (
+    <section className="border-t border-gray-200 bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {heading}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{body}</p>
+        </div>
+
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          {checks.map((check) => (
+            <li
+              key={check}
+              className="flex items-start gap-3 rounded-lg bg-white p-4 ring-1 ring-gray-200"
+            >
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
+              <span className="text-sm text-gray-700">{check}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\QuoteForm.tsx =====
+"use client";
+
+import { useState } from "react";
+import type { InquiryTopic } from "@/sanity/types";
+
+type Props = {
+  inquiryTopics: InquiryTopic[];
+  responsePromise: string;
+  whatsapp: string;
+};
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // PLACEHOLDER
+
+export default function QuoteForm({
+  inquiryTopics,
+  responsePromise,
+  whatsapp,
+}: Props) {
+  const [activeTopic, setActiveTopic] = useState(inquiryTopics[0]?.slug ?? "");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const activeService =
+    inquiryTopics.find((t) => t.slug === activeTopic)?.service ?? "";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    if (formData.get("website")) {
+      setStatus("success");
+      return;
+    }
+
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        setStatus("success");
+        form.reset();
+        setActiveTopic(inquiryTopics[0]?.slug ?? "");
+      } else {
+        setErrorMessage(
+          data?.message ||
+            "Form submission is not yet connected. Please contact us by phone or WhatsApp for now."
+        );
+        setStatus("error");
+      }
+    } catch {
+      setErrorMessage("Network error. Please try again.");
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="rounded-lg border border-green-200 bg-green-50 p-6">
+        <h3 className="text-lg font-semibold text-green-900">
+          Thank you — your enquiry has been received.
+        </h3>
+        <p className="mt-2 text-sm text-green-800">{responsePromise}</p>
+        <a
+          href={`https://wa.me/${whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block rounded-md bg-green-900 px-4 py-2 text-sm font-semibold text-white hover:bg-green-800"
+        >
+          Message us on WhatsApp
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div>
+        <p className="mb-2 text-sm font-medium text-gray-900">
+          What can we help with?
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {inquiryTopics.map((topic) => (
+            <button
+              key={topic.slug}
+              type="button"
+              onClick={() => setActiveTopic(topic.slug)}
+              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
+                activeTopic === topic.slug
+                  ? "border-gray-900 bg-gray-900 text-white"
+                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+              }`}
+            >
+              {topic.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <input type="hidden" name="service" value={activeService} />
+
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-900">
+          Your name *
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="company" className="block text-sm font-medium text-gray-900">
+          Company name *
+        </label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          required
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+        />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-900">
+            Phone *
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+            Email *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="origin" className="block text-sm font-medium text-gray-900">
+            Origin
+          </label>
+          <input
+            id="origin"
+            name="origin"
+            type="text"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+          />
+        </div>
+        <div>
+          <label htmlFor="destination" className="block text-sm font-medium text-gray-900">
+            Destination
+          </label>
+          <input
+            id="destination"
+            name="destination"
+            type="text"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="cargo" className="block text-sm font-medium text-gray-900">
+          Cargo details / pallet count
+        </label>
+        <textarea
+          id="cargo"
+          name="cargo"
+          rows={4}
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
+        />
+      </div>
+
+      <div className="flex items-start gap-3">
+        <input
+          id="consent"
+          name="consent"
+          type="checkbox"
+          required
+          className="mt-1 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+        />
+        <label htmlFor="consent" className="text-sm text-gray-700">
+          I agree to be contacted about my enquiry. See{" "}
+          <a href="/privacy" className="font-medium text-gray-900 underline">
+            Privacy Policy
+          </a>
+          . *
+        </label>
+      </div>
+
+      {status === "error" && (
+        <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+          {errorMessage}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-full rounded-md bg-gray-900 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
+      >
+        {status === "submitting" ? "Sending..." : "Submit Enquiry"}
+      </button>
+    </form>
+  );
+}
+
+===== src\components\sections\ServiceDetail.tsx =====
+import type { SanityService } from "@/sanity/types";
+
+export default function ServiceDetail({ service }: { service: SanityService }) {
+  return (
+    <section
+      id={service.slug}
+      className="scroll-mt-24 border-t border-gray-200 py-12"
+    >
+      <div className="mx-auto grid max-w-7xl items-start gap-8 px-4 md:grid-cols-2 md:py-8">
+        {/* Image */}
+        {service.image ? (
+          <div
+            className="aspect-4/3 w-full rounded-lg bg-gray-200 bg-cover bg-center"
+            style={{ backgroundImage: `url('${service.image}')` }}
+            aria-hidden="true"
+          />
+        ) : (
+          <div
+            className="aspect-4/3 w-full rounded-lg bg-gray-200"
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Details */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {service.title}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">
+            {service.detailIntro ?? service.description}
+          </p>
+
+          <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Cargo types
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">
+                {service.cargoTypes ?? "[PLACEHOLDER]"}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Vehicle types
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">
+                {service.vehicleTypes ?? "[PLACEHOLDER]"}
+              </dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Operating areas
+              </dt>
+              <dd className="mt-1 text-sm text-gray-700">
+                {service.operatingAreas ?? "[PLACEHOLDER]"}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\SolutionsGrid.tsx =====
+import Link from "next/link";
+import type { SanityService } from "@/sanity/types";
+
+type Props = {
+  heading: string;
+  intro: string;
+  services: SanityService[];
+};
+
+export default function SolutionsGrid({ heading, intro, services }: Props) {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {heading}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{intro}</p>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <div
+              key={service._id}
+              className="flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+            >
+              {service.image ? (
+                <div
+                  className="h-40 w-full bg-gray-200 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${service.image}')` }}
+                  aria-hidden="true"
+                />
+              ) : (
+                <div className="h-40 w-full bg-gray-200" aria-hidden="true" />
+              )}
+
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600">
+                  {service.description}
+                </p>
+                <ul className="mt-4 space-y-1.5">
+                  {service.bullets?.map((bullet) => (
+                    <li
+                      key={bullet}
+                      className="flex items-start gap-2 text-sm text-gray-700"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/solutions#${service.slug}`}
+                  className="mt-6 text-sm font-semibold text-gray-900 hover:underline"
+                >
+                  Learn more →
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\TrustBar.tsx =====
+import type { TrustStat } from "@/sanity/types";
+
+export default function TrustBar({ stats }: { stats: TrustStat[] }) {
+  return (
+    <section className="border-b border-gray-200 bg-white">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 md:grid-cols-4">
+        {stats.map((stat) => (
+          <div key={stat.label} className="text-center">
+            <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+            <p className="mt-1 text-sm text-gray-600">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\ValueAddedTable.tsx =====
+type Props = {
+  heading: string;
+  intro: string;
+  standardServices: string[];
+  valueAddedServices: string[];
+};
+
+export default function ValueAddedTable({
+  heading,
+  intro,
+  standardServices,
+  valueAddedServices,
+}: Props) {
+  return (
+    <section className="border-t border-gray-200 bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {heading}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{intro}</p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="rounded-lg bg-white p-6 ring-1 ring-gray-200">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Standard Services
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {standardServices.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-gray-700"
+                >
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-400" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-lg bg-gray-900 p-6 text-white">
+            <h3 className="text-lg font-semibold">Value-Added Services</h3>
+            <ul className="mt-4 space-y-3">
+              {valueAddedServices.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-gray-100"
+                >
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\WorkflowBar.tsx =====
+import type { WorkflowStep } from "@/sanity/types";
+
+type Props = {
+  heading: string;
+  intro: string;
+  steps: WorkflowStep[];
+};
+
+export default function WorkflowBar({ heading, intro, steps }: Props) {
+  return (
+    <section className="border-t border-gray-200 bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            {heading}
+          </h2>
+          <p className="mt-3 text-base text-gray-600">{intro}</p>
+        </div>
+
+        <ol className="mt-10 grid gap-6 md:grid-cols-4">
+          {steps.map((step) => (
+            <li
+              key={step.number}
+              className="relative rounded-lg bg-white p-6 shadow-sm ring-1 ring-gray-200"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white">
+                {step.number}
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+===== src\components\sections\WorldMap.tsx =====
+"use client";
+
+import { WorldMap } from "react-country-map";
+import "react-country-map/styles.css";
+import type { MapPin } from "@/data/networkData";
+
+export default function NetworkMap({ pins }: { pins: MapPin[] }) {
+  const data = pins.map((pin, i) => ({
+    country: pin.country,
+    value: pin.isHub ? 100 : 50 - i,
+  }));
+
+  return (
+    <div className="w-full">
+      <WorldMap data={data} className="h-auto w-full" />
+    </div>
+  );
+}
+
+===== src\data\nav.ts =====
+export const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Global Network", href: "/network" },
+  { label: "About Us", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+===== src\data\networkData.ts =====
+export type MapPin = {
+  country: string;
+  x: number;
+  y: number;
+  isHub?: boolean;
+};
+
+export const mapPins: MapPin[] = [
+  { country: "Malaysia", x: 78.3, y: 47.8, isHub: true },
+  { country: "Singapore", x: 78.9, y: 49.4 },
+  { country: "China", x: 83.6, y: 32.8 },
+  { country: "Germany", x: 52.8, y: 21.6 },
+  { country: "Australia", x: 87.2, y: 63.9 },
+];
+
+===== src\sanity\client.ts =====
+import { createClient } from '@sanity/client'
+
+export const sanityClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: '2026-03-01',
+  useCdn: false,
+})
+
+===== src\sanity\getAboutPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { ABOUT_PAGE_QUERY } from "@/sanity/queries";
+import type { AboutPage } from "@/sanity/types";
+
+export async function getAboutPage(): Promise<AboutPage> {
+  return await sanityClient.fetch<AboutPage>(ABOUT_PAGE_QUERY);
+}
+
+===== src\sanity\getContactPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { CONTACT_PAGE_QUERY } from "@/sanity/queries";
+import type { ContactPage } from "@/sanity/types";
+
+export async function getContactPage(): Promise<ContactPage> {
+  return await sanityClient.fetch<ContactPage>(CONTACT_PAGE_QUERY);
+}
+
+===== src\sanity\getGalleryPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { GALLERY_PAGE_QUERY } from "@/sanity/queries";
+import type { GalleryPage } from "@/sanity/types";
+
+export async function getGalleryPage(): Promise<GalleryPage> {
+  return await sanityClient.fetch<GalleryPage>(GALLERY_PAGE_QUERY);
+}
+
+===== src\sanity\getHomePage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { HOME_PAGE_QUERY } from "@/sanity/queries";
+import type { HomePage } from "@/sanity/types";
+
+export async function getHomePage(): Promise<HomePage> {
+  return await sanityClient.fetch<HomePage>(HOME_PAGE_QUERY);
+}
+
+===== src\sanity\getLegalPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { LEGAL_PAGE_QUERY } from "@/sanity/queries";
+import type { LegalPage } from "@/sanity/types";
+
+export async function getLegalPage(slug: string): Promise<LegalPage | null> {
+  return await sanityClient.fetch<LegalPage | null>(LEGAL_PAGE_QUERY, { slug });
+}
+
+===== src\sanity\getNetworkPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { NETWORK_PAGE_QUERY } from "@/sanity/queries";
+import type { NetworkPage } from "@/sanity/types";
+
+export async function getNetworkPage(): Promise<NetworkPage> {
+  return await sanityClient.fetch<NetworkPage>(NETWORK_PAGE_QUERY);
+}
+
+===== src\sanity\getServices.ts =====
+import { sanityClient } from "@/sanity/client";
+import { SERVICES_QUERY } from "@/sanity/queries";
+import type { SanityService } from "@/sanity/types";
+
+export async function getServices(): Promise<SanityService[]> {
+  return await sanityClient.fetch<SanityService[]>(SERVICES_QUERY);
+}
+
+===== src\sanity\getSiteSettings.ts =====
+import { sanityClient } from "@/sanity/client";
+import { SITE_SETTINGS_QUERY } from "@/sanity/queries";
+import type { SiteSettings } from "@/sanity/types";
+
+export async function getSiteSettings(): Promise<SiteSettings> {
+  return await sanityClient.fetch<SiteSettings>(SITE_SETTINGS_QUERY);
+}
+
+===== src\sanity\getSolutionsPage.ts =====
+import { sanityClient } from "@/sanity/client";
+import { SOLUTIONS_PAGE_QUERY } from "@/sanity/queries";
+import type { SolutionsPage } from "@/sanity/types";
+
+export async function getSolutionsPage(): Promise<SolutionsPage> {
+  return await sanityClient.fetch<SolutionsPage>(SOLUTIONS_PAGE_QUERY);
+}
+
+===== src\sanity\queries.ts =====
+export const SERVICES_QUERY = `
+  *[_type == "service"] | order(_createdAt asc) {
+    _id, title, "slug": slug.current, description, bullets,
+    "image": image.asset->url,
+    detailIntro, cargoTypes, vehicleTypes, operatingAreas
+  }
+`
+
+export const SITE_SETTINGS_QUERY = `
+  *[_type == "siteSettings"][0] {
+    companyName, companyShortName, tagline,
+    "logoUrl": logo.asset->url,
+    email, phone, whatsapp, address, hours, responsePromise,
+    experienceYears, experienceLabel,
+    footerSummary, ssmNumber, privacyLabel, termsLabel
+  }
+`
+
+export const HOME_PAGE_QUERY = `
+  *[_type == "homePage"][0] {
+    heroHeadline, heroSubheading,
+    "heroImageUrl": heroImage.asset->url,
+    heroCtaPrimary, heroCtaSecondary,
+    trustStats,
+    solutionsHeading, solutionsIntro,
+    workflowHeading, workflowIntro, workflowSteps,
+    networkTeaserHeading, networkTeaserBody,
+    "networkTeaserImageUrl": networkTeaserImage.asset->url
+  }
+`
+
+export const ABOUT_PAGE_QUERY = `
+  *[_type == "aboutPage"][0] {
+    intro, experienceHeadline, experienceStatement, experienceNote,
+    mission, vision, valuePillars, hubAdvantages, credentials
+  }
+`
+
+export const NETWORK_PAGE_QUERY = `
+  *[_type == "networkPage"][0] {
+    intro, mapNote, tradeCorridors,
+    customsHeading, customsBody, customsRegions, customsNote,
+    ctaHeading, ctaBody
+  }
+`
+
+export const SOLUTIONS_PAGE_QUERY = `
+  *[_type == "solutionsPage"][0] {
+    introHeading, introBody,
+    qcHeading, qcBody, qcChecks,
+    customsHeading, customsBody, customsNote,
+    tableHeading, tableIntro, standardServices, valueAddedServices,
+    ctaHeading, ctaBody
+  }
+`
+
+export const CONTACT_PAGE_QUERY = `
+  *[_type == "contactPage"][0] {
+    heading, intro, hubHeading, mapNote, inquiryTopics
+  }
+`
+
+export const GALLERY_PAGE_QUERY = `
+  *[_type == "galleryPage"][0] {
+    heading, intro, note,
+    images[] { alt, caption, "src": image.asset->url }
+  }
+`
+
+export const LEGAL_PAGE_QUERY = `
+  *[_type == "legalPage" && slug.current == $slug][0] {
+    title, note, body
+  }
+`
+
+===== src\sanity\types.ts =====
+export type SiteSettings = {
+  companyName: string;
+  companyShortName: string;
+  tagline: string;
+  logoUrl: string | null;
+  email: string;
+  phone: string;
+  whatsapp: string;
+  address: string;
+  hours: string;
+  responsePromise: string;
+  experienceYears: number;
+  experienceLabel: string;
+  footerSummary: string;
+  ssmNumber: string;
+  privacyLabel: string;
+  termsLabel: string;
+};
+
+export type SanityService = {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  bullets: string[] | null;
+  image: string | null;
+  detailIntro: string | null;
+  cargoTypes: string | null;
+  vehicleTypes: string | null;
+  operatingAreas: string | null;
+};
+
+export type TrustStat = { value: string; label: string };
+export type WorkflowStep = { number: string; title: string; description: string };
+export type ValuePillar = { title: string; description: string };
+export type HubAdvantage = { label: string; description: string };
+export type TradeCorridor = { title: string; description: string };
+export type InquiryTopic = { slug: string; label: string; service: string };
+export type GalleryImage = { alt: string; caption: string; src: string };
+
+export type HomePage = {
+  heroHeadline: string;
+  heroSubheading: string;
+  heroImageUrl: string | null;
+  heroCtaPrimary: string;
+  heroCtaSecondary: string;
+  trustStats: TrustStat[];
+  solutionsHeading: string;
+  solutionsIntro: string;
+  workflowHeading: string;
+  workflowIntro: string;
+  workflowSteps: WorkflowStep[];
+  networkTeaserHeading: string;
+  networkTeaserBody: string;
+  networkTeaserImageUrl: string | null;
+};
+
+export type AboutPage = {
+  intro: string;
+  experienceHeadline: string;
+  experienceStatement: string;
+  experienceNote: string;
+  mission: string;
+  vision: string;
+  valuePillars: ValuePillar[];
+  hubAdvantages: HubAdvantage[];
+  credentials: string[];
+};
+
+export type NetworkPage = {
+  intro: string;
+  mapNote: string;
+  tradeCorridors: TradeCorridor[];
+  customsHeading: string;
+  customsBody: string;
+  customsRegions: string[];
+  customsNote: string;
+  ctaHeading: string;
+  ctaBody: string;
+};
+
+export type SolutionsPage = {
+  introHeading: string;
+  introBody: string;
+  qcHeading: string;
+  qcBody: string;
+  qcChecks: string[];
+  customsHeading: string;
+  customsBody: string;
+  customsNote: string;
+  tableHeading: string;
+  tableIntro: string;
+  standardServices: string[];
+  valueAddedServices: string[];
+  ctaHeading: string;
+  ctaBody: string;
+};
+
+export type ContactPage = {
+  heading: string;
+  intro: string;
+  hubHeading: string;
+  mapNote: string;
+  inquiryTopics: InquiryTopic[];
+};
+
+export type GalleryPage = {
+  heading: string;
+  intro: string;
+  note: string;
+  images: GalleryImage[];
+};
+
+export type LegalPage = {
+  title: string;
+  note: string;
+  body: unknown[];
+};
+
+===== eslint.config.mjs =====
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+
+===== next-env.d.ts =====
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+import "./.next/dev/types/root-params.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+
+===== next.config.ts =====
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  cacheComponents: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
+};
+
+export default nextConfig;
+
+===== package.json =====
+{
+  "name": "ramsydex-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@sanity/client": "^8.11.0",
+    "next": "16.4.2",
+    "next-sanity": "^13.4.0",
+    "react": "19.3.0",
+    "react-country-map": "^1.0.0",
+    "react-dom": "19.3.0",
+    "yet-another-react-lightbox": "^3.32.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+===== tsconfig.json =====
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+

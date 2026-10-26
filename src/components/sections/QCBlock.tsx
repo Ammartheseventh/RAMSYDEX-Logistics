@@ -1,23 +1,18 @@
-export default function QCBlock() {
-  const checks = [
-    "Physical carton and seal checks",
-    "Quantity counting against documentation",
-    "Barcode and SKU verification",
-    "Damage inspection",
-    "Photo inspection reports on request",
-  ];
+type Props = {
+  heading: string;
+  body: string;
+  checks: string[];
+};
 
+export default function QCBlock({ heading, body, checks }: Props) {
   return (
     <section className="border-t border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-            Quality Control &amp; Inspection
+            {heading}
           </h2>
-          <p className="mt-3 text-base text-gray-600">
-            Every shipment can be checked at our Central Malaysia hub before it
-            moves on — so problems are caught early, not at the destination.
-          </p>
+          <p className="mt-3 text-base text-gray-600">{body}</p>
         </div>
 
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">

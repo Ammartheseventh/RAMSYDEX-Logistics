@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { getSiteSettings } from "@/sanity/getSiteSettings";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,15 +13,23 @@ export const metadata: Metadata = {
     "Freight, customs clearance, QC inspection, and last-mile delivery from Central Malaysia.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="en" className={inter.className}>
       <body className="flex min-h-screen flex-col">
-        <Header />
+        <Header
+          companyShortName={settings.companyShortName}
+          tagline={settings.tagline}
+          phone={settings.phone}
+          experienceYears={settings.experienceYears}
+          experienceLabel={settings.experienceLabel}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

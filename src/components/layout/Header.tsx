@@ -3,34 +3,46 @@
 import { useState } from "react";
 import Link from "next/link";
 import { navLinks } from "@/data/nav";
-import { contact } from "@/data/contact";
 
-export default function Header() {
+type HeaderProps = {
+  companyShortName: string;
+  tagline: string;
+  phone: string;
+  experienceYears: number;
+  experienceLabel: string;
+};
+
+export default function Header({
+  companyShortName,
+  tagline,
+  phone,
+  experienceYears,
+  experienceLabel,
+}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
-      {/* Top strip: years of experience + dispatch phone */}
       <div className="bg-gray-900 text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-sm">
-          <span>32 Years of Experience</span>
+          <span>
+            {experienceYears}+ {experienceLabel}
+          </span>
           <a
-            href={`tel:${contact.phone.replace(/\s/g, "")}`}
+            href={`tel:${phone.replace(/\s/g, "")}`}
             className="hover:underline"
           >
-            Dispatch: {contact.phone}
+            Dispatch: {phone}
           </a>
         </div>
       </div>
 
-      {/* Main bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        {/* Logo placeholder */}
         <Link href="/" className="text-xl font-bold tracking-tight text-gray-900">
-          RAMSYDEX
+          {companyShortName}
+          <span className="ml-2 text-xs font-normal text-gray-500">{tagline}</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -43,7 +55,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
         <Link
           href="/contact"
           className="hidden rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 md:inline-block"
@@ -51,7 +62,6 @@ export default function Header() {
           Request a Quote
         </Link>
 
-        {/* Mobile menu button */}
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
@@ -63,7 +73,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="border-t border-gray-200 bg-white md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">

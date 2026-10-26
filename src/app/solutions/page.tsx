@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { solutionDetails } from "@/data/solutions";
+import { getSolutionsPage } from "@/sanity/getSolutionsPage";
+import { getServices } from "@/sanity/getServices";
 import ServiceDetail from "@/components/sections/ServiceDetail";
 import QCBlock from "@/components/sections/QCBlock";
 import CustomsBlock from "@/components/sections/CustomsBlock";
@@ -12,47 +13,58 @@ export const metadata: Metadata = {
     "Freight, customs clearance, QC inspection, supply chain, last-mile delivery, and courier services from Central Malaysia.",
 };
 
-export default function SolutionsPage() {
+export default async function SolutionsPage() {
+  const [page, services] = await Promise.all([
+    getSolutionsPage(),
+    getServices(),
+  ]);
+
   return (
     <>
       {/* Intro */}
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
           <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
-            Core Solutions &amp; Operational Capabilities
+            {page.introHeading}
           </h1>
           <p className="mt-4 max-w-3xl text-base text-gray-600">
-            Six coordinated services from our Central Malaysia hub — freight,
-            customs, QC inspection, supply chain, last-mile delivery, and
-            courier — each with its own operational details.
+            {page.introBody}
           </p>
         </div>
       </section>
 
       {/* Six service detail sections */}
-      {solutionDetails.map((service) => (
-        <ServiceDetail key={service.slug} service={service} />
+      {services.map((service) => (
+        <ServiceDetail key={service._id} service={service} />
       ))}
 
       {/* QC inspection block */}
-      <QCBlock />
+      <QCBlock
+        heading={page.qcHeading}
+        body={page.qcBody}
+        checks={page.qcChecks}
+      />
 
       {/* Multi-region customs block */}
-      <CustomsBlock />
+      <CustomsBlock
+        heading={page.customsHeading}
+        body={page.customsBody}
+        note={page.customsNote}
+      />
 
       {/* Standard vs. value-added table */}
-      <ValueAddedTable />
+      <ValueAddedTable
+        heading={page.tableHeading}
+        intro={page.tableIntro}
+        standardServices={page.standardServices}
+        valueAddedServices={page.valueAddedServices}
+      />
 
       {/* CTA banner */}
       <section className="bg-gray-900 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Need a reliable logistics and customs partner?
-          </h2>
-          <p className="mt-3 text-base text-gray-300">
-            Request a quote today and our Central Malaysia desk will respond
-            within 24 hours during business hours.
-          </p>
+          <h2 className="text-2xl font-bold md:text-3xl">{page.ctaHeading}</h2>
+          <p className="mt-3 text-base text-gray-300">{page.ctaBody}</p>
           <Link
             href="/contact"
             className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
