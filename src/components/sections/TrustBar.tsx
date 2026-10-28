@@ -6,7 +6,7 @@ export default function TrustBar({ stats }: { stats: TrustStat[] }) {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 md:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
-            <p className="text-3xl font-bold text-brick-red-500">{stat.value}</p>
+            <p className="font-display text-4xl text-brick-red-500">{stat.value}</p>
             <p className="mt-1 text-sm text-taupe-grey-600">{stat.label}</p>
           </div>
         ))}

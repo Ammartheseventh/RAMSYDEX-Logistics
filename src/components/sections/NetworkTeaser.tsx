@@ -9,10 +9,10 @@ type Props = {
 export default function NetworkTeaser({ heading, body, imageUrl }: Props) {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+            <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
               {heading}
             </h2>
             <p className="mt-4 text-base text-taupe-grey-600">{body}</p>

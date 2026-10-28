@@ -23,7 +23,7 @@ export default function ServiceDetail({ service }: { service: SanityService }) {
 
         {/* Details */}
         <div>
-          <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+          <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
             {service.title}
           </h2>
           <p className="mt-3 text-base text-taupe-grey-600">

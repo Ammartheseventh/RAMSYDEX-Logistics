@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getSiteSettings } from "@/sanity/getSiteSettings";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "RAMSYDEX GLOBAL LOGISTICS",
@@ -21,8 +31,11 @@ export default async function RootLayout({
   const settings = await getSiteSettings();
 
   return (
-    <html lang="en" className={inter.className}>
-      <body className="flex min-h-screen flex-col">
+    <html
+      lang="en"
+      className={`${inter.className} ${instrumentSerif.variable}`}
+    >
+      <body className="flex min-h-screen flex-col bg-parchment-50">
         <Header
           companyShortName={settings.companyShortName}
           tagline={settings.tagline}

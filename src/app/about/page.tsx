@@ -16,7 +16,7 @@ export default async function AboutPage() {
       {/* Intro */}
       <section className="border-b border-parchment-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-          <h1 className="text-3xl font-bold text-taupe-grey-950 md:text-4xl">
+          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
             About RAMSYDEX GLOBAL LOGISTICS
           </h1>
           <p className="mt-3 max-w-3xl text-base text-taupe-grey-600">
@@ -27,13 +27,13 @@ export default async function AboutPage() {
 
       {/* Experience */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wide text-taupe-grey-500">
                 Experience
               </p>
-              <h2 className="mt-2 text-3xl font-bold text-taupe-grey-950 md:text-4xl">
+              <h2 className="mt-2 text-3xl text-taupe-grey-950 md:text-4xl">
                 {page.experienceHeadline}
               </h2>
               <p className="mt-4 text-base text-taupe-grey-600">
@@ -48,7 +48,7 @@ export default async function AboutPage() {
 
             <div className="flex items-center justify-center rounded-lg bg-taupe-grey-950 p-12 text-parchment-50">
               <div className="text-center">
-                <p className="text-6xl font-bold text-tuscan-sun-400 md:text-7xl">
+                <p className="font-display text-7xl text-tuscan-sun-400 md:text-8xl">
                   32+
                 </p>
                 <p className="mt-2 text-sm uppercase tracking-wide text-parchment-300">
@@ -62,10 +62,10 @@ export default async function AboutPage() {
 
       {/* Mission & vision */}
       <section className="border-t border-parchment-200 bg-parchment-100">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+              <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
                 Our Mission
               </h2>
               <p className="mt-3 text-base text-taupe-grey-600">
@@ -73,7 +73,7 @@ export default async function AboutPage() {
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+              <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
                 Our Vision
               </h2>
               <p className="mt-3 text-base text-taupe-grey-600">
@@ -86,9 +86,9 @@ export default async function AboutPage() {
 
       {/* Value pillars */}
       <section className="border-t border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+            <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
               What We Stand For
             </h2>
             <p className="mt-3 text-base text-taupe-grey-600">
@@ -116,9 +116,9 @@ export default async function AboutPage() {
 
       {/* Hub advantage */}
       <section className="border-t border-parchment-200 bg-parchment-100">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+            <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
               The Central Malaysia Hub Advantage
             </h2>
             <p className="mt-3 text-base text-taupe-grey-600">
@@ -149,9 +149,9 @@ export default async function AboutPage() {
 
       {/* Credentials */}
       <section className="border-t border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
+            <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
               Credentials &amp; Memberships
             </h2>
             <p className="mt-3 text-base text-taupe-grey-600">
@@ -184,7 +184,7 @@ export default async function AboutPage() {
       {/* CTA */}
       <section className="bg-taupe-grey-950 text-parchment-50">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
-          <h2 className="text-2xl font-bold md:text-3xl">
+          <h2 className="text-2xl md:text-3xl">
             Work with a logistics partner you can trust.
           </h2>
           <p className="mt-3 text-base text-parchment-300">

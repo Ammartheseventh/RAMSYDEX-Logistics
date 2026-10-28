@@ -33,7 +33,7 @@ export default function Header({
           </span>
           <a
             href={`tel:${phone.replace(/\s/g, "")}`}
-            className="hover:text-tuscan-sun-300"
+            className="transition hover:text-tuscan-sun-300"
           >
             Dispatch: {phone}
           </a>
@@ -56,7 +56,7 @@ export default function Header({
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-taupe-grey-700 hover:text-brick-red-500"
+              className="text-sm font-medium text-taupe-grey-700 transition hover:text-brick-red-500"
             >
               {link.label}
             </Link>
@@ -73,11 +73,11 @@ export default function Header({
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
-          className="rounded-md border border-taupe-grey-200 px-3 py-2 text-sm font-medium text-taupe-grey-700 transition hover:bg-parchment-50 md:hidden"
+          className="rounded-md border border-taupe-grey-200 p-2 text-taupe-grey-700 transition hover:bg-parchment-100 md:hidden"
           aria-expanded={menuOpen}
-          aria-label="Toggle navigation menu"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
-          Menu
+          {menuOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
       </div>
 
@@ -105,5 +105,42 @@ export default function Header({
         </div>
       )}
     </header>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
   );
 }

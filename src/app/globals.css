@@ -50,4 +50,31 @@
   --color-parchment-950: #16130e;
 }
 
+@theme inline {
+  --font-display: var(--font-instrument-serif);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-instrument-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    line-height: 1.05;
+  }
+
+  h2 {
+    line-height: 1.15;
+  }
+
+  h3 {
+    line-height: 1.25;
+  }
+}
+
 @plugin "@tailwindcss/typography";

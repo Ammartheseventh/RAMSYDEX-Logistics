@@ -15,7 +15,7 @@ export default function Hero({ page }: { page: HomePage }) {
       />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-start px-4 py-24 md:py-32">
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
+        <h1 className="max-w-3xl text-3xl leading-tight md:text-5xl">
           {page.heroHeadline}
         </h1>
 

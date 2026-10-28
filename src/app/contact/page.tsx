@@ -19,7 +19,7 @@ export default async function ContactPage() {
     <>
       <section className="border-b border-parchment-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-          <h1 className="text-3xl font-bold text-taupe-grey-950 md:text-4xl">
+          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
             {page.heading}
           </h1>
           <p className="mt-3 max-w-2xl text-base text-taupe-grey-600">

@@ -23,8 +23,8 @@ export default async function SolutionsPage() {
     <>
       {/* Intro */}
       <section className="border-b border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
-          <h1 className="text-3xl font-bold text-taupe-grey-950 md:text-4xl">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
+          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
             {page.introHeading}
           </h1>
           <p className="mt-4 max-w-3xl text-base text-taupe-grey-600">
@@ -63,7 +63,7 @@ export default async function SolutionsPage() {
       {/* CTA banner */}
       <section className="bg-taupe-grey-950 text-parchment-50">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
-          <h2 className="text-2xl font-bold md:text-3xl">{page.ctaHeading}</h2>
+          <h2 className="text-2xl md:text-3xl">{page.ctaHeading}</h2>
           <p className="mt-3 text-base text-parchment-300">{page.ctaBody}</p>
           <Link
             href="/contact"
