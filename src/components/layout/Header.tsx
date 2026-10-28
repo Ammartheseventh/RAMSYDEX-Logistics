@@ -2,74 +2,50 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { navLinks } from "@/data/nav";
 
-type HeaderProps = {
-  companyShortName: string;
-  tagline: string;
-  phone: string;
-  experienceYears: number;
-  experienceLabel: string;
-};
-
-export default function Header({
-  companyShortName,
-  tagline,
-  phone,
-  experienceYears,
-  experienceLabel,
-}: HeaderProps) {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-parchment-200 bg-white">
-      <div className="bg-taupe-grey-950 text-parchment-50">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-sm">
-          <span>
-            <span className="font-semibold text-tuscan-sun-400">
-              {experienceYears}+
-            </span>{" "}
-            {experienceLabel}
-          </span>
-          <a
-            href={`tel:${phone.replace(/\s/g, "")}`}
-            className="transition hover:text-tuscan-sun-300"
-          >
-            Dispatch: {phone}
-          </a>
-        </div>
-      </div>
-
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <Link
-          href="/"
-          className="text-xl font-bold tracking-tight text-taupe-grey-950"
-        >
-          {companyShortName}
-          <span className="ml-2 text-xs font-normal text-taupe-grey-500">
-            {tagline}
-          </span>
+    <header className="sticky top-0 z-50 border-b border-parchment-200 bg-white shadow-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        
+        {/* Logo - Fixed Height, Auto Width */}
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image
+            src="/images/logo.jpeg"
+            alt="RAMSYDEX GLOBAL LOGISTICS Logo"
+            width={200}
+            height={48}
+            className="h-12 w-auto object-contain mix-blend-multiply"
+            priority
+          />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-3 md:flex lg:gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-taupe-grey-700 transition hover:text-brick-red-500"
+              className="whitespace-nowrap text-[13px] font-medium text-taupe-grey-700 transition hover:text-brick-red-500 lg:text-sm"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
+        {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden rounded-md bg-brick-red-500 px-4 py-2 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block"
+          className="hidden whitespace-nowrap rounded-md bg-brick-red-500 px-3 py-2 text-[13px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-4 lg:text-sm"
         >
           Request a Quote
         </Link>
 
+        {/* Mobile Menu Button */}
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
@@ -81,6 +57,7 @@ export default function Header({
         </button>
       </div>
 
+      {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <div className="border-t border-parchment-200 bg-white md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
@@ -89,7 +66,7 @@ export default function Header({
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded px-2 py-2 text-sm font-medium text-taupe-grey-700 hover:bg-parchment-100"
+                className="whitespace-nowrap rounded px-2 py-2 text-sm font-medium text-taupe-grey-700 hover:bg-parchment-100"
               >
                 {link.label}
               </Link>
@@ -97,7 +74,7 @@ export default function Header({
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 rounded-md bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
+              className="mt-2 whitespace-nowrap rounded-md bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
             >
               Request a Quote
             </Link>
@@ -110,16 +87,7 @@ export default function Header({
 
 function MenuIcon() {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <line x1="3" y1="6" x2="21" y2="6" />
       <line x1="3" y1="12" x2="21" y2="12" />
       <line x1="3" y1="18" x2="21" y2="18" />
@@ -129,16 +97,7 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
