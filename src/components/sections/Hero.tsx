@@ -19,7 +19,7 @@ export default function Hero({ page }: { page: HomePage }) {
           {page.heroHeadline}
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base text-gray-200 md:text-lg">
+        <p className="mt-6 max-w-2xl text-base text-parchment-300 md:text-lg">
           {page.heroSubheading}
         </p>
 
@@ -32,7 +32,7 @@ export default function Hero({ page }: { page: HomePage }) {
           </Link>
           <Link
             href="/solutions"
-            className="rounded-md border border-parchment-300 px-6 py-3 text-center text-sm font-semibold text-parchment-50 hover:bg-parchment-100 hover:text-taupe-grey-950"
+            className="rounded-md border border-parchment-300 px-6 py-3 text-center text-sm font-semibold text-parchment-50 transition hover:bg-parchment-100 hover:text-taupe-grey-950"
           >
             {page.heroCtaSecondary}
           </Link>

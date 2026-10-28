@@ -21,7 +21,7 @@ export default function WorkflowBar({ heading, intro, steps }: Props) {
           {steps.map((step) => (
             <li
               key={step.number}
-              className="relative rounded-lg bg-white p-6 shadow-sm ring-1 ring-gray-200"
+              className="relative rounded-lg bg-white p-6 shadow-sm ring-1 ring-parchment-200"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-taupe-grey-950 text-sm font-bold text-tuscan-sun-400">
                 {step.number}

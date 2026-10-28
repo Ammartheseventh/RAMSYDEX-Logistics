@@ -19,7 +19,7 @@ export default function QCBlock({ heading, body, checks }: Props) {
           {checks.map((check) => (
             <li
               key={check}
-              className="flex items-start gap-3 rounded-lg bg-white p-4 ring-1 ring-gray-200"
+              className="flex items-start gap-3 rounded-lg bg-white p-4 ring-1 ring-parchment-200"
             >
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-taupe-grey-950" />
               <span className="text-sm text-taupe-grey-700">{check}</span>

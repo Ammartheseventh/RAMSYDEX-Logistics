@@ -18,7 +18,7 @@ export default function NetworkTeaser({ heading, body, imageUrl }: Props) {
             <p className="mt-4 text-base text-taupe-grey-600">{body}</p>
             <Link
               href="/network"
-              className="mt-6 inline-block rounded-md bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
+              className="mt-6 inline-block rounded-md bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
             >
               View Global Network &amp; Focus Countries
             </Link>

@@ -29,7 +29,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 className="object-cover transition group-hover:scale-105"
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center text-xs text-taupe-grey-400">
+              <div className="flex h-full w-full items-center justify-center text-xs text-taupe-grey-500">
                 No image
               </div>
             )}

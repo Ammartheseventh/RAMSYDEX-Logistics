@@ -49,3 +49,5 @@
   --color-parchment-900: #1f1b14;
   --color-parchment-950: #16130e;
 }
+
+@plugin "@tailwindcss/typography";

@@ -73,7 +73,7 @@ export default function Header({
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
-          className="rounded-md border border-taupe-grey-200 px-3 py-2 text-sm font-medium text-taupe-grey-700 md:hidden"
+          className="rounded-md border border-taupe-grey-200 px-3 py-2 text-sm font-medium text-taupe-grey-700 transition hover:bg-parchment-50 md:hidden"
           aria-expanded={menuOpen}
           aria-label="Toggle navigation menu"
         >
