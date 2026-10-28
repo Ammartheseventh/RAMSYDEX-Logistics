@@ -22,15 +22,18 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
-      <div className="bg-gray-900 text-white">
+    <header className="sticky top-0 z-50 border-b border-parchment-200 bg-white">
+      <div className="bg-taupe-grey-950 text-parchment-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-sm">
           <span>
-            {experienceYears}+ {experienceLabel}
+            <span className="font-semibold text-tuscan-sun-400">
+              {experienceYears}+
+            </span>{" "}
+            {experienceLabel}
           </span>
           <a
             href={`tel:${phone.replace(/\s/g, "")}`}
-            className="hover:underline"
+            className="hover:text-tuscan-sun-300"
           >
             Dispatch: {phone}
           </a>
@@ -38,9 +41,14 @@ export default function Header({
       </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-xl font-bold tracking-tight text-gray-900">
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-tight text-taupe-grey-950"
+        >
           {companyShortName}
-          <span className="ml-2 text-xs font-normal text-gray-500">{tagline}</span>
+          <span className="ml-2 text-xs font-normal text-taupe-grey-500">
+            {tagline}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -48,7 +56,7 @@ export default function Header({
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900"
+              className="text-sm font-medium text-taupe-grey-700 hover:text-brick-red-500"
             >
               {link.label}
             </Link>
@@ -57,7 +65,7 @@ export default function Header({
 
         <Link
           href="/contact"
-          className="hidden rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 md:inline-block"
+          className="hidden rounded-md bg-brick-red-500 px-4 py-2 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block"
         >
           Request a Quote
         </Link>
@@ -65,7 +73,7 @@ export default function Header({
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
-          className="md:hidden rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700"
+          className="rounded-md border border-taupe-grey-200 px-3 py-2 text-sm font-medium text-taupe-grey-700 md:hidden"
           aria-expanded={menuOpen}
           aria-label="Toggle navigation menu"
         >
@@ -74,14 +82,14 @@ export default function Header({
       </div>
 
       {menuOpen && (
-        <div className="border-t border-gray-200 bg-white md:hidden">
+        <div className="border-t border-parchment-200 bg-white md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                className="rounded px-2 py-2 text-sm font-medium text-taupe-grey-700 hover:bg-parchment-100"
               >
                 {link.label}
               </Link>
@@ -89,7 +97,7 @@ export default function Header({
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 rounded-md bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-md bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
             >
               Request a Quote
             </Link>

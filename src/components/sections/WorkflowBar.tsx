@@ -8,13 +8,13 @@ type Props = {
 
 export default function WorkflowBar({ heading, intro, steps }: Props) {
   return (
-    <section className="border-t border-gray-200 bg-gray-50">
+    <section className="border-t border-parchment-200 bg-parchment-100">
       <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+          <h2 className="text-2xl font-bold text-taupe-grey-950 md:text-3xl">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-gray-600">{intro}</p>
+          <p className="mt-3 text-base text-taupe-grey-600">{intro}</p>
         </div>
 
         <ol className="mt-10 grid gap-6 md:grid-cols-4">
@@ -23,13 +23,13 @@ export default function WorkflowBar({ heading, intro, steps }: Props) {
               key={step.number}
               className="relative rounded-lg bg-white p-6 shadow-sm ring-1 ring-gray-200"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-taupe-grey-950 text-sm font-bold text-tuscan-sun-400">
                 {step.number}
               </div>
-              <h3 className="mt-4 text-sm font-semibold text-gray-900">
+              <h3 className="mt-4 text-sm font-semibold text-taupe-grey-950">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm text-gray-600">{step.description}</p>
+              <p className="mt-2 text-sm text-taupe-grey-600">{step.description}</p>
             </li>
           ))}
         </ol>

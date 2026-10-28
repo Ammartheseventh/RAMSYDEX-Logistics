@@ -3,7 +3,7 @@ import type { HomePage } from "@/sanity/types";
 
 export default function Hero({ page }: { page: HomePage }) {
   return (
-    <section className="relative bg-gray-900 text-white">
+    <section className="relative bg-taupe-grey-950 text-parchment-50">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-40"
         style={
@@ -26,13 +26,13 @@ export default function Hero({ page }: { page: HomePage }) {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/contact"
-            className="rounded-md bg-white px-6 py-3 text-center text-sm font-semibold text-gray-900 hover:bg-gray-100"
+            className="rounded-md bg-brick-red-500 px-6 py-3 text-center text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
           >
             {page.heroCtaPrimary}
           </Link>
           <Link
             href="/solutions"
-            className="rounded-md border border-white px-6 py-3 text-center text-sm font-semibold text-white hover:bg-white hover:text-gray-900"
+            className="rounded-md border border-parchment-300 px-6 py-3 text-center text-sm font-semibold text-parchment-50 hover:bg-parchment-100 hover:text-taupe-grey-950"
           >
             {page.heroCtaSecondary}
           </Link>

@@ -13,16 +13,16 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <section className="border-b border-gray-200 bg-white">
+      <section className="border-b border-parchment-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+          <h1 className="text-3xl font-bold text-taupe-grey-950 md:text-4xl">
             {page.heading}
           </h1>
-          <p className="mt-3 max-w-2xl text-base text-gray-600">
+          <p className="mt-3 max-w-2xl text-base text-taupe-grey-600">
             {page.intro}
           </p>
           {page.note && (
-            <p className="mt-2 text-xs text-gray-500">{page.note}</p>
+            <p className="mt-2 text-xs text-taupe-grey-500">{page.note}</p>
           )}
         </div>
       </section>

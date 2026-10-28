@@ -16,13 +16,13 @@ export default async function PrivacyPage() {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
-        <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+        <h1 className="text-3xl font-bold text-taupe-grey-950 md:text-4xl">
           {page.title}
         </h1>
         {page.note && (
-          <p className="mt-2 text-xs text-gray-500">{page.note}</p>
+          <p className="mt-2 text-xs text-taupe-grey-500">{page.note}</p>
         )}
-        <div className="prose prose-sm mt-8 max-w-none text-gray-700">
+        <div className="prose prose-sm mt-8 max-w-none text-taupe-grey-700">
           <PortableText value={page.body as never} />
         </div>
       </div>
