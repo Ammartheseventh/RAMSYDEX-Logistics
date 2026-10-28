@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+@theme {
+  --color-taupe-grey-50: #f3f2f2;
+  --color-taupe-grey-100: #e7e4e4;
+  --color-taupe-grey-200: #cfc9c9;
+  --color-taupe-grey-300: #b6afaf;
+  --color-taupe-grey-400: #9e9494;
+  --color-taupe-grey-500: #867979;
+  --color-taupe-grey-600: #6b6161;
+  --color-taupe-grey-700: #504949;
+  --color-taupe-grey-800: #363030;
+  --color-taupe-grey-900: #1b1818;
+  --color-taupe-grey-950: #131111;
+
+  --color-tuscan-sun-50: #fcf7e8;
+  --color-tuscan-sun-100: #faf0d1;
+  --color-tuscan-sun-200: #f4e0a4;
+  --color-tuscan-sun-300: #efd176;
+  --color-tuscan-sun-400: #eac148;
+  --color-tuscan-sun-500: #e4b21b;
+  --color-tuscan-sun-600: #b78e15;
+  --color-tuscan-sun-700: #896b10;
+  --color-tuscan-sun-800: #5b470b;
+  --color-tuscan-sun-900: #2e2405;
+  --color-tuscan-sun-950: #201904;
+
+  --color-brick-red-50: #faeceb;
+  --color-brick-red-100: #f4d9d7;
+  --color-brick-red-200: #eab2ae;
+  --color-brick-red-300: #df8c86;
+  --color-brick-red-400: #d4665e;
+  --color-brick-red-500: #c93f36;
+  --color-brick-red-600: #a1332b;
+  --color-brick-red-700: #792620;
+  --color-brick-red-800: #511915;
+  --color-brick-red-900: #280d0b;
+  --color-brick-red-950: #1c0907;
+
+  --color-parchment-50: #f5f3ef;
+  --color-parchment-100: #ebe7e0;
+  --color-parchment-200: #d8d0c0;
+  --color-parchment-300: #c4b8a1;
+  --color-parchment-400: #b0a182;
+  --color-parchment-500: #9d8962;
+  --color-parchment-600: #7d6e4f;
+  --color-parchment-700: #5e523b;
+  --color-parchment-800: #3f3727;
+  --color-parchment-900: #1f1b14;
+  --color-parchment-950: #16130e;
+}
