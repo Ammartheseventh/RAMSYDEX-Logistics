@@ -3,7 +3,6 @@ import Image from "next/image";
 import type { HomePage } from "@/sanity/types";
 
 export default function Hero({ page }: { page: HomePage }) {
-
   return (
     <section className="relative bg-taupe-grey-950 text-parchment-50">
       {/* Background Image Container */}
@@ -25,20 +24,20 @@ export default function Hero({ page }: { page: HomePage }) {
       {/* Content */}
       <div className="relative mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[60vh] md:py-28">
         
-        <h1 className="font-display max-w-5xl whitespace-pre-line text-4xl leading-[1.05] sm:text-6xl md:text-7xl">
+        <h1 className="animate-fade-in-up font-display max-w-5xl whitespace-pre-line text-4xl leading-[1.05] sm:text-6xl">
           {page.heroHeadline}
         </h1>
 
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row md:mt-12">
+        <div className="animate-fade-in-up delay-150ms mt-10 flex flex-col gap-4 sm:flex-row md:mt-12">
           <Link
             href="/contact"
-            className="rounded-md bg-brick-red-500 px-8 py-4 text-center text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 sm:text-base"
+            className="inline-flex items-center justify-center rounded-full bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 sm:text-base"
           >
             {page.heroCtaPrimary}
           </Link>
           <Link
             href="/solutions"
-            className="rounded-md border border-parchment-300 px-8 py-4 text-center text-sm font-semibold text-parchment-50 transition hover:bg-parchment-100 hover:text-taupe-grey-950 sm:text-base"
+            className="inline-flex items-center justify-center rounded-full border border-parchment-300 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-parchment-100 hover:text-taupe-grey-950 sm:text-base"
           >
             {page.heroCtaSecondary}
           </Link>

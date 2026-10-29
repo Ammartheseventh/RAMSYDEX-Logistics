@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@sanity/client": "^8.11.0",
+    "motion": "^14.7.1",
     "next": "16.4.2",
     "next-sanity": "^13.4.0",
     "react": "19.3.0",

@@ -1,3 +1,22 @@
+import { Unbounded, Jost, Inter, Advent_Pro, Merriweather_Sans } from "next/font/google";
+
+export const displayFont = Merriweather_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+
+export const bodyFont = Jost({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+/*
+
+
+
 import { Inter, Unbounded } from "next/font/google";
 
 export const displayFont = Unbounded({
@@ -6,21 +25,6 @@ export const displayFont = Unbounded({
   display: "swap",
 });
 
-export const bodyFont = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-/*
-
-import { Inter, Jost } from "next/font/google";
-
-export const displayFont = Jost({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
 
 import { Inter, Unbounded } from "next/font/google";
 

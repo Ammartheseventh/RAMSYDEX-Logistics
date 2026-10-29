@@ -40,7 +40,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden whitespace-nowrap rounded-md bg-brick-red-500 px-3 py-2 text-[13px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-4 lg:text-sm"
+          className="hidden whitespace-nowrap rounded-full bg-brick-red-500 px-3 py-2 text-[12px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-4 lg:text-sm"
         >
           Request a Quote
         </Link>
