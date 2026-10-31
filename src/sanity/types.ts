@@ -3,6 +3,8 @@ export type SiteSettings = {
   companyShortName: string;
   tagline: string;
   logoUrl: string | null;
+  logoLightUrl: string | null;
+  logoIconUrl: string | null;
   email: string;
   phone: string;
   whatsapp: string;

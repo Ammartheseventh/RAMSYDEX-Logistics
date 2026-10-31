@@ -5,23 +5,47 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinks } from "@/data/nav";
 
-export default function Header() {
+type HeaderProps = {
+  logoUrl: string | null;
+  logoIconUrl: string | null;
+};
+
+export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Use the icon on mobile, but fallback to the full logo if the icon isn't uploaded yet
+  const mobileLogo = logoIconUrl || logoUrl;
 
   return (
     <header className="sticky top-0 z-50 border-b border-parchment-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         
-        {/* Logo - Fixed Height, Auto Width */}
-        <Link href="/" className="flex shrink-0 items-center">
-          <Image
-            src="/images/logo.jpeg"
-            alt="RAMSYDEX GLOBAL LOGISTICS Logo"
-            width={200}
-            height={48}
-            className="h-12 w-auto object-contain mix-blend-multiply"
-            priority
-          />
+        {/* Desktop Logo */}
+        <Link href="/" className="hidden md:flex shrink-0 items-center">
+          {logoUrl && (
+            <Image
+              src={logoUrl}
+              alt="RAMSYDEX GLOBAL LOGISTICS Logo"
+              width={200}
+              height={48}
+              className="h-12 w-auto object-contain mix-blend-multiply"
+              priority
+            />
+          )}
+        </Link>
+
+        {/* Mobile Logo (Cropped) */}
+        <Link href="/" className="flex md:hidden shrink-0 items-center">
+          {mobileLogo && (
+            <Image
+              src={mobileLogo}
+              alt="RAMSYDEX GLOBAL LOGISTICS Logo"
+              width={48}
+              height={48}
+              className="h-10 w-auto object-contain mix-blend-multiply"
+              priority
+            />
+          )}
         </Link>
 
         {/* Desktop Navigation */}
@@ -40,7 +64,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden whitespace-nowrap rounded-full bg-brick-red-500 px-3 py-2 text-[12px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-4 lg:text-sm"
+          className="hidden whitespace-nowrap rounded-full bg-brick-red-500 px-4 py-2 text-[13px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-5 lg:text-sm"
         >
           Request a Quote
         </Link>
@@ -74,7 +98,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 whitespace-nowrap rounded-md bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
+              className="mt-2 whitespace-nowrap rounded-full bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
             >
               Request a Quote
             </Link>

@@ -3,6 +3,7 @@ import "./globals.css";
 import { bodyFont, displayFont } from "@/lib/fonts";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { getSiteSettings } from "@/sanity/getSiteSettings";
 
 export const metadata: Metadata = {
   title: "RAMSYDEX GLOBAL LOGISTICS",
@@ -15,10 +16,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Fetch the settings to get the logo URL
+  const settings = await getSiteSettings();
+
   return (
     <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <body className="flex min-h-screen flex-col bg-parchment-50">
-        <Header />
+        <Header
+          logoUrl={settings.logoUrl}
+          logoIconUrl={settings.logoIconUrl}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

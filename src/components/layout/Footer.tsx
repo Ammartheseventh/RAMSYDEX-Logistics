@@ -1,24 +1,30 @@
 import Link from "next/link";
-import Image from "next/image"; // <--- Import Image
+import Image from "next/image";
 import { navLinks } from "@/data/nav";
 import { getSiteSettings } from "@/sanity/getSiteSettings";
 
 export default async function Footer() {
   const settings = await getSiteSettings();
   const year = new Date().getFullYear();
+  
+  // Use the light logo if it exists, otherwise fall back to the dark one
+  const footerLogo = settings.logoLightUrl || settings.logoUrl;
 
   return (
     <footer className="bg-taupe-grey-800 text-parchment-300">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-4">
         <div className="md:col-span-1">
           <Link href="/" className="inline-block">
-            <Image
-              src="/images/logo.jpeg"
-              alt={`${settings.companyShortName} Logo`}
-              width={64}
-              height={64}
-              className="h-14 w-auto rounded bg-white object-contain p-1"
-            />
+            {footerLogo && (
+              <Image
+                src={footerLogo}
+                alt={`${settings.companyShortName} Logo`}
+                width={300}
+                height={300}
+                quality={75}
+                className="h-14 w-auto object-contain"
+              />
+            )}
           </Link>
           <p className="mt-4 text-xs uppercase tracking-wide text-tuscan-sun-400">
             {settings.tagline}
@@ -28,7 +34,6 @@ export default async function Footer() {
           </p>
         </div>
 
-        {/* ... The rest of the columns remain exactly the same ... */}
         <div>
           <h3 className="text-sm font-semibold text-parchment-50">Navigate</h3>
           <ul className="mt-3 space-y-2">

@@ -10,6 +10,8 @@ export const SITE_SETTINGS_QUERY = `
   *[_type == "siteSettings"][0] {
     companyName, companyShortName, tagline,
     "logoUrl": logo.asset->url,
+    "logoLightUrl": logoLight.asset->url,
+    "logoIconUrl": logoIcon.asset->url,
     email, phone, whatsapp, address, hours, responsePromise,
     experienceYears, experienceLabel,
     footerSummary, ssmNumber, privacyLabel, termsLabel
