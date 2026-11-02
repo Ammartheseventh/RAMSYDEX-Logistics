@@ -21,9 +21,9 @@ export default async function Home() {
         intro={page.solutionsIntro}
         services={services}
       />
+      {/* Removed intro={page.workflowIntro} from below */}
       <WorkflowBar
         heading={page.workflowHeading}
-        intro={page.workflowIntro}
         steps={page.workflowSteps}
       />
       <NetworkTeaser
