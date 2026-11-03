@@ -4,7 +4,7 @@ import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import SolutionsGrid from "@/components/sections/SolutionsGrid";
 import WorkflowBar from "@/components/sections/WorkflowBar";
-import NetworkTeaser from "@/components/sections/NetworkTeaser";
+import MapTeaser from "@/components/sections/MapTeaser"; // <-- Import
 
 export default async function Home() {
   const [page, services] = await Promise.all([
@@ -21,15 +21,12 @@ export default async function Home() {
         intro={page.solutionsIntro}
         services={services}
       />
-      {/* Removed intro={page.workflowIntro} from below */}
+      
+      <MapTeaser />
+
       <WorkflowBar
         heading={page.workflowHeading}
         steps={page.workflowSteps}
-      />
-      <NetworkTeaser
-        heading={page.networkTeaserHeading}
-        body={page.networkTeaserBody}
-        imageUrl={page.networkTeaserImageUrl}
       />
     </>
   );

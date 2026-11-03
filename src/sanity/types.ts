@@ -118,3 +118,22 @@ export type LegalPage = {
   note: string;
   body: unknown[];
 };
+
+export type MapCountry = {
+  id: string;
+  name: string;
+  isHub: boolean;
+  description?: string;
+  capabilities?: string; 
+  transitTime?: string;
+};
+
+export type MapRoute = {
+  from: string;
+  to: string;
+};
+
+export type MapData = {
+  countries: MapCountry[];
+  routes: MapRoute[];
+};

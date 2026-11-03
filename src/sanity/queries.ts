@@ -74,3 +74,20 @@ export const LEGAL_PAGE_QUERY = `
     title, note, body
   }
 `
+
+export const MAP_DATA_QUERY = `
+  {
+    "countries": *[_type == "country"] | order(name asc) {
+      "id": isoCode,
+      name,
+      isHub,
+      description,
+      services,
+      transitTime
+    },
+    "routes": *[_type == "tradeRoute"] {
+      "from": origin->isoCode,
+      "to": destination->isoCode
+    }
+  }
+`
