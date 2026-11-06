@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { getMapData } from "@/sanity/getMapData";
-import { getHomePage } from "@/sanity/getHomePage"; // <-- Import this
+import { getHomePage } from "@/sanity/getHomePage";
 import WorldMap from "@/components/ui/WorldMap";
 
 export default async function MapTeaser() {
-  // Fetch both map data and home page data
-  const [mapData, page] = await Promise.all([
+  const [page, mapData] = await Promise.all([
+    getHomePage(),
     getMapData(),
-    getHomePage()
   ]);
 
   return (
@@ -16,10 +15,10 @@ export default async function MapTeaser() {
         
         <div className="mb-12 text-center">
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
-            {page.networkTeaserHeading}
+            Connecting Global Markets
           </h2>
           <p className="mt-3 text-taupe-grey-600">
-            {page.networkTeaserBody}
+            {page.pageCopy.networkIntro} {/* <-- Fixed reference */}
           </p>
         </div>
 

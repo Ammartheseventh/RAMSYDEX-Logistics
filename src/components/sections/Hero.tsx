@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { HomePage } from "@/sanity/types";
+import type { PageCopy } from "@/sanity/types";
 
-export default function Hero({ page }: { page: HomePage }) {
+export default function Hero({ page }: { page: PageCopy }) {
   return (
     <section className="relative bg-taupe-grey-950 text-parchment-50">
       {/* Background Image Container */}

@@ -19,12 +19,14 @@ export default function QuoteForm({
   responsePromise,
   whatsapp,
 }: Props) {
-  const [activeTopic, setActiveTopic] = useState(inquiryTopics[0]?.slug ?? "");
+  // Use 'label' instead of 'slug' for the state
+  const [activeTopic, setActiveTopic] = useState(inquiryTopics[0]?.label ?? "");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Find the active topic by label
   const activeService =
-    inquiryTopics.find((t) => t.slug === activeTopic)?.service ?? "";
+    inquiryTopics.find((t) => t.label === activeTopic)?.service ?? "";
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -53,7 +55,7 @@ export default function QuoteForm({
       if (res.ok && data.success) {
         setStatus("success");
         form.reset();
-        setActiveTopic(inquiryTopics[0]?.slug ?? "");
+        setActiveTopic(inquiryTopics[0]?.label ?? "");
       } else {
         setErrorMessage(
           data?.message ||
@@ -95,11 +97,11 @@ export default function QuoteForm({
         <div className="flex flex-wrap gap-2">
           {inquiryTopics.map((topic) => (
             <button
-              key={topic.slug}
+              key={topic.label} // <-- Changed to label
               type="button"
-              onClick={() => setActiveTopic(topic.slug)}
+              onClick={() => setActiveTopic(topic.label)} // <-- Changed to label
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
-                activeTopic === topic.slug
+                activeTopic === topic.label // <-- Changed to label
                   ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
                   : "border-taupe-grey-200 bg-white text-taupe-grey-700 hover:border-taupe-grey-400"
               }`}

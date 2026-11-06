@@ -38,7 +38,7 @@ export default async function SolutionsPage() {
       <QCBlock
         heading={pageCopy.qcHeading}
         body={pageCopy.qcBody}
-        checks={pageCopy.qcChecks}
+        checks={pageCopy.qcChecks ?? []}
       />
 
       {/* Multi-region customs block */}
@@ -52,8 +52,8 @@ export default async function SolutionsPage() {
       <ValueAddedTable
         heading={pageCopy.tableHeading}
         intro={pageCopy.tableIntro}
-        standardServices={pageCopy.standardServices}
-        valueAddedServices={pageCopy.valueAddedServices}
+        standardServices={pageCopy.standardServices ?? []}
+        valueAddedServices={pageCopy.valueAddedServices ?? []}
       />
 
       {/* CTA banner */}

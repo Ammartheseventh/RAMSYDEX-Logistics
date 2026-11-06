@@ -31,14 +31,14 @@ export type PageCopy = {
   solutionsPageIntroBody: string;
   qcHeading: string;
   qcBody: string;
-  qcChecks: string[];
+  qcChecks: string[] | null;
   customsHeading: string;
   customsBody: string;
   customsNote: string;
   tableHeading: string;
   tableIntro: string;
-  standardServices: string[];
-  valueAddedServices: string[];
+  standardServices: string[] | null;
+  valueAddedServices: string[] | null;
   networkIntro: string;
   networkMapNote: string;
   aboutIntro: string;
