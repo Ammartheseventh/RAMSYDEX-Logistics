@@ -40,8 +40,15 @@ export const CREDENTIALS_QUERY = `*[_type == "credential"] | order(order asc) { 
 export const TRADE_CORRIDORS_QUERY = `*[_type == "tradeCorridor"] | order(order asc)`
 export const CUSTOMS_REGIONS_QUERY = `*[_type == "customsRegion"] | order(order asc)`
 export const INQUIRY_TOPICS_QUERY = `*[_type == "inquiryTopic"] | order(order asc)`
-export const GALLERY_IMAGES_QUERY = `*[_type == "galleryImage"] | order(order asc) { alt, caption, "src": image.asset->url }`
 
+export const GALLERY_IMAGES_QUERY = `
+  *[_type == "galleryImage"] | order(order asc) { 
+    alt, 
+    caption, 
+    "src": image.asset->url,
+    "lqip": image.asset->metadata.lqip
+  }
+`
 export const LEGAL_PAGE_QUERY = `
   *[_type == "legalDocument" && slug.current == $slug][0] {
     title, note, body

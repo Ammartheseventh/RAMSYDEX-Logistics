@@ -74,8 +74,13 @@ export type Credential = { title: string; description: string; logo: string | nu
 export type TradeCorridor = { title: string; description: string };
 export type CustomsRegion = { name: string };
 export type InquiryTopic = { label: string; service: string };
-export type GalleryImage = { src: string; alt: string; caption: string };
 
+export type GalleryImage = { 
+  src: string; 
+  alt: string; 
+  caption: string; 
+  lqip?: string;
+};
 export type MapCountry = {
   id: string; // ISO Code
   name: string;
