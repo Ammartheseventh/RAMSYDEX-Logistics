@@ -1,11 +1,3 @@
-export const SERVICES_QUERY = `
-  *[_type == "service"] | order(_createdAt asc) {
-    _id, title, "slug": slug.current, description, bullets,
-    "image": image.asset->url,
-    detailIntro, cargoTypes, vehicleTypes, operatingAreas
-  }
-`
-
 export const SITE_SETTINGS_QUERY = `
   *[_type == "siteSettings"][0] {
     companyName, companyShortName, tagline,
@@ -18,59 +10,40 @@ export const SITE_SETTINGS_QUERY = `
   }
 `
 
-export const HOME_PAGE_QUERY = `
-  *[_type == "homePage"][0] {
-    heroHeadline, heroSubheading,
-    "heroImageUrl": heroImage.asset->url,
+export const PAGE_COPY_QUERY = `
+  *[_type == "pageCopy"][0] {
+    heroHeadline, heroSubheading, "heroImageUrl": heroImage.asset->url,
     heroCtaPrimary, heroCtaSecondary,
-    trustStats,
     solutionsHeading, solutionsIntro,
-    workflowHeading, workflowIntro, workflowSteps,
-    networkTeaserHeading, networkTeaserBody,
-    "networkTeaserImageUrl": networkTeaserImage.asset->url
-  }
-`
-
-export const ABOUT_PAGE_QUERY = `
-  *[_type == "aboutPage"][0] {
-    intro, experienceHeadline, experienceStatement, experienceNote,
-    mission, vision, valuePillars, hubAdvantages, credentials
-  }
-`
-
-export const NETWORK_PAGE_QUERY = `
-  *[_type == "networkPage"][0] {
-    intro, mapNote, tradeCorridors,
-    customsHeading, customsBody, customsRegions, customsNote,
-    ctaHeading, ctaBody
-  }
-`
-
-export const SOLUTIONS_PAGE_QUERY = `
-  *[_type == "solutionsPage"][0] {
-    introHeading, introBody,
-    qcHeading, qcBody, qcChecks,
-    customsHeading, customsBody, customsNote,
+    solutionsPageIntroHeading, solutionsPageIntroBody,
+    qcHeading, qcBody, qcChecks, customsHeading, customsBody, customsNote,
     tableHeading, tableIntro, standardServices, valueAddedServices,
+    networkIntro, networkMapNote,
+    aboutIntro, experienceHeadline, experienceStatement, mission, vision,
+    contactHeading, contactIntro, contactHubHeading,
     ctaHeading, ctaBody
   }
 `
 
-export const CONTACT_PAGE_QUERY = `
-  *[_type == "contactPage"][0] {
-    heading, intro, hubHeading, mapNote, inquiryTopics
+export const SERVICES_QUERY = `
+  *[_type == "service"] | order(_createdAt asc) {
+    _id, title, "slug": slug.current, description, bullets,
+    "image": image.asset->url, detailIntro, cargoTypes, vehicleTypes, operatingAreas
   }
 `
 
-export const GALLERY_PAGE_QUERY = `
-  *[_type == "galleryPage"][0] {
-    heading, intro, note,
-    images[] { alt, caption, "src": image.asset->url }
-  }
-`
+export const TRUST_STATS_QUERY = `*[_type == "trustStat"] | order(order asc)`
+export const WORKFLOW_STEPS_QUERY = `*[_type == "workflowStep"] | order(order asc)`
+export const VALUE_PILLARS_QUERY = `*[_type == "valuePillar"] | order(order asc)`
+export const HUB_ADVANTAGES_QUERY = `*[_type == "hubAdvantage"] | order(order asc)`
+export const CREDENTIALS_QUERY = `*[_type == "credential"] | order(order asc) { title, description, "logo": logo.asset->url }`
+export const TRADE_CORRIDORS_QUERY = `*[_type == "tradeCorridor"] | order(order asc)`
+export const CUSTOMS_REGIONS_QUERY = `*[_type == "customsRegion"] | order(order asc)`
+export const INQUIRY_TOPICS_QUERY = `*[_type == "inquiryTopic"] | order(order asc)`
+export const GALLERY_IMAGES_QUERY = `*[_type == "galleryImage"] | order(order asc) { alt, caption, "src": image.asset->url }`
 
 export const LEGAL_PAGE_QUERY = `
-  *[_type == "legalPage" && slug.current == $slug][0] {
+  *[_type == "legalDocument" && slug.current == $slug][0] {
     title, note, body
   }
 `
@@ -78,12 +51,7 @@ export const LEGAL_PAGE_QUERY = `
 export const MAP_DATA_QUERY = `
   {
     "countries": *[_type == "country"] | order(name asc) {
-      "id": isoCode,
-      name,
-      isHub,
-      description,
-      services,
-      transitTime
+      "id": isoCode, name, isHub, description, services, transitTime
     },
     "routes": *[_type == "tradeRoute"] {
       "from": origin->isoCode,

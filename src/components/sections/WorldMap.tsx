@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image"; // <-- Import Next.js Image
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
 import countriesData from "world-countries";
@@ -58,17 +59,18 @@ export default function WorldMap({
 
   return (
     <div className="relative w-full h-full bg-parchment-50 overflow-hidden">
-      <img
+      {/* Swapped <img> for Next.js <Image> */}
+      <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        // Removed hardcoded width/height. Added object-fill to guarantee exact overlapping.
-        className="absolute inset-0 h-full w-full pointer-events-none select-none object-fill opacity-80"
+        fill
+        unoptimized
+        className="pointer-events-none select-none object-fill opacity-80"
         alt="world map"
         draggable={false}
       />
       
       <svg
         viewBox="0 0 800 400"
-        // Added preserveAspectRatio="none" to force exact overlapping
         preserveAspectRatio="none"
         className="w-full h-full absolute inset-0 select-none"
       >

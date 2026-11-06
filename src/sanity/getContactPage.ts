@@ -1,7 +1,11 @@
 import { sanityClient } from "@/sanity/client";
-import { CONTACT_PAGE_QUERY } from "@/sanity/queries";
-import type { ContactPage } from "@/sanity/types";
+import { PAGE_COPY_QUERY, INQUIRY_TOPICS_QUERY } from "@/sanity/queries";
+import type { PageCopy, InquiryTopic } from "@/sanity/types";
 
-export async function getContactPage(): Promise<ContactPage> {
-  return await sanityClient.fetch<ContactPage>(CONTACT_PAGE_QUERY);
+export async function getContactPage() {
+  const [pageCopy, inquiryTopics] = await Promise.all([
+    sanityClient.fetch<PageCopy>(PAGE_COPY_QUERY),
+    sanityClient.fetch<InquiryTopic[]>(INQUIRY_TOPICS_QUERY),
+  ]);
+  return { pageCopy, inquiryTopics };
 }

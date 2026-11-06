@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const [page, settings] = await Promise.all([
+  const [{ pageCopy, inquiryTopics }, settings] = await Promise.all([
     getContactPage(),
     getSiteSettings(),
   ]);
@@ -20,10 +20,10 @@ export default async function ContactPage() {
       <section className="border-b border-parchment-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
           <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
-            {page.heading}
+            {pageCopy.contactHeading}
           </h1>
           <p className="mt-3 max-w-2xl text-base text-taupe-grey-600">
-            {page.intro}
+            {pageCopy.contactIntro}
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default async function ContactPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 md:py-16">
           <div className="md:col-span-2">
             <QuoteForm
-              inquiryTopics={page.inquiryTopics}
+              inquiryTopics={inquiryTopics}
               responsePromise={settings.responsePromise}
               whatsapp={settings.whatsapp}
             />
@@ -41,7 +41,7 @@ export default async function ContactPage() {
           <aside className="space-y-6">
             <div className="rounded-lg border border-parchment-200 bg-parchment-100 p-6">
               <h2 className="text-lg font-semibold text-taupe-grey-950">
-                {page.hubHeading}
+                {pageCopy.contactHubHeading}
               </h2>
               <dl className="mt-4 space-y-3 text-sm">
                 <div>
@@ -94,7 +94,7 @@ export default async function ContactPage() {
 
             <div className="aspect-square w-full overflow-hidden rounded-lg border border-parchment-200 bg-parchment-100">
               <div className="flex h-full w-full items-center justify-center px-4 text-center text-sm text-taupe-grey-500">
-                {page.mapNote}
+                Google Map embed — placeholder
               </div>
             </div>
           </aside>

@@ -10,29 +10,32 @@ export const metadata: Metadata = {
 };
 
 export default async function NetworkPage() {
-  const [page, mapData] = await Promise.all([
+  const [{ pageCopy, tradeCorridors, customsRegions }, mapData] = await Promise.all([
     getNetworkPage(),
     getMapData(),
   ]);
 
   return (
     <>
-      {/* Intro Section */}
+      {/* Intro */}
       <section className="border-b border-parchment-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
           <h1 className="font-display text-4xl text-taupe-grey-950 md:text-5xl">
             Global Network &amp; Focus Countries
           </h1>
           <p className="mt-4 max-w-3xl text-lg text-taupe-grey-600">
-            {page.intro}
+            {pageCopy.networkIntro}
           </p>
         </div>
       </section>
 
-      {/* The New Interactive Split-View Map */}
-      <NetworkMapSection countries={mapData?.countries || []} />
+      {/* The Interactive Split-View Map */}
+      <NetworkMapSection 
+        countries={mapData?.countries || []} 
+        mapNote={pageCopy.networkMapNote} 
+      />
 
-      {/* Trade Corridors List */}
+      {/* Trade Corridors */}
       <section className="border-t border-parchment-200 bg-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-2xl">
@@ -45,9 +48,9 @@ export default async function NetworkPage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {page.tradeCorridors?.map((corridor, index) => (
+            {tradeCorridors.map((corridor) => (
               <div
-                key={index}
+                key={corridor.title}
                 className="group relative flex flex-col rounded-2xl border border-parchment-200 bg-parchment-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brick-red-200 hover:shadow-md"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-taupe-grey-950 text-parchment-50 transition-colors group-hover:bg-brick-red-500">
@@ -74,17 +77,12 @@ export default async function NetworkPage() {
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
               <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
-                {page.customsHeading}
+                Multi-Region Customs Coverage
               </h2>
               <p className="mt-4 text-base leading-relaxed text-taupe-grey-600">
-                {page.customsBody}
+                We have experience clearing customs across multiple international
+                borders — reducing the risk of port delays and duty surprises.
               </p>
-              
-              {page.customsNote && (
-                <p className="mt-6 text-sm font-medium text-taupe-grey-500">
-                  {page.customsNote}
-                </p>
-              )}
             </div>
 
             <div className="rounded-3xl border border-parchment-200 bg-white p-8 shadow-sm">
@@ -92,13 +90,13 @@ export default async function NetworkPage() {
                 Clearance Coverage
               </h3>
               <ul className="flex flex-wrap gap-3">
-                {page.customsRegions?.map((region) => (
+                {customsRegions.map((region) => (
                   <li
-                    key={region}
+                    key={region.name}
                     className="flex items-center gap-2 rounded-full border border-parchment-200 bg-parchment-50 px-4 py-2 text-sm font-semibold text-taupe-grey-700 transition-colors hover:border-brick-red-300 hover:text-brick-red-600"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-brick-red-500" />
-                    {region}
+                    {region.name}
                   </li>
                 ))}
               </ul>
@@ -107,15 +105,11 @@ export default async function NetworkPage() {
         </div>
       </section>
 
-      {/* CTA Banner */}
+      {/* CTA */}
       <section className="bg-taupe-grey-950 text-parchment-50">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-24">
-          <h2 className="font-display text-3xl md:text-4xl">
-            {page.ctaHeading}
-          </h2>
-          <p className="mt-4 text-base text-parchment-300">
-            {page.ctaBody}
-          </p>
+          <h2 className="font-display text-3xl md:text-4xl">{pageCopy.ctaHeading}</h2>
+          <p className="mt-4 text-base text-parchment-300">{pageCopy.ctaBody}</p>
           <Link
             href="/contact"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-brick-red-500 px-10 py-4 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"

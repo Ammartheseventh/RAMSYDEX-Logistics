@@ -5,7 +5,13 @@ import { motion, AnimatePresence } from "motion/react";
 import WorldMap from "@/components/sections/WorldMap";
 import type { MapCountry } from "@/sanity/types";
 
-export default function NetworkMapSection({ countries }: { countries: MapCountry[] }) {
+// Added mapNote to props
+type Props = {
+  countries: MapCountry[];
+  mapNote?: string;
+};
+
+export default function NetworkMapSection({ countries, mapNote }: Props) {
   const defaultCountry = countries.find((c) => c.isHub) || countries[0] || null;
   const [selectedCountry, setSelectedCountry] = useState<MapCountry | null>(defaultCountry);
 
@@ -24,8 +30,8 @@ export default function NetworkMapSection({ countries }: { countries: MapCountry
 
         <div className="grid gap-8 lg:grid-cols-3">
           
-          {/* Map Container - Strictly 2:1 aspect ratio to guarantee dot alignment */}
-          <div className="lg:col-span-2 relative aspect-[2/1] overflow-hidden rounded-xl border border-parchment-200 bg-parchment-100 shadow-sm">
+          {/* Map Container */}
+          <div className="lg:col-span-2 relative aspect-2/1 overflow-hidden rounded-xl border border-parchment-200 bg-parchment-100 shadow-sm">
             <WorldMap
               countries={countries}
               selectedCountryId={selectedCountry?.id || null}
@@ -74,13 +80,13 @@ export default function NetworkMapSection({ countries }: { countries: MapCountry
                       </div>
                     )}
 
-                    {selectedCountry.capabilities && (
+                    {selectedCountry.services && (
                       <div>
                         <p className="mb-4 text-xs font-bold uppercase tracking-wide text-taupe-grey-400">
                           Key Capabilities
                         </p>
                         <p className="text-sm leading-relaxed text-taupe-grey-700">
-                          {selectedCountry.capabilities}
+                          {selectedCountry.services}
                         </p>
                       </div>
                     )}
@@ -95,6 +101,14 @@ export default function NetworkMapSection({ countries }: { countries: MapCountry
           </div>
 
         </div>
+
+        {/* Render the mapNote below the grid if it exists */}
+        {mapNote && (
+          <p className="mt-6 text-center text-sm text-taupe-grey-500">
+            {mapNote}
+          </p>
+        )}
+
       </div>
     </section>
   );

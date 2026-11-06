@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const page = await getAboutPage();
+  const { pageCopy, valuePillars, hubAdvantages, credentials } = await getAboutPage();
 
   return (
     <>
@@ -20,7 +20,7 @@ export default async function AboutPage() {
             About RAMSYDEX GLOBAL LOGISTICS
           </h1>
           <p className="mt-3 max-w-3xl text-base text-taupe-grey-600">
-            {page.intro}
+            {pageCopy.aboutIntro}
           </p>
         </div>
       </section>
@@ -34,16 +34,11 @@ export default async function AboutPage() {
                 Experience
               </p>
               <h2 className="mt-2 text-3xl text-taupe-grey-950 md:text-4xl">
-                {page.experienceHeadline}
+                {pageCopy.experienceHeadline}
               </h2>
               <p className="mt-4 text-base text-taupe-grey-600">
-                {page.experienceStatement}
+                {pageCopy.experienceStatement}
               </p>
-              {page.experienceNote && (
-                <p className="mt-3 text-xs text-taupe-grey-500">
-                  {page.experienceNote}
-                </p>
-              )}
             </div>
 
             <div className="flex items-center justify-center rounded-lg bg-taupe-grey-950 p-12 text-parchment-50">
@@ -69,7 +64,7 @@ export default async function AboutPage() {
                 Our Mission
               </h2>
               <p className="mt-3 text-base text-taupe-grey-600">
-                {page.mission}
+                {pageCopy.mission}
               </p>
             </div>
             <div>
@@ -77,7 +72,7 @@ export default async function AboutPage() {
                 Our Vision
               </h2>
               <p className="mt-3 text-base text-taupe-grey-600">
-                {page.vision}
+                {pageCopy.vision}
               </p>
             </div>
           </div>
@@ -97,7 +92,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {page.valuePillars.map((pillar) => (
+            {valuePillars.map((pillar) => (
               <div
                 key={pillar.title}
                 className="rounded-lg border border-parchment-200 bg-white p-6"
@@ -130,7 +125,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {page.hubAdvantages.map((item) => (
+            {hubAdvantages.map((item) => (
               <div
                 key={item.label}
                 className="rounded-lg border border-parchment-200 bg-white p-6"
@@ -157,23 +152,19 @@ export default async function AboutPage() {
             <p className="mt-3 text-base text-taupe-grey-600">
               Licences, certifications and industry memberships.
             </p>
-            <p className="mt-2 text-xs text-taupe-grey-500">
-              [All credentials below are placeholders — client to confirm and
-              supply logos]
-            </p>
           </div>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {page.credentials.map((credential) => (
+            {credentials.map((credential) => (
               <li
-                key={credential}
+                key={credential.title}
                 className="flex items-center gap-3 rounded-lg border border-dashed border-parchment-300 bg-parchment-50 p-4"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-parchment-200 text-xs font-semibold text-taupe-grey-500">
                   LOGO
                 </span>
                 <span className="text-sm text-taupe-grey-700">
-                  {credential}
+                  {credential.title}
                 </span>
               </li>
             ))}
