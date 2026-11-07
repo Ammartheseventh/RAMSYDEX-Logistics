@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getNetworkPage } from "@/sanity/getNetworkPage";
 import { getMapData } from "@/sanity/getMapData";
+import PageHero from "@/components/layout/PageHero";
 import NetworkMapSection from "@/components/sections/NetworkMapSection";
 
 export const metadata: Metadata = {
   title: "Global Network — RAMSYDEX GLOBAL LOGISTICS",
-  description: "Trade lanes, customs coverage, and corridor connectivity from our Central Malaysia hub.",
+  description:
+    "Trade lanes, customs coverage, and corridor connectivity from our Central Malaysia hub.",
 };
 
 export default async function NetworkPage() {
@@ -17,22 +19,16 @@ export default async function NetworkPage() {
 
   return (
     <>
-      {/* Intro */}
-      <section className="border-b border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-          <h1 className="font-display text-4xl text-taupe-grey-950 md:text-5xl">
-            Global Network &amp; Focus Countries
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg text-taupe-grey-600">
-            {pageCopy.networkIntro}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imageUrl={pageCopy.networkHeroImageUrl}
+        heading="Global Network & Focus Countries"
+        subheading={pageCopy.networkIntro}
+      />
 
       {/* The Interactive Split-View Map */}
-      <NetworkMapSection 
-        countries={mapData?.countries || []} 
-        mapNote={pageCopy.networkMapNote} 
+      <NetworkMapSection
+        countries={mapData?.countries || []}
+        mapNote={pageCopy.networkMapNote}
       />
 
       {/* Trade Corridors */}

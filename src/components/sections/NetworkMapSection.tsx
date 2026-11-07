@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import WorldMap from "@/components/sections/WorldMap";
+import WorldMap from "@/components/ui/WorldMap";
 import type { MapCountry } from "@/sanity/types";
 
-// Added mapNote to props
 type Props = {
   countries: MapCountry[];
   mapNote?: string;
@@ -18,7 +17,6 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
   return (
     <section className="bg-parchment-50 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4">
-        
         <div className="mb-12 text-center">
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             Explore Our Network
@@ -29,17 +27,15 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
-          
-          {/* Map Container */}
           <div className="lg:col-span-2 relative aspect-2/1 overflow-hidden rounded-xl border border-parchment-200 bg-parchment-100 shadow-sm">
             <WorldMap
               countries={countries}
               selectedCountryId={selectedCountry?.id || null}
               onSelectCountry={setSelectedCountry}
+              className="h-full bg-parchment-50 overflow-hidden"
             />
           </div>
 
-          {/* Details Panel */}
           <div className="lg:col-span-1 relative">
             <div className="lg:absolute lg:inset-0">
               <AnimatePresence mode="wait">
@@ -99,16 +95,13 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
               </AnimatePresence>
             </div>
           </div>
-
         </div>
 
-        {/* Render the mapNote below the grid if it exists */}
         {mapNote && (
           <p className="mt-6 text-center text-sm text-taupe-grey-500">
             {mapNote}
           </p>
         )}
-
       </div>
     </section>
   );

@@ -4,36 +4,24 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
-import countriesData from "world-countries";
 import type { MapCountry, MapRoute } from "@/sanity/types";
-
-type CountryWithCapital = {
-  cca2: string;
-  latlng: [number, number];
-  capitalInfo?: {
-    latlng: [number, number];
-  };
-};
-
-const getCoordinates = (isoCode: string) => {
-  const country = countriesData.find(
-    (c) => c.cca2.toUpperCase() === isoCode.toUpperCase()
-  ) as CountryWithCapital | undefined;
-  
-  const capitalCoords = country?.capitalInfo?.latlng;
-  
-  return {
-    lat: capitalCoords?.[0] ?? country?.latlng[0] ?? 0,
-    lng: capitalCoords?.[1] ?? country?.latlng[1] ?? 0,
-  };
-};
+import { getCoordinates, projectPoint, createCurvedPath } from "@/lib/geo";
 
 type Props = {
   countries?: MapCountry[];
   routes?: MapRoute[];
+  selectedCountryId?: string | null;
+  onSelectCountry?: (country: MapCountry) => void;
+  className?: string;
 };
 
-export default function WorldMap({ countries = [], routes = [] }: Props) {
+export default function WorldMap({
+  countries = [],
+  routes = [],
+  selectedCountryId = null,
+  onSelectCountry,
+  className = "aspect-2/1",
+}: Props) {
   const [hoveredCountry, setHoveredCountry] = useState<MapCountry | null>(null);
   const map = useMemo(() => new DottedMap({ height: 100, grid: "diagonal" }), []);
 
@@ -46,32 +34,23 @@ export default function WorldMap({ countries = [], routes = [] }: Props) {
     });
   }, [map]);
 
-  const projectPoint = (lat: number, lng: number) => {
-    const x = (lng + 180) * (800 / 360);
-    const y = (90 - lat) * (400 / 180);
-    return { x, y };
-  };
+  const interactive = Boolean(onSelectCountry);
 
-  const createCurvedPath = (
-    start: { x: number; y: number },
-    end: { x: number; y: number }
-  ) => {
-    const midX = (start.x + end.x) / 2;
-    const midY = Math.min(start.y, end.y) - 50;
-    return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
-  };
+  const hubRadius = interactive ? "5.5" : "4";
+  const dotRadius = interactive ? "4" : "2.5";
+  const hitRadius = interactive ? "20" : "15";
 
   return (
-    <div className="relative w-full aspect-2/1 bg-transparent">
+    <div className={`relative w-full ${className}`}>
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         fill
         unoptimized
-        className="pointer-events-none select-none object-fill opacity-90"
+        className={`pointer-events-none select-none object-fill ${interactive ? "opacity-80" : "opacity-90"}`}
         alt="world map"
         draggable={false}
       />
-      
+
       <svg
         viewBox="0 0 800 400"
         preserveAspectRatio="none"
@@ -84,12 +63,11 @@ export default function WorldMap({ countries = [], routes = [] }: Props) {
 
           const startCoords = getCoordinates(origin.id);
           const endCoords = getCoordinates(destination.id);
-          
-          if (startCoords.lat === 0 || endCoords.lat === 0) return null;
+          if (!startCoords || !endCoords) return null;
 
           const startPoint = projectPoint(startCoords.lat, startCoords.lng);
           const endPoint = projectPoint(endCoords.lat, endCoords.lng);
-          
+
           return (
             <motion.path
               key={`path-${i}`}
@@ -108,47 +86,75 @@ export default function WorldMap({ countries = [], routes = [] }: Props) {
 
         {countries.map((country, i) => {
           const coords = getCoordinates(country.id);
-          if (coords.lat === 0) return null;
-          
+          if (!coords) return null;
+
           const point = projectPoint(coords.lat, coords.lng);
+          const isSelected = selectedCountryId === country.id;
           const isHovered = hoveredCountry?.id === country.id;
-          
+
+          const fill = isSelected || country.isHub ? "#eac148" : "#c93f36";
+          const pinStroke = interactive && isSelected ? "#c93f36" : "#f5f3ef";
+          const pinStrokeWidth = interactive
+            ? isSelected
+              ? "2"
+              : "1.5"
+            : "1";
+
+          const showPulse = interactive
+            ? country.isHub || isSelected
+            : true;
+          const pulseStroke = interactive
+            ? "#eac148"
+            : country.isHub
+              ? "#eac148"
+              : "#c93f36";
+
           return (
-            <g 
-              key={country.id} 
-              className="cursor-pointer"
+            <g
+              key={country.id}
+              className={interactive ? "cursor-pointer" : undefined}
+              onClick={
+                onSelectCountry ? () => onSelectCountry(country) : undefined
+              }
               onMouseEnter={() => setHoveredCountry(country)}
               onMouseLeave={() => setHoveredCountry(null)}
             >
-              <circle cx={point.x} cy={point.y} r="15" fill="transparent" />
+              <circle
+                cx={point.x}
+                cy={point.y}
+                r={hitRadius}
+                fill="transparent"
+              />
 
               <motion.circle
                 cx={point.x}
                 cy={point.y}
-                r={country.isHub ? "4" : "2.5"}
-                fill={country.isHub ? "#eac148" : "#c93f36"}
-                stroke="#f5f3ef"
-                strokeWidth="1"
+                r={country.isHub ? hubRadius : dotRadius}
+                fill={fill}
+                stroke={pinStroke}
+                strokeWidth={pinStrokeWidth}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: 0.5 * i }}
                 className="pointer-events-none"
               />
-              
-              <motion.circle
-                cx={point.x}
-                cy={point.y}
-                r={country.isHub ? "4" : "2.5"}
-                fill="none"
-                stroke={country.isHub ? "#eac148" : "#c93f36"}
-                strokeWidth="1.5"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: [0, 0.8, 0], scale: [1, 3, 1] }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 * i }}
-                className="pointer-events-none"
-              />
+
+              {showPulse && (
+                <motion.circle
+                  cx={point.x}
+                  cy={point.y}
+                  r={country.isHub ? hubRadius : dotRadius}
+                  fill="none"
+                  stroke={pulseStroke}
+                  strokeWidth="1.5"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: [0, 0.8, 0], scale: [1, 3, 1] }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 * i }}
+                  className="pointer-events-none"
+                />
+              )}
 
               {isHovered && (
                 <foreignObject
@@ -169,7 +175,7 @@ export default function WorldMap({ countries = [], routes = [] }: Props) {
             </g>
           );
         })}
-        
+
         <defs>
           <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="transparent" />

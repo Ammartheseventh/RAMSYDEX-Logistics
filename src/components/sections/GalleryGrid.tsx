@@ -14,11 +14,11 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {images.map((image, i) => (
           <button
-            key={`${image.src}-${i}`}
+            key={image.src || i}
             type="button"
             onClick={() => setIndex(i)}
-            className="group relative aspect-square overflow-hidden rounded-lg bg-parchment-200"
-            aria-label={`Open image: ${image.caption}`}
+            className="group relative aspect-video overflow-hidden rounded-lg bg-parchment-200"
+            aria-label={`Open image: ${image.caption || image.alt}`}
           >
             {image.src ? (
               <Image
@@ -27,6 +27,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover transition group-hover:scale-105"
+                priority={i < 4}
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-xs text-taupe-grey-500">

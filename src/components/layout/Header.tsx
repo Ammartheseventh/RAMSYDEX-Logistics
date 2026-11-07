@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/nav";
 
 type HeaderProps = {
@@ -12,16 +13,32 @@ type HeaderProps = {
 
 export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Use the icon on mobile, but fallback to the full logo if the icon isn't uploaded yet
   const mobileLogo = logoIconUrl || logoUrl;
+
+  // Escape closes the drawer and returns focus to the trigger
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [menuOpen]);
+
+  const isActive = (href: string) => pathname === href;
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-parchment-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        
         {/* Desktop Logo */}
-        <Link href="/" className="hidden md:flex shrink-0 items-center">
+        <Link href="/" className="hidden shrink-0 items-center lg:flex">
           {logoUrl && (
             <Image
               src={logoUrl}
@@ -34,8 +51,8 @@ export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
           )}
         </Link>
 
-        {/* Mobile Logo (Cropped) */}
-        <Link href="/" className="flex md:hidden shrink-0 items-center">
+        {/* Mobile Logo */}
+        <Link href="/" className="flex shrink-0 items-center lg:hidden">
           {mobileLogo && (
             <Image
               src={mobileLogo}
@@ -49,12 +66,16 @@ export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-3 md:flex lg:gap-6">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap text-[13px] font-medium text-taupe-grey-700 transition hover:text-brick-red-500 lg:text-sm"
+              className={`relative whitespace-nowrap border-b-2 py-2 text-[15px] font-semibold transition-colors ${
+                isActive(link.href)
+                  ? "border-brick-red-500 text-taupe-grey-950"
+                  : "border-transparent text-taupe-grey-600 hover:text-taupe-grey-950"
+              }`}
             >
               {link.label}
             </Link>
@@ -64,16 +85,17 @@ export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
         {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden whitespace-nowrap rounded-full bg-brick-red-500 px-4 py-2 text-[13px] font-semibold text-parchment-50 transition hover:bg-brick-red-600 md:inline-block lg:px-5 lg:text-sm"
+          className="hidden whitespace-nowrap rounded-full bg-brick-red-500 px-5 py-2.5 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 lg:inline-block"
         >
           Request a Quote
         </Link>
 
         {/* Mobile Menu Button */}
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
-          className="rounded-md border border-taupe-grey-200 p-2 text-taupe-grey-700 transition hover:bg-parchment-100 md:hidden"
+          className="rounded-md border border-taupe-grey-200 p-2 text-taupe-grey-700 transition hover:bg-parchment-100 lg:hidden"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
@@ -81,24 +103,28 @@ export default function Header({ logoUrl, logoIconUrl }: HeaderProps) {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="border-t border-parchment-200 bg-white md:hidden">
+        <div className="border-t border-parchment-200 bg-white lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="whitespace-nowrap rounded px-2 py-2 text-sm font-medium text-taupe-grey-700 hover:bg-parchment-100"
+                onClick={closeMenu}
+                className={`whitespace-nowrap rounded px-3 py-2.5 text-base font-semibold transition-colors ${
+                  isActive(link.href)
+                    ? "bg-parchment-100 text-taupe-grey-950"
+                    : "text-taupe-grey-700 hover:bg-parchment-100 hover:text-taupe-grey-950"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-2 whitespace-nowrap rounded-full bg-brick-red-500 px-4 py-2 text-center text-sm font-semibold text-parchment-50 hover:bg-brick-red-600"
+              onClick={closeMenu}
+              className="mt-2 whitespace-nowrap rounded-full bg-brick-red-500 px-4 py-2.5 text-center text-base font-semibold text-parchment-50 hover:bg-brick-red-600"
             >
               Request a Quote
             </Link>

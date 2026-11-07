@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <>
-      <Hero page={pageCopy} />
+      <Hero copy={pageCopy} />
       <TrustBar stats={trustStats} />
       <SolutionsGrid
         heading={pageCopy.solutionsHeading}

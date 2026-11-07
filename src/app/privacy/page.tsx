@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortableText } from "next-sanity";
 import { getLegalPage } from "@/sanity/getLegalPage";
+import PageHero from "@/components/layout/PageHero";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — RAMSYDEX GLOBAL LOGISTICS",
@@ -10,22 +11,24 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivacyPage() {
-  const page = await getLegalPage("privacy");
+  const { page, pageCopy } = await getLegalPage("privacy");
   if (!page) notFound();
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
-        <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
-          {page.title}
-        </h1>
-        {page.note && (
-          <p className="mt-2 text-xs text-taupe-grey-500">{page.note}</p>
-        )}
-        <div className="prose prose-sm mt-8 max-w-none text-taupe-grey-700">
-          <PortableText value={page.body as never} />
+    <>
+      <PageHero
+        imageUrl={pageCopy.privacyHeroImageUrl}
+        heading={page.title}
+        note={page.note}
+      />
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+          <div className="prose prose-sm max-w-none text-taupe-grey-700">
+            <PortableText value={page.body as never} />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

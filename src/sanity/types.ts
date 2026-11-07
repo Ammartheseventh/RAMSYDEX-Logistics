@@ -11,8 +11,6 @@ export type SiteSettings = {
   address: string;
   hours: string;
   responsePromise: string;
-  experienceYears: number;
-  experienceLabel: string;
   footerSummary: string;
   ssmNumber: string;
   privacyLabel: string;
@@ -21,7 +19,6 @@ export type SiteSettings = {
 
 export type PageCopy = {
   heroHeadline: string;
-  heroSubheading: string;
   heroImageUrl: string | null;
   heroCtaPrimary: string;
   heroCtaSecondary: string;
@@ -29,6 +26,7 @@ export type PageCopy = {
   solutionsIntro: string;
   solutionsPageIntroHeading: string;
   solutionsPageIntroBody: string;
+  solutionsHeroImageUrl: string | null;   // <-- new
   qcHeading: string;
   qcBody: string;
   qcChecks: string[] | null;
@@ -40,15 +38,21 @@ export type PageCopy = {
   standardServices: string[] | null;
   valueAddedServices: string[] | null;
   networkIntro: string;
+  networkHeroImageUrl: string | null;     // <-- new
   networkMapNote: string;
   aboutIntro: string;
+  aboutHeroImageUrl: string | null;       // <-- new
   experienceHeadline: string;
   experienceStatement: string;
   mission: string;
   vision: string;
+  galleryHeroImageUrl: string | null;     // <-- new
   contactHeading: string;
   contactIntro: string;
+  contactHeroImageUrl: string | null;     // <-- new
   contactHubHeading: string;
+  privacyHeroImageUrl: string | null;     // <-- new
+  termsHeroImageUrl: string | null;       // <-- new
   ctaHeading: string;
   ctaBody: string;
 };
@@ -67,7 +71,7 @@ export type SanityService = {
 };
 
 export type TrustStat = { value: string; label: string };
-export type WorkflowStep = { number: string; title: string; description: string };
+export type WorkflowStep = { title: string; description: string };
 export type ValuePillar = { title: string; description: string };
 export type HubAdvantage = { label: string; description: string };
 export type Credential = { title: string; description: string; logo: string | null };
@@ -75,11 +79,10 @@ export type TradeCorridor = { title: string; description: string };
 export type CustomsRegion = { name: string };
 export type InquiryTopic = { label: string; service: string };
 
-export type GalleryImage = { 
-  src: string; 
-  alt: string; 
-  caption: string; 
-  lqip?: string;
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
 };
 export type MapCountry = {
   id: string; // ISO Code

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAboutPage } from "@/sanity/getAboutPage";
+import PageHero from "@/components/layout/PageHero";
 
 export const metadata: Metadata = {
   title: "About Us — RAMSYDEX GLOBAL LOGISTICS",
@@ -13,17 +14,11 @@ export default async function AboutPage() {
 
   return (
     <>
-      {/* Intro */}
-      <section className="border-b border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
-            About RAMSYDEX GLOBAL LOGISTICS
-          </h1>
-          <p className="mt-3 max-w-3xl text-base text-taupe-grey-600">
-            {pageCopy.aboutIntro}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imageUrl={pageCopy.aboutHeroImageUrl}
+        heading="About RAMSYDEX GLOBAL LOGISTICS"
+        subheading={pageCopy.aboutIntro}
+      />
 
       {/* Experience */}
       <section className="bg-white">

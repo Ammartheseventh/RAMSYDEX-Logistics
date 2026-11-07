@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getContactPage } from "@/sanity/getContactPage";
 import { getSiteSettings } from "@/sanity/getSiteSettings";
+import PageHero from "@/components/layout/PageHero";
 import QuoteForm from "@/components/sections/QuoteForm";
 
 export const metadata: Metadata = {
@@ -9,7 +10,14 @@ export const metadata: Metadata = {
     "Request a quote from our Central Malaysia desk. Freight, customs clearance, QC inspection, supply chain, and last-mile delivery.",
 };
 
-export default async function ContactPage() {
+type Props = {
+  searchParams: Promise<{ service?: string }>;
+};
+
+export default async function ContactPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const initialService = params.service ?? null;
+
   const [{ pageCopy, inquiryTopics }, settings] = await Promise.all([
     getContactPage(),
     getSiteSettings(),
@@ -17,16 +25,11 @@ export default async function ContactPage() {
 
   return (
     <>
-      <section className="border-b border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
-            {pageCopy.contactHeading}
-          </h1>
-          <p className="mt-3 max-w-2xl text-base text-taupe-grey-600">
-            {pageCopy.contactIntro}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imageUrl={pageCopy.contactHeroImageUrl}
+        heading={pageCopy.contactHeading}
+        subheading={pageCopy.contactIntro}
+      />
 
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 md:py-16">
@@ -35,6 +38,7 @@ export default async function ContactPage() {
               inquiryTopics={inquiryTopics}
               responsePromise={settings.responsePromise}
               whatsapp={settings.whatsapp}
+              initialService={initialService}
             />
           </div>
 

@@ -16,20 +16,16 @@ export default function WorkflowBar({ heading, steps }: Props) {
   return (
     <section className="border-t border-parchment-200 bg-parchment-50">
       <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
-        
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             {heading}
           </h2>
         </div>
 
-        {/* Changed gap-6 md:gap-8 to gap-4 md:gap-4 lg:gap-8 */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-4 lg:gap-8">
           {steps.map((step, index) => (
             <div key={index} className="flex h-full">
               <div className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-brick-red-200 bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-lg">
-                
-                {/* Changed text-8xl to text-7xl */}
                 <span className="pointer-events-none absolute right-0 top-0 select-none font-display text-7xl font-bold text-parchment-100/50 transition-colors duration-300 group-hover:text-parchment-200/80">
                   0{index + 1}
                 </span>
@@ -42,7 +38,7 @@ export default function WorkflowBar({ heading, steps }: Props) {
                   <h3 className="text-lg font-bold leading-tight text-taupe-grey-950">
                     {step.title}
                   </h3>
-                  
+
                   <p className="mt-3 text-sm leading-relaxed text-taupe-grey-500">
                     {step.description}
                   </p>

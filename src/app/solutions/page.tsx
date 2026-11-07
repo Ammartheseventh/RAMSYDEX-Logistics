@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getSolutionsPage } from "@/sanity/getSolutionsPage";
-import ServiceDetail from "@/components/sections/ServiceDetail";
+import PageHero from "@/components/layout/PageHero";
+import SolutionsShowcase from "@/components/sections/SolutionsShowcase";
 import QCBlock from "@/components/sections/QCBlock";
 import CustomsBlock from "@/components/sections/CustomsBlock";
 import ValueAddedTable from "@/components/sections/ValueAddedTable";
@@ -17,38 +18,44 @@ export default async function SolutionsPage() {
 
   return (
     <>
-      {/* Intro */}
-      <section className="border-b border-parchment-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
-          <h1 className="text-3xl text-taupe-grey-950 md:text-4xl">
-            {pageCopy.solutionsPageIntroHeading}
-          </h1>
-          <p className="mt-4 max-w-3xl text-base text-taupe-grey-600">
-            {pageCopy.solutionsPageIntroBody}
+      <PageHero
+        imageUrl={pageCopy.solutionsHeroImageUrl}
+        heading={pageCopy.solutionsPageIntroHeading}
+        subheading={pageCopy.solutionsPageIntroBody}
+      />
+
+      <SolutionsShowcase services={services} />
+
+      {/* Mid-page CTA */}
+      <section className="bg-taupe-grey-950 text-parchment-50">
+        <div className="mx-auto max-w-7xl px-4 py-12 text-center md:py-16">
+          <h2 className="font-display text-2xl md:text-3xl">
+            Not sure which service fits?
+          </h2>
+          <p className="mt-3 text-base text-parchment-300">
+            Tell us what you need to move and we&apos;ll recommend the right approach.
           </p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block rounded-full bg-brick-red-500 px-8 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
+          >
+            Talk to our team →
+          </Link>
         </div>
       </section>
 
-      {/* Six service detail sections */}
-      {services.map((service) => (
-        <ServiceDetail key={service._id} service={service} />
-      ))}
-
-      {/* QC inspection block */}
       <QCBlock
         heading={pageCopy.qcHeading}
         body={pageCopy.qcBody}
         checks={pageCopy.qcChecks ?? []}
       />
 
-      {/* Multi-region customs block */}
       <CustomsBlock
         heading={pageCopy.customsHeading}
         body={pageCopy.customsBody}
         note={pageCopy.customsNote}
       />
 
-      {/* Standard vs. value-added table */}
       <ValueAddedTable
         heading={pageCopy.tableHeading}
         intro={pageCopy.tableIntro}
@@ -56,10 +63,10 @@ export default async function SolutionsPage() {
         valueAddedServices={pageCopy.valueAddedServices ?? []}
       />
 
-      {/* CTA banner */}
+      {/* Bottom CTA */}
       <section className="bg-taupe-grey-950 text-parchment-50">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
-          <h2 className="text-2xl md:text-3xl">{pageCopy.ctaHeading}</h2>
+          <h2 className="font-display text-2xl md:text-3xl">{pageCopy.ctaHeading}</h2>
           <p className="mt-3 text-base text-parchment-300">{pageCopy.ctaBody}</p>
           <Link
             href="/contact"

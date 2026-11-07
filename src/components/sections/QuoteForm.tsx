@@ -7,6 +7,7 @@ type Props = {
   inquiryTopics: InquiryTopic[];
   responsePromise: string;
   whatsapp: string;
+  initialService?: string | null;
 };
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -18,13 +19,26 @@ export default function QuoteForm({
   inquiryTopics,
   responsePromise,
   whatsapp,
+  initialService,
 }: Props) {
-  // Use 'label' instead of 'slug' for the state
-  const [activeTopic, setActiveTopic] = useState(inquiryTopics[0]?.label ?? "");
+  const [activeTopic, setActiveTopic] = useState(() => {
+    // 1. If URL has ?service=..., try to match it
+    if (initialService) {
+      const match = inquiryTopics.find((t) => t.service === initialService);
+      if (match) return match.label;
+    }
+    
+    // 2. Otherwise, default to General Inquiry
+    const general = inquiryTopics.find((t) => t.service === "general");
+    if (general) return general.label;
+
+    // 3. Final fallback just in case
+    return inquiryTopics[0]?.label ?? "";
+  });
+  
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Find the active topic by label
   const activeService =
     inquiryTopics.find((t) => t.label === activeTopic)?.service ?? "";
 
@@ -55,7 +69,10 @@ export default function QuoteForm({
       if (res.ok && data.success) {
         setStatus("success");
         form.reset();
-        setActiveTopic(inquiryTopics[0]?.label ?? "");
+        
+        // Reset back to General Inquiry after successful submit
+        const general = inquiryTopics.find((t) => t.service === "general");
+        setActiveTopic(general ? general.label : (inquiryTopics[0]?.label ?? ""));
       } else {
         setErrorMessage(
           data?.message ||
@@ -97,11 +114,11 @@ export default function QuoteForm({
         <div className="flex flex-wrap gap-2">
           {inquiryTopics.map((topic) => (
             <button
-              key={topic.label} // <-- Changed to label
+              key={topic.label}
               type="button"
-              onClick={() => setActiveTopic(topic.label)} // <-- Changed to label
+              onClick={() => setActiveTopic(topic.label)}
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
-                activeTopic === topic.label // <-- Changed to label
+                activeTopic === topic.label
                   ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
                   : "border-taupe-grey-200 bg-white text-taupe-grey-700 hover:border-taupe-grey-400"
               }`}
