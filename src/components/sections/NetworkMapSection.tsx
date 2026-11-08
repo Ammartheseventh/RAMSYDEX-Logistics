@@ -17,6 +17,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
   return (
     <section className="bg-parchment-50 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4">
+        
         <div className="mb-12 text-center">
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             Explore Our Network
@@ -27,6 +28,8 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
+          
+          {/* Map Container */}
           <div className="lg:col-span-2 relative aspect-2/1 overflow-hidden rounded-xl border border-parchment-200 bg-parchment-100 shadow-sm">
             <WorldMap
               countries={countries}
@@ -36,6 +39,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
             />
           </div>
 
+          {/* Details Panel */}
           <div className="lg:col-span-1 relative">
             <div className="lg:absolute lg:inset-0">
               <AnimatePresence mode="wait">
@@ -46,7 +50,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col rounded-xl border border-parchment-200 bg-white p-8 shadow-md lg:h-full overflow-y-auto"
+                    className="flex flex-col rounded-xl border border-parchment-200 bg-parchment-50 p-8 shadow-md lg:h-full overflow-y-auto"
                   >
                     <div className="mb-6 flex items-start justify-between">
                       <h3 className="font-display text-4xl text-taupe-grey-950">
@@ -66,7 +70,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
                     )}
 
                     {selectedCountry.transitTime && (
-                      <div className="mb-8 rounded-lg bg-parchment-50 p-5 border border-parchment-100">
+                      <div className="mb-8 rounded-lg bg-parchment-100 p-5 border border-parchment-200">
                         <p className="text-xs font-bold uppercase tracking-wide text-taupe-grey-400">
                           Estimated Transit
                         </p>
@@ -95,6 +99,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
               </AnimatePresence>
             </div>
           </div>
+
         </div>
 
         {mapNote && (
@@ -102,6 +107,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
             {mapNote}
           </p>
         )}
+
       </div>
     </section>
   );

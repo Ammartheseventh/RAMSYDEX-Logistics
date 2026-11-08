@@ -79,11 +79,14 @@ export type TradeCorridor = { title: string; description: string };
 export type CustomsRegion = { name: string };
 export type InquiryTopic = { label: string; service: string };
 
-export type GalleryImage = {
-  src: string;
-  alt: string;
+export type GalleryImage = { 
+  src: string; 
+  alt: string; 
   caption: string;
+  width?: number;
+  height?: number;
 };
+
 export type MapCountry = {
   id: string; // ISO Code
   name: string;

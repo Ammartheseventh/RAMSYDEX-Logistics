@@ -21,7 +21,7 @@ export default async function TermsPage() {
         note={page.note}
       />
 
-      <section className="bg-white">
+      <section className="bg-parchment-50">
         <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
           <div className="prose prose-sm max-w-none text-taupe-grey-700">
             <PortableText value={page.body as never} />

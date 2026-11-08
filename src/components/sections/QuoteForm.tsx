@@ -22,17 +22,14 @@ export default function QuoteForm({
   initialService,
 }: Props) {
   const [activeTopic, setActiveTopic] = useState(() => {
-    // 1. If URL has ?service=..., try to match it
     if (initialService) {
       const match = inquiryTopics.find((t) => t.service === initialService);
       if (match) return match.label;
     }
     
-    // 2. Otherwise, default to General Inquiry
     const general = inquiryTopics.find((t) => t.service === "general");
     if (general) return general.label;
 
-    // 3. Final fallback just in case
     return inquiryTopics[0]?.label ?? "";
   });
   
@@ -70,7 +67,6 @@ export default function QuoteForm({
         setStatus("success");
         form.reset();
         
-        // Reset back to General Inquiry after successful submit
         const general = inquiryTopics.find((t) => t.service === "general");
         setActiveTopic(general ? general.label : (inquiryTopics[0]?.label ?? ""));
       } else {
@@ -120,7 +116,7 @@ export default function QuoteForm({
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
                 activeTopic === topic.label
                   ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
-                  : "border-taupe-grey-200 bg-white text-taupe-grey-700 hover:border-taupe-grey-400"
+                  : "border-taupe-grey-200 bg-parchment-50 text-taupe-grey-700 hover:border-taupe-grey-400"
               }`}
             >
               {topic.label}
@@ -150,7 +146,7 @@ export default function QuoteForm({
           name="name"
           type="text"
           required
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
         />
       </div>
 
@@ -166,7 +162,7 @@ export default function QuoteForm({
           name="company"
           type="text"
           required
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
         />
       </div>
 
@@ -183,7 +179,7 @@ export default function QuoteForm({
             name="phone"
             type="tel"
             required
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
           />
         </div>
         <div>
@@ -198,7 +194,7 @@ export default function QuoteForm({
             name="email"
             type="email"
             required
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
           />
         </div>
       </div>
@@ -215,7 +211,7 @@ export default function QuoteForm({
             id="origin"
             name="origin"
             type="text"
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
           />
         </div>
         <div>
@@ -229,7 +225,7 @@ export default function QuoteForm({
             id="destination"
             name="destination"
             type="text"
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
           />
         </div>
       </div>
@@ -245,7 +241,7 @@ export default function QuoteForm({
           id="cargo"
           name="cargo"
           rows={4}
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-white px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
         />
       </div>
 

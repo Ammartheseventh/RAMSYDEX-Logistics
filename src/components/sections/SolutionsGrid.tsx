@@ -33,9 +33,9 @@ export default function SolutionsGrid({ heading, intro, services }: Props) {
                 scaleOnHover={1.03}
                 glare={0.1}
                 shadow={0.5}
-                radius={16} // <--- FIXED HERE
+                radius={16}
                 backContent={
-                  <div className="flex h-full w-full flex-col justify-between bg-parchment-100 p-6">
+                  <div className="flex h-full w-full flex-col justify-between bg-parchment-50 p-6">
                     <div>
                       <h3 className="text-xl font-semibold text-taupe-grey-950">
                         {service.title}
@@ -57,13 +57,12 @@ export default function SolutionsGrid({ heading, intro, services }: Props) {
                         href={`/solutions#${service.slug}`}
                         className="inline-flex w-full items-center justify-center rounded-full bg-taupe-grey-950 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-500"
                       >
-                        Learn more →
+                        Learn more â†’
                       </Link>
                     </div>
                   </div>
                 }
               >
-                {/* The Front Face (Text overlay) */}
                 <TiltedCardLayer depth={20} className="w-full h-full">
                   <div className="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-taupe-grey-950/90 via-transparent to-transparent p-6 [text-shadow:0_2px_10px_rgba(0,0,0,0.8)]">
                     <h3 className="text-2xl font-semibold text-parchment-50">

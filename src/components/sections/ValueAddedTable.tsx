@@ -22,7 +22,7 @@ export default function ValueAddedTable({
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className="rounded-lg border border-parchment-200 bg-white p-6">
+          <div className="rounded-lg border border-parchment-200 bg-parchment-50 p-6">
             <h3 className="text-lg font-semibold text-taupe-grey-950">
               Standard Services
             </h3>

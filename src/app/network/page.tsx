@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getNetworkPage } from "@/sanity/getNetworkPage";
 import { getMapData } from "@/sanity/getMapData";
 import PageHero from "@/components/layout/PageHero";
 import NetworkMapSection from "@/components/sections/NetworkMapSection";
+import CtaBanner from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Global Network — RAMSYDEX GLOBAL LOGISTICS",
@@ -22,18 +22,17 @@ export default async function NetworkPage() {
       <PageHero
         imageUrl={pageCopy.networkHeroImageUrl}
         heading="Global Network & Focus Countries"
-        subheading={pageCopy.networkIntro}
+        variant="network"
       />
 
-      {/* The Interactive Split-View Map */}
       <NetworkMapSection
         countries={mapData?.countries || []}
         mapNote={pageCopy.networkMapNote}
       />
 
-      {/* Trade Corridors */}
-      <section className="border-t border-parchment-200 bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4">
+      {/* Trade Corridors - bg-parchment-100 */}
+      <section className="border-t border-parchment-200 bg-parchment-100 py-20 md:py-28">
+        <div className="mx-auto max-w-300 px-4">
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
               Key Trade Corridors
@@ -67,9 +66,9 @@ export default async function NetworkPage() {
         </div>
       </section>
 
-      {/* Customs Coverage */}
-      <section className="border-t border-parchment-200 bg-parchment-100 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4">
+      {/* Customs Coverage - bg-parchment-50 */}
+      <section className="border-t border-parchment-200 bg-parchment-50 py-20 md:py-28">
+        <div className="mx-auto max-w-300 px-4">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
               <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
@@ -81,7 +80,7 @@ export default async function NetworkPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-parchment-200 bg-white p-8 shadow-sm">
+            <div className="rounded-3xl border border-parchment-200 bg-parchment-100 p-8 shadow-sm">
               <h3 className="mb-6 text-sm font-bold uppercase tracking-wide text-taupe-grey-400">
                 Clearance Coverage
               </h3>
@@ -101,19 +100,11 @@ export default async function NetworkPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-taupe-grey-950 text-parchment-50">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-24">
-          <h2 className="font-display text-3xl md:text-4xl">{pageCopy.ctaHeading}</h2>
-          <p className="mt-4 text-base text-parchment-300">{pageCopy.ctaBody}</p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-brick-red-500 px-10 py-4 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
-          >
-            Request a Quote
-          </Link>
-        </div>
-      </section>
+      <CtaBanner
+        heading={pageCopy.ctaHeading || "Ready to expand your reach?"}
+        buttonText="Request a Quote"
+        buttonHref="/contact"
+      />
     </>
   );
 }

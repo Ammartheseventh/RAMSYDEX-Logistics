@@ -14,7 +14,7 @@ const StepIcons = [
 
 export default function WorkflowBar({ heading, steps }: Props) {
   return (
-    <section className="border-t border-parchment-200 bg-parchment-50">
+    <section className="border-t border-parchment-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
@@ -25,12 +25,12 @@ export default function WorkflowBar({ heading, steps }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-4 lg:gap-8">
           {steps.map((step, index) => (
             <div key={index} className="flex h-full">
-              <div className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-brick-red-200 bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-lg">
-                <span className="pointer-events-none absolute right-0 top-0 select-none font-display text-7xl font-bold text-parchment-100/50 transition-colors duration-300 group-hover:text-parchment-200/80">
+              <div className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-brick-red-200 bg-parchment-50 p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-lg">
+                <span className="pointer-events-none absolute right-0 top-0 select-none font-display text-7xl font-bold text-parchment-200/50 transition-colors duration-300 group-hover:text-parchment-300/80">
                   0{index + 1}
                 </span>
 
-                <div className="relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-parchment-50 text-taupe-grey-700 transition-all duration-300 group-hover:scale-110 group-hover:bg-brick-red-500 group-hover:text-parchment-50">
+                <div className="relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-taupe-grey-700 transition-all duration-300 group-hover:scale-110 group-hover:bg-brick-red-500 group-hover:text-parchment-50">
                   {StepIcons[index] || StepIcons[0]}
                 </div>
 

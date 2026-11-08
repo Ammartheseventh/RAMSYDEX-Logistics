@@ -28,11 +28,11 @@ export default async function ContactPage({ searchParams }: Props) {
       <PageHero
         imageUrl={pageCopy.contactHeroImageUrl}
         heading={pageCopy.contactHeading}
-        subheading={pageCopy.contactIntro}
+        variant="contact"
       />
 
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3 md:py-16">
+      <section className="bg-parchment-50">
+        <div className="mx-auto grid max-w-300 gap-10 px-4 py-12 md:grid-cols-3 md:py-16">
           <div className="md:col-span-2">
             <QuoteForm
               inquiryTopics={inquiryTopics}

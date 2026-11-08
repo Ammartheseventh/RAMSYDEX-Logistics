@@ -19,11 +19,9 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
   }
 
   return (
-    <section className="border-t border-parchment-200 bg-white">
-      {/* pt-6 pulls the mobile pills very close to the PageHero, while lg:py-20 keeps desktop spacious */}
+    <section className="border-t border-parchment-200 bg-parchment-50">
       <div className="mx-auto max-w-7xl px-4 pt-6 pb-12 lg:py-20">
         
-        {/* Mobile & Tablet Pills (Now stacking/wrapping instead of scrolling) */}
         <div className="mb-8 flex flex-wrap gap-2 lg:hidden">
           {services.map((service, i) => (
             <button
@@ -33,7 +31,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
                 i === activeIndex
                   ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
-                  : "border-taupe-grey-200 bg-white text-taupe-grey-700 hover:border-taupe-grey-400"
+                  : "border-taupe-grey-200 bg-parchment-100 text-taupe-grey-700 hover:border-taupe-grey-400"
               }`}
             >
               {service.title}
@@ -42,7 +40,6 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-12">
-          {/* Desktop sidebar */}
           <aside className="hidden lg:block">
             <div className="sticky top-24">
               <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-taupe-grey-500">
@@ -56,7 +53,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                     onClick={() => setActiveIndex(i)}
                     className={`rounded-md px-3 py-2 text-left text-sm font-semibold transition ${
                       i === activeIndex
-                        ? "bg-parchment-100 text-taupe-grey-950"
+                        ? "bg-parchment-200 text-taupe-grey-950"
                         : "text-taupe-grey-600 hover:bg-parchment-100 hover:text-taupe-grey-950"
                     }`}
                   >
@@ -67,7 +64,6 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
             </div>
           </aside>
 
-          {/* Detail pane */}
           <div className="min-w-0">
             <AnimatePresence mode="wait">
               <motion.div
@@ -77,7 +73,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.25 }}
               >
-                <div className="relative aspect-16/9 w-full overflow-hidden rounded-lg bg-parchment-200">
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-parchment-200">
                   {active.image ? (
                     <Image
                       src={active.image}
@@ -145,7 +141,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                   href={`/contact?service=${active.slug}`}
                   className="mt-8 inline-flex items-center justify-center rounded-full bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
                 >
-                  Request a quote →
+                  Request a quote &rarr;
                 </Link>
               </motion.div>
             </AnimatePresence>

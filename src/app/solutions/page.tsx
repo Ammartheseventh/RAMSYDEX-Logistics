@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getSolutionsPage } from "@/sanity/getSolutionsPage";
 import PageHero from "@/components/layout/PageHero";
 import SolutionsShowcase from "@/components/sections/SolutionsShowcase";
 import QCBlock from "@/components/sections/QCBlock";
 import CustomsBlock from "@/components/sections/CustomsBlock";
 import ValueAddedTable from "@/components/sections/ValueAddedTable";
+import CtaBanner from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Solutions — RAMSYDEX GLOBAL LOGISTICS",
@@ -21,28 +21,16 @@ export default async function SolutionsPage() {
       <PageHero
         imageUrl={pageCopy.solutionsHeroImageUrl}
         heading={pageCopy.solutionsPageIntroHeading}
-        subheading={pageCopy.solutionsPageIntroBody}
+        variant="solutions"
       />
 
       <SolutionsShowcase services={services} />
 
-      {/* Mid-page CTA */}
-      <section className="bg-taupe-grey-950 text-parchment-50">
-        <div className="mx-auto max-w-7xl px-4 py-12 text-center md:py-16">
-          <h2 className="font-display text-2xl md:text-3xl">
-            Not sure which service fits?
-          </h2>
-          <p className="mt-3 text-base text-parchment-300">
-            Tell us what you need to move and we&apos;ll recommend the right approach.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block rounded-full bg-brick-red-500 px-8 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
-          >
-            Talk to our team →
-          </Link>
-        </div>
-      </section>
+      <CtaBanner
+        heading="Not sure which service fits?"
+        buttonText="Talk to our team"
+        buttonHref="/contact"
+      />
 
       <QCBlock
         heading={pageCopy.qcHeading}
@@ -62,20 +50,6 @@ export default async function SolutionsPage() {
         standardServices={pageCopy.standardServices ?? []}
         valueAddedServices={pageCopy.valueAddedServices ?? []}
       />
-
-      {/* Bottom CTA */}
-      <section className="bg-taupe-grey-950 text-parchment-50">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center md:py-20">
-          <h2 className="font-display text-2xl md:text-3xl">{pageCopy.ctaHeading}</h2>
-          <p className="mt-3 text-base text-parchment-300">{pageCopy.ctaBody}</p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block rounded-md bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
-          >
-            Request a Quote
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

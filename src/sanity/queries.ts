@@ -50,7 +50,9 @@ export const GALLERY_IMAGES_QUERY = `
   *[_type == "galleryImage"] | order(order asc) { 
     alt, 
     caption, 
-    "src": image.asset->url
+    "src": image.asset->url,
+    "width": image.asset->metadata.dimensions.width,
+    "height": image.asset->metadata.dimensions.height
   }
 `
 export const LEGAL_PAGE_QUERY = `

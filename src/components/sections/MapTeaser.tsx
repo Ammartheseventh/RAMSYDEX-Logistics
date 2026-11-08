@@ -10,7 +10,7 @@ export default async function MapTeaser() {
   ]);
 
   return (
-    <section className="w-full bg-parchment-50 py-20 md:py-28">
+    <section className="border-t border-parchment-200 w-full bg-parchment-100 py-20 md:py-28">
       <div className="mx-auto w-full max-w-7xl px-4">
         
         <div className="mb-12 text-center">
@@ -18,11 +18,11 @@ export default async function MapTeaser() {
             Connecting Global Markets
           </h2>
           <p className="mt-3 text-taupe-grey-600">
-            {page.pageCopy.networkIntro} {/* <-- Fixed reference */}
+            {page.pageCopy.networkIntro}
           </p>
         </div>
 
-        <div className="relative w-full overflow-hidden rounded-3xl border border-parchment-200 bg-parchment-100 shadow-sm">
+        <div className="relative w-full overflow-hidden rounded-3xl border border-parchment-300 bg-parchment-50 shadow-sm">
           <WorldMap 
             countries={mapData?.countries || []} 
             routes={mapData?.routes || []} 
