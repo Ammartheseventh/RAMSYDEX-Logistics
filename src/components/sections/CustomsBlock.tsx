@@ -102,7 +102,7 @@ export default function CustomsBlock({ heading, body, regions }: Props) {
                 damping: 20, 
                 mass: 1.2 
               }}
-              className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border-[6px] border-brick-red-500/80 p-3 mix-blend-multiply md:h-[360px] md:w-[360px]"
+              className="relative flex h-70 w-70 items-center justify-center rounded-full border-[6px] border-brick-red-500/80 p-3 mix-blend-multiply md:h-[360px] md:w-[360px]"
             >
               
               <div className="absolute inset-2 rounded-full border-[3px] border-brick-red-500/50 border-dashed" />

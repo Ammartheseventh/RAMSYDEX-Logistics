@@ -102,26 +102,33 @@ export default function QuoteForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <p className="mb-2 text-sm font-medium text-taupe-grey-950">
+    <form onSubmit={handleSubmit} className="space-y-8 min-w-0">
+      <div className="min-w-0">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500">
           What can we help with?
         </p>
-        <div className="flex flex-wrap gap-2">
-          {inquiryTopics.map((topic) => (
-            <button
-              key={topic.label}
-              type="button"
-              onClick={() => setActiveTopic(topic.label)}
-              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
-                activeTopic === topic.label
-                  ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
-                  : "border-taupe-grey-200 bg-parchment-50 text-taupe-grey-700 hover:border-taupe-grey-400"
-              }`}
-            >
-              {topic.label}
-            </button>
-          ))}
+        
+        {/* Relative wrapper for the fade effect */}
+        <div className="relative">
+          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] sm:flex-wrap sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
+            {inquiryTopics.map((topic) => (
+              <button
+                key={topic.label}
+                type="button"
+                onClick={() => setActiveTopic(topic.label)}
+                className={`shrink-0 snap-start rounded-full border px-6 py-3 text-base font-semibold transition sm:px-5 sm:py-2 sm:text-sm ${
+                  activeTopic === topic.label
+                    ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
+                    : "border-parchment-300 bg-parchment-50 text-taupe-grey-700 hover:border-taupe-grey-400"
+                }`}
+              >
+                {topic.label}
+              </button>
+            ))}
+          </div>
+          
+          {/* Gradient fade indicator for mobile scrolling */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-parchment-100 to-transparent sm:hidden" />
         </div>
       </div>
 
@@ -137,73 +144,73 @@ export default function QuoteForm({
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-taupe-grey-950"
+          className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
         >
-          Your name *
+          Your name <span className="text-brick-red-500">*</span>
         </label>
         <input
           id="name"
           name="name"
           type="text"
           required
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
         />
       </div>
 
       <div>
         <label
           htmlFor="company"
-          className="block text-sm font-medium text-taupe-grey-950"
+          className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
         >
-          Company name *
+          Company name <span className="text-brick-red-500">*</span>
         </label>
         <input
           id="company"
           name="company"
           type="text"
           required
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
         />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
+      <div className="grid min-w-0 gap-8 sm:grid-cols-2">
+        <div className="min-w-0">
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-taupe-grey-950"
+            className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
           >
-            Phone *
+            Phone <span className="text-brick-red-500">*</span>
           </label>
           <input
             id="phone"
             name="phone"
             type="tel"
             required
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
           />
         </div>
-        <div>
+        <div className="min-w-0">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-taupe-grey-950"
+            className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
           >
-            Email *
+            Email <span className="text-brick-red-500">*</span>
           </label>
           <input
             id="email"
             name="email"
             type="email"
             required
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
           />
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
+      <div className="grid min-w-0 gap-8 sm:grid-cols-2">
+        <div className="min-w-0">
           <label
             htmlFor="origin"
-            className="block text-sm font-medium text-taupe-grey-950"
+            className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
           >
             Origin
           </label>
@@ -211,13 +218,14 @@ export default function QuoteForm({
             id="origin"
             name="origin"
             type="text"
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            placeholder="e.g., Port Klang"
+            className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
           />
         </div>
-        <div>
+        <div className="min-w-0">
           <label
             htmlFor="destination"
-            className="block text-sm font-medium text-taupe-grey-950"
+            className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
           >
             Destination
           </label>
@@ -225,7 +233,8 @@ export default function QuoteForm({
             id="destination"
             name="destination"
             type="text"
-            className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+            placeholder="e.g., Singapore"
+            className="mt-2 block w-full max-w-full border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
           />
         </div>
       </div>
@@ -233,27 +242,43 @@ export default function QuoteForm({
       <div>
         <label
           htmlFor="cargo"
-          className="block text-sm font-medium text-taupe-grey-950"
+          className="block text-xs font-bold uppercase tracking-[0.15em] text-taupe-grey-500"
         >
           Cargo details / pallet count
         </label>
         <textarea
           id="cargo"
           name="cargo"
-          rows={4}
-          className="mt-1 block w-full rounded-md border border-taupe-grey-200 bg-parchment-50 px-3 py-2 text-sm text-taupe-grey-950 focus:border-brick-red-500 focus:outline-none focus:ring-1 focus:ring-brick-red-500"
+          rows={3}
+          placeholder="e.g., 10 pallets, 2000kg, electronics"
+          className="mt-2 block w-full max-w-full resize-none border-0 border-b-2 border-parchment-300 bg-transparent px-0 py-2 text-lg text-taupe-grey-950 placeholder:text-taupe-grey-300 focus:border-brick-red-500 focus:outline-none focus:ring-0 transition-colors"
         />
       </div>
 
-      <div className="flex items-start gap-3">
-        <input
-          id="consent"
-          name="consent"
-          type="checkbox"
-          required
-          className="mt-1 h-4 w-4 rounded border-taupe-grey-200 text-brick-red-500 focus:ring-brick-red-500"
-        />
-        <label htmlFor="consent" className="text-sm text-taupe-grey-700">
+      <div className="flex items-start gap-3 pt-2">
+        <div className="relative flex items-center mt-0.5">
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            required
+            className="peer h-5 w-5 shrink-0 appearance-none rounded border-2 border-taupe-grey-300 bg-parchment-50 checked:border-brick-red-500 checked:bg-brick-red-500 focus:outline-none focus:ring-2 focus:ring-brick-red-500 focus:ring-offset-2 transition-colors cursor-pointer"
+          />
+          <svg
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-parchment-50 opacity-0 peer-checked:opacity-100 transition-opacity"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <label htmlFor="consent" className="text-sm text-taupe-grey-700 leading-tight pt-0.5">
           I agree to be contacted about my enquiry. See{" "}
           <a
             href="/privacy"
@@ -261,7 +286,7 @@ export default function QuoteForm({
           >
             Privacy Policy
           </a>
-          . *
+          . <span className="text-brick-red-500">*</span>
         </label>
       </div>
 
@@ -271,13 +296,18 @@ export default function QuoteForm({
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full rounded-md bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600 disabled:opacity-60"
-      >
-        {status === "submitting" ? "Sending..." : "Submit Enquiry"}
-      </button>
+      <div className="pt-2">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="w-full rounded-full bg-brick-red-500 px-6 py-4 text-base font-bold text-parchment-50 transition hover:bg-brick-red-600 disabled:opacity-60"
+        >
+          {status === "submitting" ? "Sending..." : "Submit Enquiry"}
+        </button>
+        <p className="mt-3 text-xs text-taupe-grey-500">
+          Fields marked with <span className="text-brick-red-500 font-bold">*</span> are required.
+        </p>
+      </div>
     </form>
   );
 }
