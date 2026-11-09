@@ -184,7 +184,7 @@ export default function AboutContent({ heroImageUrl }: Props) {
                 <p className="text-[17px] font-medium text-tuscan-sun-700">
                   [ROLE / TITLE]
                 </p>
-                <p className="mt-2 text-base leading-[1.5] text-taupe-grey-600">
+                <p className="mt-2 text-base leading-normal text-taupe-grey-600">
                   [One line on experience or years with the company]
                 </p>
               </div>

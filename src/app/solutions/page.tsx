@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SolutionsPage() {
-  const { pageCopy, services } = await getSolutionsPage();
+  const { pageCopy, services, customsRegions } = await getSolutionsPage();
 
   return (
     <>
@@ -42,6 +42,7 @@ export default async function SolutionsPage() {
         heading={pageCopy.customsHeading}
         body={pageCopy.customsBody}
         note={pageCopy.customsNote}
+        regions={customsRegions}
       />
 
       <ValueAddedTable
