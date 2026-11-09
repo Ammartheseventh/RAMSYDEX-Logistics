@@ -18,11 +18,11 @@ export default async function PrivacyPage() {
     <>
       <PageHero
         imageUrl={pageCopy.privacyHeroImageUrl}
-        heading={page.title}
+        heading="Privacy Policy"
         note={page.note}
       />
 
-      <section className="bg-parchment-50">
+      <section className="bg-white">
         <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
           <div className="prose prose-sm max-w-none text-taupe-grey-700">
             <PortableText value={page.body as never} />

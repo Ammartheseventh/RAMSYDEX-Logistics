@@ -22,21 +22,26 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
     <section className="border-t border-parchment-200 bg-parchment-50">
       <div className="mx-auto max-w-7xl px-4 pt-6 pb-12 lg:py-20">
         
-        <div className="mb-8 flex flex-wrap gap-2 lg:hidden">
-          {services.map((service, i) => (
-            <button
-              key={service._id}
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
-                i === activeIndex
-                  ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
-                  : "border-taupe-grey-200 bg-parchment-100 text-taupe-grey-700 hover:border-taupe-grey-400"
-              }`}
-            >
-              {service.title}
-            </button>
-          ))}
+        {/* Mobile Scrollable Pills */}
+        <div className="relative mb-8 min-w-0 lg:hidden">
+          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {services.map((service, i) => (
+              <button
+                key={service._id}
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className={`shrink-0 snap-start rounded-full border px-6 py-3 text-base font-semibold transition ${
+                  i === activeIndex
+                    ? "border-brick-red-500 bg-brick-red-500 text-parchment-50"
+                    : "border-parchment-300 bg-parchment-50 text-taupe-grey-700 hover:border-taupe-grey-400"
+                }`}
+              >
+                {service.title}
+              </button>
+            ))}
+          </div>
+          {/* Gradient Fade Indicator */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-parchment-50 to-transparent" />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-12">
@@ -73,7 +78,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.25 }}
               >
-                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-parchment-200">
+                <div className="relative aspect-16/9 w-full overflow-hidden rounded-lg bg-parchment-200">
                   {active.image ? (
                     <Image
                       src={active.image}

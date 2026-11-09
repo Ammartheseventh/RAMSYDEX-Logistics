@@ -51,7 +51,8 @@ export default function PageHero({
       />
 
       <div className="relative z-10 mx-auto w-full max-w-300 px-[clamp(20px,5vw,64px)] py-12 md:py-20">
-        <h1 className="animate-fade-in-up max-w-250 whitespace-pre-line font-display text-[clamp(30px,4vw,52px)] leading-[1.15] tracking-tight">
+        {/* Reverted mobile to 30px, scaled up for tablet/PC up to 64px */}
+        <h1 className="animate-fade-in-up max-w-250 whitespace-pre-line font-display text-[clamp(30px,4.5vw,64px)] leading-[1.15] tracking-tight">
           {heading}
         </h1>
         {note && (

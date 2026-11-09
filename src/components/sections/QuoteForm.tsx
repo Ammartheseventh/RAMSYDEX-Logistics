@@ -110,7 +110,7 @@ export default function QuoteForm({
         
         {/* Relative wrapper for the fade effect */}
         <div className="relative">
-          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] sm:flex-wrap sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 scrollbar-none [-ms-overflow-style:none] sm:flex-wrap sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
             {inquiryTopics.map((topic) => (
               <button
                 key={topic.label}

@@ -11,7 +11,7 @@ type Props = {
   regions: CustomsRegion[];
 };
 
-export default function CustomsBlock({ heading, body, regions }: Props) {
+export default function CustomsBlock({ heading, regions }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,15 +20,11 @@ export default function CustomsBlock({ heading, body, regions }: Props) {
         
         <div className="relative grid gap-16 lg:grid-cols-12 lg:gap-24 lg:items-center">
           
-          {/* Left Column: Text Content & Dropdown (Foreground on mobile) */}
+          {/* Left Column: Heading & Dropdown (Foreground on mobile) */}
           <div className="relative z-10 lg:col-span-6">
             <h2 className="font-display text-[clamp(32px,4vw,52px)] leading-[1.15] tracking-tight text-taupe-grey-950">
               {heading || "Multi-Region Customs Clearance"}
             </h2>
-            
-            <p className="mt-6 text-lg leading-relaxed text-taupe-grey-600 md:text-xl">
-              {body || "We have extensive experience clearing customs across multiple international borders, ensuring your cargo moves seamlessly from origin to destination."}
-            </p>
 
             {/* The Dropdown (No Background, Transparent) */}
             <div 
@@ -88,8 +84,8 @@ export default function CustomsBlock({ heading, body, regions }: Props) {
             </div>
           </div>
 
-          {/* Right Column: The Animated Stamp Graphic (Background on mobile) */}
-          <div className="absolute top-8 -right-12 z-0 flex justify-center opacity-20 pointer-events-none lg:static lg:z-auto lg:col-span-6 lg:justify-end lg:opacity-100 lg:pointer-events-auto lg:top-auto lg:right-auto">
+          {/* Right Column: The Animated Stamp Graphic */}
+          <div className="absolute -top-20 -right-12 z-0 flex justify-center opacity-20 pointer-events-none lg:static lg:z-auto lg:col-span-6 lg:justify-end lg:opacity-100 lg:pointer-events-auto">
             <motion.div 
               initial={{ scale: 1.8, opacity: 0, rotate: -30, y: -30 }}
               whileInView={{ scale: 1, opacity: 0.9, rotate: -12, y: 0 }}
@@ -102,7 +98,7 @@ export default function CustomsBlock({ heading, body, regions }: Props) {
                 damping: 20, 
                 mass: 1.2 
               }}
-              className="relative flex h-70 w-70 items-center justify-center rounded-full border-[6px] border-brick-red-500/80 p-3 mix-blend-multiply md:h-[360px] md:w-[360px]"
+              className="relative flex h-[280px] w-[280px] items-center justify-center rounded-full border-[6px] border-brick-red-500/80 p-3 mix-blend-multiply md:h-[360px] md:w-[360px]"
             >
               
               <div className="absolute inset-2 rounded-full border-[3px] border-brick-red-500/50 border-dashed" />

@@ -30,7 +30,7 @@ export default async function ContactPage({ searchParams }: Props) {
     <>
       <PageHero
         imageUrl={pageCopy.contactHeroImageUrl}
-        heading={pageCopy.contactHeading}
+        heading="Contact & Quote"
         variant="contact"
       />
 
@@ -116,7 +116,6 @@ export default async function ContactPage({ searchParams }: Props) {
                   </p>
                 </div>
 
-                {/* Centered WhatsApp Button */}
                 <div className="mt-8 flex justify-center">
                   <a
                     href={`https://wa.me/${settings.whatsapp}`}

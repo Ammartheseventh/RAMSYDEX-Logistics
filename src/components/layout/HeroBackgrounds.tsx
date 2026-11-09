@@ -29,7 +29,7 @@ export function ContactHeroFg() {
 export function GalleryHeroFg() {
   return (
     <svg viewBox="0 0 1600 450" preserveAspectRatio="xMaxYMid slice" className="absolute inset-0 h-full w-full">
-      <g transform="translate(320, 90) scale(0.8)">
+      <g transform="translate(80, 22.5) scale(0.95)">
         <rect x="965" y="92" width="62" height="30" fill="#363030" />
         <rect x="1031" y="92" width="62" height="30" fill="#867979" />
         <rect x="1097" y="92" width="62" height="30" fill="#6b6161" />

@@ -20,7 +20,7 @@ export default async function SolutionsPage() {
     <>
       <PageHero
         imageUrl={pageCopy.solutionsHeroImageUrl}
-        heading={pageCopy.solutionsPageIntroHeading}
+        heading="Our Solutions"
         variant="solutions"
       />
 

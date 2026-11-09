@@ -17,7 +17,7 @@ export default async function GalleryPage() {
     <>
       <PageHero
         imageUrl={pageCopy.galleryHeroImageUrl}
-        heading="Gallery"
+        heading="Our Operations"
         variant="gallery"
       />
 

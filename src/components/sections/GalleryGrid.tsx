@@ -12,13 +12,13 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
   return (
     <>
       {/* CSS Multi-column layout for masonry effect */}
-      <div className="columns-2 gap-3 md:columns-3 lg:columns-4">
+      <div className="columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-4">
         {images.map((image, i) => (
           <button
             key={image.src || i}
             type="button"
             onClick={() => setIndex(i)}
-            className="group relative mb-3 block w-full overflow-hidden rounded-lg bg-parchment-200 break-inside-avoid"
+            className="group relative mb-4 block w-full overflow-hidden rounded-lg bg-parchment-200 break-inside-avoid"
             aria-label={`Open image: ${image.caption || image.alt}`}
           >
             {image.src ? (
@@ -27,7 +27,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 alt={image.alt}
                 width={image.width || 800}
                 height={image.height || 600}
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="h-auto w-full object-cover transition duration-300 group-hover:scale-105"
                 priority={i < 4}
               />
@@ -46,8 +46,8 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
 
       <Lightbox
         open={index >= 0}
-        close={() => setIndex(-1)}
         index={index}
+        close={() => setIndex(-1)}
         slides={images.map((img) => ({
           src: img.src,
           alt: img.alt,
