@@ -8,7 +8,7 @@ type Props = {
   services: SanityService[];
 };
 
-export default function SolutionsGrid({ heading, intro, services }: Props) {
+export default function SolutionsGrid({ heading, services }: Props) {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
@@ -16,7 +16,6 @@ export default function SolutionsGrid({ heading, intro, services }: Props) {
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-taupe-grey-600">{intro}</p>
         </div>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -55,9 +54,9 @@ export default function SolutionsGrid({ heading, intro, services }: Props) {
                     <div className="mt-auto pt-6">
                       <Link
                         href={`/solutions#${service.slug}`}
-                        className="inline-flex w-full items-center justify-center rounded-full bg-taupe-grey-950 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-500"
+                        className="inline-flex w-full items-center justify-center rounded-full bg-brick-red-500 px-6 py-3 text-sm font-semibold text-parchment-50 transition hover:bg-brick-red-600"
                       >
-                        Learn more â†’
+                        Learn more &rarr;
                       </Link>
                     </div>
                   </div>

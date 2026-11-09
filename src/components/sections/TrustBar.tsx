@@ -25,7 +25,7 @@ export default function TrustBar({ stats }: { stats: TrustStat[] }) {
 
           return (
             <div key={stat.label} className="text-center">
-              <p className="font-display text-5xl text-brick-red-500 md:text-6xl">
+              <p className="font-display text-5xl text-brick-red-500 lg:text-6xl">
                 <CountUp
                   to={numericValue}
                   decimals={decimals}

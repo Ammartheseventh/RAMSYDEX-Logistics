@@ -30,16 +30,13 @@ export default async function NetworkPage() {
         mapNote={pageCopy.networkMapNote}
       />
 
-      {/* Trade Corridors - bg-parchment-100 */}
+      {/* Trade Corridors */}
       <section className="border-t border-parchment-200 bg-parchment-100 py-20 md:py-28">
         <div className="mx-auto max-w-300 px-4">
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
               Key Trade Corridors
             </h2>
-            <p className="mt-3 text-base text-taupe-grey-600">
-              The lanes we operate most frequently out of Central Malaysia.
-            </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -66,7 +63,7 @@ export default async function NetworkPage() {
         </div>
       </section>
 
-      {/* Customs Coverage - bg-parchment-50 */}
+      {/* Customs Coverage */}
       <section className="border-t border-parchment-200 bg-parchment-50 py-20 md:py-28">
         <div className="mx-auto max-w-300 px-4">
           <div className="grid items-center gap-12 md:grid-cols-2">
@@ -74,10 +71,6 @@ export default async function NetworkPage() {
               <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
                 Multi-Region Customs Coverage
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-taupe-grey-600">
-                We have experience clearing customs across multiple international
-                borders — reducing the risk of port delays and duty surprises.
-              </p>
             </div>
 
             <div className="rounded-3xl border border-parchment-200 bg-parchment-100 p-8 shadow-sm">

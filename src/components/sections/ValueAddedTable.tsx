@@ -7,7 +7,6 @@ type Props = {
 
 export default function ValueAddedTable({
   heading,
-  intro,
   standardServices,
   valueAddedServices,
 }: Props) {
@@ -18,7 +17,6 @@ export default function ValueAddedTable({
           <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-taupe-grey-600">{intro}</p>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

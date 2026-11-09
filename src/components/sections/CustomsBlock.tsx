@@ -4,7 +4,7 @@ type Props = {
   note: string;
 };
 
-export default function CustomsBlock({ heading, body, note }: Props) {
+export default function CustomsBlock({ heading }: Props) {
   return (
     <section className="border-t border-parchment-200 bg-parchment-50">
       <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
@@ -12,10 +12,6 @@ export default function CustomsBlock({ heading, body, note }: Props) {
           <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-taupe-grey-600">{body}</p>
-          <p className="mt-3 text-sm text-taupe-grey-500">
-            <span className="font-medium text-taupe-grey-700">{note}</span>
-          </p>
         </div>
       </div>
     </section>

@@ -22,9 +22,7 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             Explore Our Network
           </h2>
-          <p className="mt-3 text-taupe-grey-600">
-            Click a pin on the map to see our capabilities in that region.
-          </p>
+          {/* Removed the "Click a pin..." paragraph here */}
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">

@@ -4,7 +4,7 @@ type Props = {
   checks: string[];
 };
 
-export default function QCBlock({ heading, body, checks }: Props) {
+export default function QCBlock({ heading, checks }: Props) {
   return (
     <section className="border-t border-parchment-200 bg-parchment-100">
       <div className="mx-auto max-w-7xl px-4 py-20 md:py-28">
@@ -12,10 +12,9 @@ export default function QCBlock({ heading, body, checks }: Props) {
           <h2 className="text-2xl text-taupe-grey-950 md:text-3xl">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-taupe-grey-600">{body}</p>
         </div>
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-10 grid gap-3 sm:grid-cols-2">
           {checks.map((check) => (
             <li
               key={check}
