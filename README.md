@@ -1,8 +1,6 @@
 # RAMSYDEX GLOBAL LOGISTICS
 
-Lead Generation page for RAMSYDEX GLOBAL LOGISTICS, a logistics and supply chain
-company based in Central Malaysia. The site's goal is to generate quote requests
-and build credibility with importers, exporters and manufacturers.
+Lead Generation website for RAMSYDEX GLOBAL LOGISTICS, a logistics and supply chain company based in Central Malaysia. The site's goal is to generate quote requests and build credibility with importers, exporters, and manufacturers.
 
 Built as an internship project. The client owns the finished project.
 
@@ -10,9 +8,7 @@ Built as an internship project. The client owns the finished project.
 
 ## Status
 
-**In development.** The site is being built with placeholder content until the
-client supplies brand assets, real photos, contact details and a confirmed
-country list. Every placeholder is tracked in [`PLACEHOLDERS.md`](./PLACEHOLDERS.md).
+**Frontend complete.** The site is fully responsive, heavily optimized for performance, and integrated with a headless CMS. It is currently populated with placeholder content (images, team names, trust stats) pending client handover.
 
 ---
 
@@ -21,32 +17,23 @@ country list. Every placeholder is tracked in [`PLACEHOLDERS.md`](./PLACEHOLDERS
 | Layer            | Technology                                        |
 | ---------------- | ------------------------------------------------- |
 | Framework        | Next.js 16 (App Router) + TypeScript              |
-| Styling          | Tailwind CSS                                      |
-| CMS              | Sanity (planned — not yet integrated)             |
-| Forms            | Formspree OR Web3Forms (planned)                  |
-| World map        | `react-country-map` (planned, Page 3)             |
-| Contact map      | Google Maps embed iframe (Page 6)                 |
-| Analytics        | Google Analytics + cookie consent (planned)       |
+| Styling          | Tailwind CSS v4                                   |
+| CMS              | Sanity (separate repository: `ramsydex-cms`)      |
+| Forms            | Web3Forms (via client-side fetch)                 |
+| Animations       | Motion (Framer Motion)                            |
+| World Map        | Custom SVG implementation (`dotted-map`)          |
+| Contact Map      | Google Maps embed iframe                          |
 | Hosting          | Vercel                                            |
-
-> Sanity and the form service are deferred until the page shell is built.
-> Until then, content lives in `src/data/` and forms are not wired up.
 
 ---
 
-## Getting Started
+## Architecture Overview
 
-### Prerequisites
+- **Data Fetching:** All Sanity queries and fetchers live in `src/sanity/`. Every fetcher is wrapped in React's `cache()` to deduplicate requests during a single render pass.
+- **Components:** 
+  - `src/components/layout/` contains structural elements (Header, Footer, PageHero).
+  - `src/components/sections/` contains the large page blocks (Hero, QCBlock, CustomsBlock, QuoteForm, etc.).
+  - `src/components/ui/` contains reusable interactive elements (CountUp, TiltedCard, CopyButton, WorldMap).
+- **Styling:** We use Tailwind CSS v4 with a custom `@theme` palette (`taupe-grey`, `tuscan-sun`, `brick-red`, `parchment`) defined in `src/app/globals.css`. We utilize the new v4 syntax (e.g., `bg-linear-to-r`, dynamic spacing like `max-w-300`).
+- **Pages:** All pages are Server Components that fetch their own data and pass it down to Client Components where interactivity is required.
 
-- Node.js 20+ (check with `node -v`)
-- npm (bundled with Node.js)
-- Git
-
-### Install and run
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start the development server
-npm run dev
