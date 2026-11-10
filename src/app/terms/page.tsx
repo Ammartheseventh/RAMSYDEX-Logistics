@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortableText } from "next-sanity";
 import { getLegalPage } from "@/sanity/getLegalPage";
+import { getHeroImages } from "@/sanity/getHeroImages";
 import PageHero from "@/components/layout/PageHero";
 
 export const metadata: Metadata = {
@@ -10,13 +11,14 @@ export const metadata: Metadata = {
 };
 
 export default async function TermsPage() {
-  const { page, pageCopy } = await getLegalPage("terms");
-  if (!page) notFound();
+  const { page } = await getLegalPage("terms");
+  const { termsHeroImage } = await getHeroImages();
+  if (!page || !page.body) notFound();
 
   return (
     <>
       <PageHero
-        imageUrl={pageCopy.termsHeroImageUrl}
+        imageUrl={termsHeroImage}
         heading="Terms & Conditions"
         note={page.note}
       />

@@ -24,6 +24,7 @@ export interface TiltedCardProps {
   imageSrc?: string;
   altText?: string;
   captionText?: string;
+  priority?: boolean;
   containerHeight?: number | string;
   containerWidth?: number | string;
   imageHeight?: number | string;
@@ -148,6 +149,7 @@ const TiltedCard = ({
   imageSrc,
   altText = 'Tilted card image',
   captionText = '',
+  priority = false,
   containerHeight = '300px',
   containerWidth = '100%',
   imageHeight = '300px',
@@ -576,6 +578,7 @@ const TiltedCard = ({
               alt={altText}
               fill
               draggable={false}
+              priority={priority}
               className="pointer-events-none object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={

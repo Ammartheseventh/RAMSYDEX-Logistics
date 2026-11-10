@@ -9,7 +9,12 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const { pageCopy } = await getAboutPage();
+  const { siteSettings, heroImages } = await getAboutPage();
 
-  return <AboutContent heroImageUrl={pageCopy.aboutHeroImageUrl} />;
+  return (
+    <AboutContent
+      heroImageUrl={heroImages.aboutHeroImage}
+      settings={siteSettings}
+    />
+  );
 }

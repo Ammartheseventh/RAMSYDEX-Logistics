@@ -1,3 +1,31 @@
+export type HeroImages = {
+  homeHeroImage: string | null;
+  solutionsHeroImage: string | null;
+  networkHeroImage: string | null;
+  aboutHeroImage: string | null;
+  contactHeroImage: string | null;
+  galleryHeroImage: string | null;
+  privacyHeroImage: string | null;
+  termsHeroImage: string | null;
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string | null;
+  photoUrl: string | null;
+};
+
+export type Credential = {
+  title: string;
+  logoUrl: string | null;
+};
+
+export type HubAdvantage = {
+  title: string;
+  description: string;
+};
+
 export type SiteSettings = {
   companyName: string;
   companyShortName: string;
@@ -11,50 +39,47 @@ export type SiteSettings = {
   address: string;
   hours: string;
   responsePromise: string;
+
+  // Homepage Content
+  heroHeadline: string;
+  heroCtaPrimary: string;
+  heroCtaSecondary: string;
+  solutionsHeading: string;
+  trustStats: { value: string; label: string }[];
+
+  // Solutions Page Content
+  qcHeading: string;
+  qcChecks: string[];
+  customsHeading: string;
+  customsRegions: string[];
+  tableHeading: string;
+  standardServices: string[];
+  valueAddedServices: string[];
+
+  // Network Page Content
+  networkMapNote: string;
+
+  // About Page Content
+  mission: string;
+  vision: string;
+  hubAdvantages: HubAdvantage[];
+  teamMembers: TeamMember[];
+  credentials: Credential[];
+
+  // Global CTA
+  ctaHeading: string;
+
+  // Footer
   footerSummary: string;
   ssmNumber: string;
   privacyLabel: string;
   termsLabel: string;
-};
 
-export type PageCopy = {
-  heroHeadline: string;
-  heroImageUrl: string | null;
-  heroCtaPrimary: string;
-  heroCtaSecondary: string;
-  solutionsHeading: string;
-  solutionsIntro: string;
-  solutionsPageIntroHeading: string;
-  solutionsPageIntroBody: string;
-  solutionsHeroImageUrl: string | null;   // <-- new
-  qcHeading: string;
-  qcBody: string;
-  qcChecks: string[] | null;
-  customsHeading: string;
-  customsBody: string;
-  customsNote: string;
-  tableHeading: string;
-  tableIntro: string;
-  standardServices: string[] | null;
-  valueAddedServices: string[] | null;
-  networkIntro: string;
-  networkHeroImageUrl: string | null;     // <-- new
-  networkMapNote: string;
-  aboutIntro: string;
-  aboutHeroImageUrl: string | null;       // <-- new
-  experienceHeadline: string;
-  experienceStatement: string;
-  mission: string;
-  vision: string;
-  galleryHeroImageUrl: string | null;     // <-- new
-  contactHeading: string;
-  contactIntro: string;
-  contactHeroImageUrl: string | null;     // <-- new
-  contactHubHeading: string;
-  privacyHeroImageUrl: string | null;     // <-- new
-  termsHeroImageUrl: string | null;       // <-- new
-  ctaHeading: string;
-  ctaBody: string;
+  // Legal
+  privacyNote: string;
+  privacyBody: unknown[];
+  termsNote: string;
+  termsBody: unknown[];
 };
 
 export type SanityService = {
@@ -72,27 +97,22 @@ export type SanityService = {
 
 export type TrustStat = { value: string; label: string };
 export type WorkflowStep = { title: string; description: string };
-export type ValuePillar = { title: string; description: string };
-export type HubAdvantage = { label: string; description: string };
-export type Credential = { title: string; description: string; logo: string | null };
-export type TradeCorridor = { title: string; description: string };
-export type CustomsRegion = { name: string };
 export type InquiryTopic = { label: string; service: string };
 
-export type GalleryImage = { 
-  src: string; 
-  alt: string; 
+export type GalleryImage = {
+  src: string;
+  alt: string;
   caption: string;
   width?: number;
   height?: number;
 };
 
 export type MapCountry = {
-  id: string; // ISO Code
+  id: string;
   name: string;
   isHub: boolean;
   description?: string;
-  services?: string;
+  services?: string[];
   transitTime?: string;
 };
 

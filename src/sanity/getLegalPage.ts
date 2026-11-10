@@ -1,12 +1,14 @@
 import { cache } from "react";
-import { sanityClient } from "@/sanity/client";
-import { LEGAL_PAGE_QUERY, PAGE_COPY_QUERY } from "@/sanity/queries";
-import type { LegalPage, PageCopy } from "@/sanity/types";
+import { getSiteSettings } from "./getSiteSettings";
 
 export const getLegalPage = cache(async (slug: string) => {
-  const [page, pageCopy] = await Promise.all([
-    sanityClient.fetch<LegalPage | null>(LEGAL_PAGE_QUERY, { slug }),
-    sanityClient.fetch<PageCopy>(PAGE_COPY_QUERY),
-  ]);
-  return { page, pageCopy };
+  const settings = await getSiteSettings();
+  
+  const page = {
+    title: slug === "privacy" ? "Privacy Policy" : "Terms & Conditions",
+    note: slug === "privacy" ? settings.privacyNote : settings.termsNote,
+    body: slug === "privacy" ? settings.privacyBody : settings.termsBody,
+  };
+
+  return { page, pageCopy: settings };
 });

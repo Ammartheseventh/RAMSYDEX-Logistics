@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import type { CustomsRegion } from "@/sanity/types";
+
+type CustomsRegion = { name: string };
 
 type Props = {
   heading: string;
-  body: string;
+  body?: string;
   note?: string;
   regions: CustomsRegion[];
 };

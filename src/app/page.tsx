@@ -6,22 +6,19 @@ import WorkflowBar from "@/components/sections/WorkflowBar";
 import MapTeaser from "@/components/sections/MapTeaser";
 
 export default async function Home() {
-  const { pageCopy, services, trustStats, workflowSteps } = await getHomePage();
+  const { siteSettings, heroImages, services } = await getHomePage();
 
   return (
     <>
-      <Hero copy={pageCopy} />
-      <TrustBar stats={trustStats} />
+      <Hero copy={siteSettings} imageUrl={heroImages.homeHeroImage} />
+      <TrustBar stats={siteSettings.trustStats} />
       <SolutionsGrid
-        heading={pageCopy.solutionsHeading}
-        intro={pageCopy.solutionsIntro}
+        heading={siteSettings.solutionsHeading}
+        intro=""
         services={services}
       />
       <MapTeaser />
-      <WorkflowBar
-        heading="How Your Cargo Moves"
-        steps={workflowSteps}
-      />
+      <WorkflowBar heading="How Your Cargo Moves" />
     </>
   );
 }

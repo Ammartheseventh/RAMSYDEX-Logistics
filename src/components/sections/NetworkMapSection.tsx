@@ -22,12 +22,10 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
           <h2 className="font-display text-3xl text-taupe-grey-950 md:text-4xl">
             Explore Our Network
           </h2>
-          {/* Removed the "Click a pin..." paragraph here */}
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           
-          {/* Map Container */}
           <div className="lg:col-span-2 relative aspect-2/1 overflow-hidden rounded-xl border border-parchment-200 bg-parchment-100 shadow-sm">
             <WorldMap
               countries={countries}
@@ -37,7 +35,6 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
             />
           </div>
 
-          {/* Details Panel */}
           <div className="lg:col-span-1 relative">
             <div className="lg:absolute lg:inset-0">
               <AnimatePresence mode="wait">
@@ -78,14 +75,19 @@ export default function NetworkMapSection({ countries, mapNote }: Props) {
                       </div>
                     )}
 
-                    {selectedCountry.services && (
+                    {selectedCountry.services && selectedCountry.services.length > 0 && (
                       <div>
                         <p className="mb-4 text-xs font-bold uppercase tracking-wide text-taupe-grey-400">
                           Key Capabilities
                         </p>
-                        <p className="text-sm leading-relaxed text-taupe-grey-700">
-                          {selectedCountry.services}
-                        </p>
+                        <ul className="space-y-2">
+                          {selectedCountry.services.map((service) => (
+                            <li key={service} className="flex items-start gap-2 text-sm leading-relaxed text-taupe-grey-700">
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-taupe-grey-400" />
+                              {service}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </motion.div>

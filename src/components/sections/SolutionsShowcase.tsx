@@ -86,6 +86,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                       fill
                       sizes="(max-width: 1024px) 100vw, 800px"
                       className="object-cover"
+                      priority
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-sm text-taupe-grey-500">

@@ -5,29 +5,27 @@ export const SITE_SETTINGS_QUERY = `
     "logoLightUrl": logoLight.asset->url,
     "logoIconUrl": logoIcon.asset->url,
     email, phone, whatsapp, address, hours, responsePromise,
-    footerSummary, ssmNumber, privacyLabel, termsLabel
+    heroHeadline, heroCtaPrimary, heroCtaSecondary, solutionsHeading, trustStats,
+    qcHeading, qcChecks, customsHeading, customsRegions, tableHeading, standardServices, valueAddedServices,
+    networkMapNote, ctaHeading,
+    mission, vision, hubAdvantages,
+    teamMembers[] { name, role, bio, "photoUrl": photo.asset->url },
+    credentials[] { title, "logoUrl": logo.asset->url },
+    footerSummary, ssmNumber, privacyLabel, termsLabel,
+    privacyNote, privacyBody, termsNote, termsBody
   }
 `
 
-export const PAGE_COPY_QUERY = `
-  *[_type == "pageCopy"][0] {
-    heroHeadline, "heroImageUrl": heroImage.asset->url,
-    heroCtaPrimary, heroCtaSecondary,
-    solutionsHeading, solutionsIntro,
-    solutionsPageIntroHeading, solutionsPageIntroBody,
-    "solutionsHeroImageUrl": solutionsHeroImage.asset->url,
-    qcHeading, qcBody, qcChecks, customsHeading, customsBody, customsNote,
-    tableHeading, tableIntro, standardServices, valueAddedServices,
-    networkIntro, networkMapNote,
-    "networkHeroImageUrl": networkHeroImage.asset->url,
-    aboutIntro, experienceHeadline, experienceStatement, mission, vision,
-    "aboutHeroImageUrl": aboutHeroImage.asset->url,
-    "galleryHeroImageUrl": galleryHeroImage.asset->url,
-    contactHeading, contactIntro, contactHubHeading,
-    "contactHeroImageUrl": contactHeroImage.asset->url,
-    "privacyHeroImageUrl": privacyHeroImage.asset->url,
-    "termsHeroImageUrl": termsHeroImage.asset->url,
-    ctaHeading, ctaBody
+export const HERO_IMAGES_QUERY = `
+  *[_type == "heroImages"][0] {
+    "homeHeroImage": homeHeroImage.asset->url,
+    "solutionsHeroImage": solutionsHeroImage.asset->url,
+    "networkHeroImage": networkHeroImage.asset->url,
+    "aboutHeroImage": aboutHeroImage.asset->url,
+    "contactHeroImage": contactHeroImage.asset->url,
+    "galleryHeroImage": galleryHeroImage.asset->url,
+    "privacyHeroImage": privacyHeroImage.asset->url,
+    "termsHeroImage": termsHeroImage.asset->url
   }
 `
 
@@ -38,13 +36,8 @@ export const SERVICES_QUERY = `
   }
 `
 
-export const TRUST_STATS_QUERY = `*[_type == "trustStat"] | order(order asc)`
-export const WORKFLOW_STEPS_QUERY = `*[_type == "workflowStep"] | order(order asc)`
-export const VALUE_PILLARS_QUERY = `*[_type == "valuePillar"] | order(order asc)`
-export const HUB_ADVANTAGES_QUERY = `*[_type == "hubAdvantage"] | order(order asc)`
-export const CREDENTIALS_QUERY = `*[_type == "credential"] | order(order asc) { title, description, "logo": logo.asset->url }`
-export const TRADE_CORRIDORS_QUERY = `*[_type == "tradeCorridor"] | order(order asc)`
 export const CUSTOMS_REGIONS_QUERY = `*[_type == "customsRegion"] | order(order asc)`
+export const TRUST_STATS_QUERY = `*[_type == "trustStat"] | order(order asc)`
 
 export const GALLERY_IMAGES_QUERY = `
   *[_type == "galleryImage"] | order(order asc) { 
@@ -55,16 +48,11 @@ export const GALLERY_IMAGES_QUERY = `
     "height": image.asset->metadata.dimensions.height
   }
 `
-export const LEGAL_PAGE_QUERY = `
-  *[_type == "legalDocument" && slug.current == $slug][0] {
-    title, note, body
-  }
-`
 
 export const MAP_DATA_QUERY = `
   {
     "countries": *[_type == "country"] | order(name asc) {
-      "id": isoCode, name, isHub, description, "services": capabilities, transitTime
+      "id": isoCode, name, isHub, description, "services": services[]->title, transitTime
     },
     "routes": *[_type == "tradeRoute"] | order(coalesce(order, 9999) asc, _createdAt asc) {
       "from": origin->isoCode,

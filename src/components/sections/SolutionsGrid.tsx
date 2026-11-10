@@ -19,11 +19,12 @@ export default function SolutionsGrid({ heading, services }: Props) {
         </div>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div key={service._id} className="h-70 w-full">
               <TiltedCard
                 imageSrc={service.image || undefined}
                 altText={service.title}
+                priority={index < 3}
                 containerHeight="100%"
                 containerWidth="100%"
                 imageHeight="100%"

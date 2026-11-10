@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortableText } from "next-sanity";
 import { getLegalPage } from "@/sanity/getLegalPage";
+import { getHeroImages } from "@/sanity/getHeroImages";
 import PageHero from "@/components/layout/PageHero";
 
 export const metadata: Metadata = {
@@ -11,13 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivacyPage() {
-  const { page, pageCopy } = await getLegalPage("privacy");
-  if (!page) notFound();
+  const { page } = await getLegalPage("privacy");
+  const { privacyHeroImage } = await getHeroImages();
+  if (!page || !page.body) notFound();
 
   return (
     <>
       <PageHero
-        imageUrl={pageCopy.privacyHeroImageUrl}
+        imageUrl={privacyHeroImage}
         heading="Privacy Policy"
         note={page.note}
       />

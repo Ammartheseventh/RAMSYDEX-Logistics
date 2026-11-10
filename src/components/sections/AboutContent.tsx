@@ -4,28 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import { AboutHeroBg } from "@/components/layout/HeroBackgrounds";
 import CtaBanner from "@/components/sections/CtaBanner";
+import type { SiteSettings } from "@/sanity/types";
 
 type Props = {
   heroImageUrl: string | null;
+  settings: SiteSettings;
 };
 
-export default function AboutContent({ heroImageUrl }: Props) {
+export default function AboutContent({ heroImageUrl, settings }: Props) {
   const [openHub, setOpenHub] = useState<number | null>(0);
-
-  const hubAdvantages = [
-    {
-      title: "Regional seaports",
-      desc: "Direct highway connectivity to Port Klang and Penang Port for rapid ocean freight clearance and minimal port dwell time.",
-    },
-    {
-      title: "International airports",
-      desc: "Minutes from KLIA and Subang SkyPark, ensuring time-critical air cargo is processed and dispatched without delay.",
-    },
-    {
-      title: "Major highways",
-      desc: "Direct access to the North-South Expressway, connecting our cross-border trucking fleet seamlessly to Singapore and Thailand.",
-    },
-  ];
 
   return (
     <div className="bg-parchment-50">
@@ -73,7 +60,7 @@ export default function AboutContent({ heroImageUrl }: Props) {
               Our Mission
             </p>
             <p className="font-display text-[clamp(24px,2.6vw,34px)] leading-[1.3] tracking-tight">
-              Connecting global markets by providing secure and efficient supply chain infrastructure.
+              {settings.mission}
             </p>
           </div>
           <div>
@@ -81,7 +68,7 @@ export default function AboutContent({ heroImageUrl }: Props) {
               Our Vision
             </p>
             <p className="font-display text-[clamp(24px,2.6vw,34px)] leading-[1.3] tracking-tight">
-              Supporting business growth, from logistics planning to end delivery.
+              {settings.vision}
             </p>
           </div>
         </div>
@@ -100,7 +87,7 @@ export default function AboutContent({ heroImageUrl }: Props) {
           </div>
 
           <div className="flex-1 basis-80">
-            {hubAdvantages.map((hub, index) => {
+            {settings.hubAdvantages.map((hub, index) => {
               const isOpen = openHub === index;
               return (
                 <div key={hub.title} className="border-b border-parchment-300 py-5">
@@ -138,7 +125,7 @@ export default function AboutContent({ heroImageUrl }: Props) {
                   >
                     <div className="overflow-hidden">
                       <p className="text-base leading-relaxed text-taupe-grey-600">
-                        {hub.desc}
+                        {hub.description}
                       </p>
                     </div>
                   </div>
@@ -159,34 +146,48 @@ export default function AboutContent({ heroImageUrl }: Props) {
             Meet the senior team who run our operations, customs and delivery desks.
           </p>
           <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i}>
-                <div
-                  role="img"
-                  aria-label="Placeholder for staff photo"
-                  className="flex h-35 w-35 items-center justify-center rounded-full bg-parchment-200"
-                >
-                  <svg
-                    aria-hidden="true"
-                    width="56"
-                    height="56"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#5e523b"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
+            {settings.teamMembers.map((member, i) => (
+              <div key={`${member.name}-${i}`}>
+                {member.photoUrl ? (
+                  <div className="relative h-35 w-35 overflow-hidden rounded-full bg-parchment-200">
+                    <Image
+                      src={member.photoUrl}
+                      alt={member.name}
+                      fill
+                      sizes="140px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    role="img"
+                    aria-label="Placeholder for staff photo"
+                    className="flex h-35 w-35 items-center justify-center rounded-full bg-parchment-200"
                   >
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
-                  </svg>
-                </div>
-                <h3 className="mb-1.5 mt-5 text-xl font-semibold">[FULL NAME]</h3>
+                    <svg
+                      aria-hidden="true"
+                      width="56"
+                      height="56"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#5e523b"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+                    </svg>
+                  </div>
+                )}
+                <h3 className="mb-1.5 mt-5 text-xl font-semibold">{member.name}</h3>
                 <p className="text-[17px] font-medium text-tuscan-sun-700">
-                  [ROLE / TITLE]
+                  {member.role}
                 </p>
-                <p className="mt-2 text-base leading-normal text-taupe-grey-600">
-                  [One line on experience or years with the company]
-                </p>
+                {member.bio && (
+                  <p className="mt-2 text-base leading-normal text-taupe-grey-600">
+                    {member.bio}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -200,10 +201,20 @@ export default function AboutContent({ heroImageUrl }: Props) {
             Licences &amp; memberships
           </h2>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {["Customs agent licence", "FIATA / MAFFA membership", "ISO certificates", "Insurance"].map((title) => (
-              <div key={title} className="border-t border-parchment-300 pt-5">
-                <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-                <p className="text-[17px] text-tuscan-sun-700">[TO CONFIRM]</p>
+            {settings.credentials.map((credential) => (
+              <div key={credential.title} className="border-t border-parchment-300 pt-5">
+                <h3 className="mb-2 text-lg font-semibold">{credential.title}</h3>
+                {credential.logoUrl ? (
+                  <Image
+                    src={credential.logoUrl}
+                    alt={`${credential.title} logo`}
+                    width={120}
+                    height={48}
+                    className="mt-2 h-12 w-auto object-contain"
+                  />
+                ) : (
+                  <p className="text-[17px] text-tuscan-sun-700">[TO CONFIRM]</p>
+                )}
               </div>
             ))}
           </div>

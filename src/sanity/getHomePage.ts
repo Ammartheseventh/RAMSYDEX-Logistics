@@ -1,14 +1,16 @@
 import { cache } from "react";
 import { sanityClient } from "@/sanity/client";
-import { PAGE_COPY_QUERY, SERVICES_QUERY, TRUST_STATS_QUERY, WORKFLOW_STEPS_QUERY } from "@/sanity/queries";
-import type { PageCopy, SanityService, TrustStat, WorkflowStep } from "@/sanity/types";
+import { SERVICES_QUERY } from "@/sanity/queries";
+import { getSiteSettings } from "./getSiteSettings";
+import { getHeroImages } from "./getHeroImages";
+import type { SanityService } from "@/sanity/types";
 
 export const getHomePage = cache(async () => {
-  const [pageCopy, services, trustStats, workflowSteps] = await Promise.all([
-    sanityClient.fetch<PageCopy>(PAGE_COPY_QUERY),
+  const [siteSettings, heroImages, services] = await Promise.all([
+    getSiteSettings(),
+    getHeroImages(),
     sanityClient.fetch<SanityService[]>(SERVICES_QUERY),
-    sanityClient.fetch<TrustStat[]>(TRUST_STATS_QUERY),
-    sanityClient.fetch<WorkflowStep[]>(WORKFLOW_STEPS_QUERY),
   ]);
-  return { pageCopy, services, trustStats, workflowSteps };
+
+  return { siteSettings, heroImages, services };
 });

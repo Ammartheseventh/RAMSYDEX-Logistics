@@ -1,16 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { PageCopy } from "@/sanity/types";
+import type { SiteSettings } from "@/sanity/types";
 
-export default function Hero({ copy }: { copy: PageCopy }) {
+type Props = {
+  copy: Pick<SiteSettings, "heroHeadline" | "heroCtaPrimary" | "heroCtaSecondary">;
+  imageUrl: string | null;
+};
+
+export default function Hero({ copy, imageUrl }: Props) {
   return (
     <section className="relative flex items-center overflow-hidden bg-taupe-grey-900 text-parchment-50">
       
       {/* Background Image Container */}
-      {copy.heroImageUrl && (
+      {imageUrl && (
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src={copy.heroImageUrl}
+            src={imageUrl}
             alt="RAMSYDEX Logistics Operations"
             fill
             className="object-cover object-[75%_25%]"

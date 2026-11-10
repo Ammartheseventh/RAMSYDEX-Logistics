@@ -6,21 +6,15 @@ import CtaBanner from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Gallery — RAMSYDEX GLOBAL LOGISTICS",
-  description:
-    "Photos from our Central Malaysia hub, cargo operations, and last-mile delivery.",
+  description: "Photos from our Central Malaysia hub, cargo operations, and last-mile delivery.",
 };
 
 export default async function GalleryPage() {
-  const { pageCopy, images } = await getGalleryPage();
+  const { heroImages, images } = await getGalleryPage();
 
   return (
     <>
-      <PageHero
-        imageUrl={pageCopy.galleryHeroImageUrl}
-        heading="Our Operations"
-        variant="gallery"
-      />
-
+      <PageHero imageUrl={heroImages.galleryHeroImage} heading="Our Operations" variant="gallery" />
       <section className="bg-parchment-50">
         <div className="mx-auto max-w-300 px-4 py-12 md:py-16">
           {images.length === 0 ? (
@@ -32,12 +26,7 @@ export default async function GalleryPage() {
           )}
         </div>
       </section>
-
-      <CtaBanner
-        heading="Want to see our operations in person? Get in touch to schedule a visit."
-        buttonText="Contact Us"
-        buttonHref="/contact"
-      />
+      <CtaBanner heading="Want to see our operations in person? Get in touch to schedule a visit." buttonText="Contact Us" buttonHref="/contact" />
     </>
   );
 }
