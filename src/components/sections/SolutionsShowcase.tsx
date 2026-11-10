@@ -24,7 +24,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
         
         {/* Mobile Scrollable Pills */}
         <div className="relative mb-8 min-w-0 lg:hidden">
-          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-full min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto pb-2 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {services.map((service, i) => (
               <button
                 key={service._id}
@@ -78,7 +78,7 @@ export default function SolutionsShowcase({ services }: { services: SanityServic
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.25 }}
               >
-                <div className="relative aspect-16/9 w-full overflow-hidden rounded-lg bg-parchment-200">
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-parchment-200">
                   {active.image ? (
                     <Image
                       src={active.image}

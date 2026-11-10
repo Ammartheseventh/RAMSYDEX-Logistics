@@ -139,7 +139,7 @@ export default async function ContactPage({ searchParams }: Props) {
 
       <section className="border-t border-parchment-200 bg-parchment-100">
         <div className="mx-auto w-full max-w-300">
-          <div className="h-[400px] w-full md:h-[500px]">
+          <div className="h-100 w-full md:h-125">
             <iframe
               src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
               width="100%"
